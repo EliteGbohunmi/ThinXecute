@@ -1,0 +1,2530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ThinXecute | Two Nights. Think It Through. Then Do Something With It.</title>
+<meta name="description" content="ThinXecute is a free two-night live experience on Telegram for people with ideas, ambitions and things they want to build — connecting clearer thinking with meaningful action. Tue 20 & Wed 21 October · 8 PM WAT.">
+<meta name="theme-color" content="#0F1729">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F1729'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='%23C8943D' font-family='Georgia,serif' font-size='13' font-weight='600'%3EGW%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   1. TOKENS
+   ========================================================================== */
+:root{
+  /* Surfaces */
+  --bg:#FAF8F3;
+  --surface:#FFFFFF;
+  --surface-alt:#F4F1EA;
+  --tint:#F0ECE2;
+
+  /* Ink */
+  --ink:#0F1729;
+  --ink-2:#1B2438;
+  --ink-3:#060A15;
+
+  /* Text */
+  --text:#0F1729;
+  --text-soft:#4E5668;
+  --text-faint:#8B92A4;
+  --text-inverse:#F5F1E6;
+  --text-inv-soft:#B4BACA;
+  --text-inv-faint:#757D91;
+
+  /* Accents */
+  --accent:#C8943D;
+  --accent-warm:#E8B65B;
+  --accent-deep:#8F6822;
+  --accent-soft:#FBF3E0;
+  --accent-line:rgba(200,148,61,.35);
+
+  --accent-2:#3D7168;
+  --accent-2-light:#5A9A8E;
+  --accent-2-soft:#E8F0EC;
+  --accent-2-line:rgba(61,113,104,.28);
+
+  /* Lines */
+  --line:rgba(15,23,41,.10);
+  --line-strong:rgba(15,23,41,.16);
+  --line-hair:rgba(15,23,41,.06);
+  --line-inv:rgba(245,241,230,.10);
+  --line-inv-strong:rgba(245,241,230,.18);
+
+  --danger:#B0454B;
+
+  --font-display:'Bricolage Grotesque','Archivo',system-ui,sans-serif;
+  --font-body:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --wrap:1180px;
+  --gutter:clamp(20px,4vw,40px);
+  --radius:14px;
+  --radius-lg:22px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+
+/* ==========================================================================
+   2. RESET
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--font-body);background:var(--bg);color:var(--text);
+  font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.15;letter-spacing:-.02em}
+ul,ol{list-style:none}
+::selection{background:rgba(200,148,61,.25)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+section[id]{scroll-margin-top:6rem}
+.hidden{display:none !important}
+
+/* ==========================================================================
+   3. UTILITIES
+   ========================================================================== */
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--font-mono)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.img-ph{
+  background:
+    repeating-linear-gradient(45deg,rgba(15,23,41,.03) 0 10px,transparent 10px 20px),
+    var(--tint);
+  border:1px dashed var(--line-strong);
+  color:var(--text-faint);
+  display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  text-align:center;padding:20px;
+  line-height:1.5;
+}
+.img-ph::before{content:"[ image placeholder ]";display:block;margin-bottom:6px;opacity:.55}
+
+/* ==========================================================================
+   4. GRAIN + PROGRESS
+   ========================================================================== */
+.grain{
+  position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+#progress{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:80;
+  background:linear-gradient(90deg,var(--accent) 0%,var(--accent-warm) 100%);
+  transform:scaleX(0);transform-origin:0 50%;will-change:transform;
+}
+
+/* ==========================================================================
+   5. REVEAL
+   ========================================================================== */
+html.js [data-reveal]{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .8s ease,transform .8s var(--ease-out);
+}
+html.js [data-reveal].in{opacity:1;transform:none}
+
+/* ==========================================================================
+   6. NAV
+   ========================================================================== */
+.nav{
+  position:fixed;inset-inline:0;top:0;z-index:50;
+  transition:background-color .4s,box-shadow .4s,border-color .4s,color .4s;
+  color:var(--text-inverse);
+  border-bottom:1px solid transparent;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+@media (min-width:1024px){.nav-inner{height:72px}}
+.nav-brand{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;
+  font-size:1.05rem;line-height:1;
+}
+.nav-brand-mark{
+  display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:9px;
+  background:var(--accent);
+  font-family:var(--font-display);font-size:.62rem;font-weight:800;
+  color:var(--ink);flex-shrink:0;
+  box-shadow:0 4px 12px rgba(200,148,61,.35);
+}
+.nav-brand-name{color:var(--text-inverse);transition:color .4s}
+.nav.scrolled .nav-brand-name{color:var(--ink)}
+.nav-brand-name .alt{color:var(--accent-warm)}
+
+.nav-links{display:none;align-items:center;gap:32px;font-size:.85rem;font-weight:500}
+@media (min-width:1024px){.nav-links{display:flex}}
+.nav-link{position:relative;transition:color .25s;color:rgba(245,241,230,.75)}
+.nav-link:hover,.nav-link:focus-visible{color:var(--text-inverse)}
+.nav.scrolled .nav-link{color:var(--text-soft)}
+.nav.scrolled .nav-link:hover,.nav.scrolled .nav-link:focus-visible{color:var(--ink)}
+.nav-link::after{
+  content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:100%;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--ease-out);
+}
+.nav-link:hover::after,.nav-link:focus-visible::after{transform:scaleX(1)}
+
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-cta{display:none}
+@media (min-width:640px){.nav-cta{display:inline-flex;padding:.65rem 1.5rem;font-size:.85rem}}
+.nav-toggle{
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:9999px;
+  border:1px solid var(--line-inv-strong);color:var(--text-inverse);background:transparent;
+  transition:border-color .3s,color .4s,background-color .3s;
+}
+@media (min-width:1024px){.nav-toggle{display:none}}
+.nav-toggle:hover{background:rgba(245,241,230,.08)}
+.nav.scrolled .nav-toggle{color:var(--ink);border-color:var(--line)}
+.nav.scrolled{
+  background:rgba(250,248,243,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line),0 12px 30px -22px rgba(15,23,41,.35);
+  color:var(--ink);
+}
+
+/* Mobile menu */
+.mobile-menu{
+  display:none;border-top:1px solid var(--line-hair);
+  background:rgba(250,248,243,.98);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  padding:14px 20px 24px;
+}
+@media (max-width:1023px){.mobile-menu.open{display:block}}
+@media (min-width:1024px){.mobile-menu{display:none !important}}
+.mobile-menu-inner{display:flex;flex-direction:column;gap:4px}
+.mobile-menu a.menu-link{
+  display:block;padding:12px;border-radius:12px;
+  font-size:.95rem;font-weight:600;color:var(--ink);
+  transition:background-color .2s,color .2s;
+}
+.mobile-menu a.menu-link:hover{background:var(--tint);color:var(--accent-deep)}
+.mobile-menu .btn{margin-top:12px}
+
+/* ==========================================================================
+   7. BUTTONS
+   ========================================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  border-radius:9999px;font-weight:700;letter-spacing:-.01em;line-height:1;
+  padding:1rem 1.7rem;font-size:.95rem;
+  border:1px solid transparent;
+  transition:transform .3s var(--ease-out),box-shadow .3s,background-color .3s,border-color .3s,color .3s;
+  will-change:transform;cursor:pointer;position:relative;overflow:hidden;white-space:nowrap;
+}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none !important}
+.btn:active{transform:scale(.97)}
+.btn-primary{
+  background:var(--ink);color:var(--text-inverse);
+  box-shadow:0 2px 6px rgba(15,23,41,.14),0 16px 32px -14px rgba(15,23,41,.55);
+}
+.btn-primary:hover:not(:disabled){
+  transform:translateY(-2px);background:var(--ink-2);
+  box-shadow:0 4px 10px rgba(15,23,41,.18),0 22px 40px -16px rgba(15,23,41,.65);
+}
+.btn-accent{
+  background:var(--accent);color:var(--ink);
+  box-shadow:0 2px 6px rgba(15,23,41,.10),0 16px 32px -14px rgba(200,148,61,.55);
+}
+.btn-accent:hover:not(:disabled){
+  transform:translateY(-2px);background:var(--accent-warm);
+  box-shadow:0 4px 10px rgba(15,23,41,.12),0 22px 40px -16px rgba(200,148,61,.65);
+}
+.btn-ghost-dark{border-color:var(--line-inv-strong);color:var(--text-inverse);background:transparent}
+.btn-ghost-dark:hover{background:rgba(245,241,230,.08);border-color:rgba(245,241,230,.5)}
+.btn-ghost-light{border-color:var(--line-strong);color:var(--ink);background:var(--surface)}
+.btn-ghost-light:hover{background:var(--tint);border-color:rgba(200,148,61,.45)}
+.btn-sm{padding:.7rem 1.25rem;font-size:.85rem}
+.btn-block{width:100%}
+.btn-shine::after{
+  content:"";position:absolute;top:0;left:-130%;height:100%;width:55%;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-20deg);pointer-events:none;
+}
+.btn-shine:hover::after{animation:shine .85s var(--ease-out)}
+@keyframes shine{to{left:135%}}
+
+/* ==========================================================================
+   8. TYPOGRAPHY
+   ========================================================================== */
+.kicker{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+}
+.money-sweep{position:relative;white-space:nowrap;display:inline-block}
+.money-sweep::after{
+  content:"";position:absolute;left:0;right:0;bottom:-.08em;height:.1em;
+  background:linear-gradient(90deg,var(--accent),var(--accent-warm));
+  transform:scaleX(0);transform-origin:left;
+  animation:sweep 1.1s var(--ease-out) 1.05s forwards;
+}
+@keyframes sweep{to{transform:scaleX(1)}}
+.gradient-text{
+  background:linear-gradient(100deg,var(--accent),var(--accent-warm) 55%,var(--accent-deep));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ==========================================================================
+   9. SECTION MARKER
+   ========================================================================== */
+.section-marker{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft);
+  display:flex;align-items:center;gap:16px;
+}
+.section-marker b{color:var(--accent-deep);font-weight:700}
+.section-marker::after{content:"";height:1px;flex:1 1 auto;background:var(--line);margin-left:4px}
+.section-marker-center{justify-content:center}
+.section-marker-center::after{display:none}
+.section-marker-light{color:var(--text-inv-soft)}
+.section-marker-light b{color:var(--accent-warm)}
+.section-marker-light::after{background:var(--line-inv)}
+
+/* ==========================================================================
+   10. HERO — asymmetric layout
+   ========================================================================== */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 82% -10%,rgba(200,148,61,.20) 0%,transparent 60%),
+    radial-gradient(90% 70% at 8% 110%,rgba(61,113,104,.16) 0%,transparent 55%),
+    var(--ink);
+  color:var(--text-inverse);
+  padding-top:104px;padding-bottom:56px;
+}
+@media (min-width:640px){.hero{padding-top:120px}}
+@media (min-width:1024px){.hero{padding-bottom:88px}}
+.hero-orb{position:absolute;pointer-events:none;border-radius:50%;filter:blur(60px)}
+.hero-orb-a{left:-96px;top:64px;width:320px;height:320px;background:rgba(200,148,61,.22)}
+.hero-orb-b{right:-96px;top:-64px;width:384px;height:384px;background:rgba(61,113,104,.20)}
+.hero-orb-c{left:50%;bottom:-64px;transform:translateX(-50%);width:288px;height:288px;background:rgba(232,182,91,.10)}
+
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;gap:48px;
+}
+@media (min-width:1024px){
+  .hero-grid{grid-template-columns:1.2fr .8fr;gap:64px;align-items:stretch}
+}
+
+/* Left column */
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 16px 6px 12px;border-radius:9999px;
+  border:1px solid var(--line-inv-strong);
+  background:rgba(245,241,230,.06);
+  font-family:var(--font-mono);font-size:.66rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,241,230,.85);
+}
+.pulse-dot{
+  display:inline-flex;width:6px;height:6px;border-radius:50%;
+  background:var(--accent-warm);flex-shrink:0;position:relative;
+}
+.pulse-dot::before{
+  content:"";position:absolute;inset:-3px;border-radius:50%;
+  background:inherit;opacity:.55;
+  animation:pulse 2.2s var(--ease-out) infinite;
+}
+@keyframes pulse{0%{transform:scale(.7);opacity:.7}70%,100%{transform:scale(1.9);opacity:0}}
+
+.hero-title{
+  margin-top:28px;
+  font-size:clamp(2.6rem,7vw,4.5rem);
+  line-height:1.02;letter-spacing:-.04em;
+}
+.hero-title .line{display:block}
+.hero-title .line-dim{color:rgba(245,241,230,.85)}
+.hero-title .line-accent{
+  background:linear-gradient(100deg,var(--accent-warm),var(--accent) 60%,var(--accent-deep));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{
+  margin-top:24px;max-width:34rem;
+  font-size:1.05rem;line-height:1.75;
+  color:rgba(245,241,230,.72);
+}
+@media (min-width:640px){.hero-sub{font-size:1.125rem}}
+.hero-cta{margin-top:36px;display:flex;flex-direction:column;gap:12px}
+@media (min-width:640px){.hero-cta{flex-direction:row;align-items:center}}
+.hero-meta{
+  margin-top:32px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(245,241,230,.5);
+}
+.hero-meta .dot{color:var(--accent-warm)}
+
+/* Right column: vertical "session card" */
+.session-stack{
+  position:relative;
+  display:flex;flex-direction:column;gap:14px;
+}
+.session-card{
+  position:relative;
+  border-radius:20px;
+  background:var(--ink-2);
+  border:1px solid var(--line-inv);
+  padding:24px;
+  display:flex;flex-direction:column;gap:16px;
+  transition:transform .4s var(--ease-out),border-color .4s;
+}
+.session-card:hover{transform:translateY(-4px);border-color:var(--accent-line)}
+.session-num{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 12px;border-radius:9999px;
+  background:rgba(200,148,61,.15);
+  border:1px solid rgba(200,148,61,.28);
+  font-family:var(--font-mono);font-size:.62rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent-warm);
+  align-self:flex-start;
+}
+.session-num .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-warm)}
+.session-title{
+  font-family:var(--font-display);font-size:1.35rem;font-weight:700;
+  line-height:1.2;letter-spacing:-.02em;
+  color:var(--text-inverse);
+}
+.session-desc{
+  font-size:.92rem;line-height:1.7;
+  color:rgba(245,241,230,.7);
+}
+.session-meta{
+  display:flex;flex-direction:column;gap:10px;
+  margin-top:auto;padding-top:16px;
+  border-top:1px solid var(--line-inv);
+  font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(245,241,230,.5);
+}
+.session-meta span{display:flex;align-items:center;gap:8px}
+.session-meta .tick{color:var(--accent-warm)}
+
+.session-note{
+  border-radius:16px;
+  border:1px dashed var(--line-inv-strong);
+  padding:16px 18px;
+  font-size:.82rem;line-height:1.6;
+  color:rgba(245,241,230,.65);
+  background:rgba(245,241,230,.03);
+}
+
+/* ==========================================================================
+   11. LOGO STRIP — Telegram + date strip (replaces old marquee)
+   ========================================================================== */
+.logo-strip{
+  position:relative;margin-top:56px;
+  border-top:1px solid var(--line-inv);
+  border-bottom:1px solid var(--line-inv);
+  background:var(--ink-3);
+  padding:18px 0;overflow:hidden;
+}
+@media (min-width:1024px){.logo-strip{margin-top:72px}}
+.logo-track{
+  display:flex;width:max-content;
+  animation:marquee 40s linear infinite;
+}
+.logo-track:hover{animation-play-state:paused}
+.logo-group{
+  display:flex;align-items:center;gap:36px;
+  padding-right:36px;white-space:nowrap;
+}
+.logo-item{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:600;
+  letter-spacing:.20em;text-transform:uppercase;
+  color:rgba(245,241,230,.55);
+  display:flex;align-items:center;gap:14px;
+}
+.logo-item .sep{color:var(--accent)}
+.logo-item.accent{color:var(--accent-warm)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ==========================================================================
+   12. SECTIONS
+   ========================================================================== */
+.section{padding-block:80px}
+@media (min-width:1024px){.section{padding-block:112px}}
+.section-alt{background:var(--surface-alt)}
+.section-head{max-width:720px;margin-bottom:48px}
+.section-head h2{
+  margin-top:20px;font-size:clamp(1.75rem,4vw,2.75rem);
+  line-height:1.08;letter-spacing:-.02em;
+}
+.section-head p{
+  margin-top:20px;font-size:1.02rem;line-height:1.75;color:var(--text-soft);
+  max-width:40rem;
+}
+
+/* ==========================================================================
+   13. SPLIT
+   ========================================================================== */
+.split{display:grid;gap:48px}
+@media (min-width:1024px){.split{grid-template-columns:.85fr 1.15fr;gap:80px}}
+.split h2{
+  margin-top:20px;font-size:clamp(1.75rem,4vw,2.75rem);
+  line-height:1.08;letter-spacing:-.02em;
+}
+.split .body p{
+  font-size:1.05rem;line-height:1.75;color:var(--text-soft);
+  margin-bottom:20px;
+}
+.split .body p:last-child{margin-bottom:0;color:var(--ink);font-weight:500}
+
+/* ==========================================================================
+   14. FLOW (already different from reference — kept)
+   ========================================================================== */
+.flow{
+  margin-top:56px;padding:24px;
+  border:1px solid var(--line);border-radius:20px;
+  background:var(--surface);
+}
+@media (min-width:640px){.flow{padding:32px}}
+.flow-label{
+  font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint);
+  margin-bottom:20px;
+}
+.flow-items{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.flow-node{
+  font-family:var(--font-display);font-size:1.4rem;font-weight:700;
+  color:var(--ink);letter-spacing:-.01em;
+}
+.flow-node.accent{color:var(--accent-deep)}
+.flow-arrow{color:var(--accent);font-size:1.2rem}
+
+/* ==========================================================================
+   15. PROBLEM — editorial 2-col numbered grid
+   ========================================================================== */
+.problem-grid{
+  display:grid;gap:0;
+  border-top:1px solid var(--line);
+  margin-top:56px;
+}
+@media (min-width:768px){
+  .problem-grid{grid-template-columns:1fr 1fr;column-gap:56px}
+}
+.problem-item{
+  display:grid;grid-template-columns:auto 1fr;gap:20px;
+  padding:26px 0;
+  border-bottom:1px solid var(--line);
+  transition:background-color .35s,padding-left .35s var(--ease-out);
+}
+.problem-item:hover{background:rgba(200,148,61,.04);padding-left:14px}
+.problem-num{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;color:var(--accent-deep);
+  padding-top:4px;
+}
+.problem-item h3{
+  font-family:var(--font-display);font-size:1.08rem;font-weight:700;
+  line-height:1.35;letter-spacing:-.01em;color:var(--ink);
+}
+@media (min-width:640px){.problem-item h3{font-size:1.15rem}}
+.problem-item p{
+  margin-top:8px;font-size:.92rem;line-height:1.65;color:var(--text-soft);
+}
+
+.pull-statement{
+  margin-top:56px;
+  display:flex;align-items:flex-start;gap:16px;
+  border-left:2px solid var(--accent);padding-left:20px;
+}
+.pull-statement p{
+  max-width:38rem;font-size:1.05rem;line-height:1.75;color:var(--ink);
+}
+
+/* ==========================================================================
+   16. QUESTION CALLOUT
+   ========================================================================== */
+.question-callout{
+  margin-top:28px;
+  border-radius:16px;
+  border-left:4px solid var(--accent);
+  background:var(--surface);
+  padding:24px;
+  box-shadow:0 2px 6px rgba(15,23,41,.04),0 20px 40px -22px rgba(15,23,41,.20);
+}
+@media (min-width:640px){.question-callout{padding:28px}}
+.question-callout p{
+  font-family:var(--font-display);font-size:1.2rem;font-weight:700;
+  line-height:1.3;letter-spacing:-.01em;color:var(--ink);
+}
+@media (min-width:640px){.question-callout p{font-size:1.5rem}}
+
+/* ==========================================================================
+   17. SESSION TOGGLE (Inside ThinXecute)
+   ========================================================================== */
+.session-toggle{
+  margin-top:48px;
+  border-radius:24px;
+  background:var(--surface);
+  border:1px solid var(--line-hair);
+  box-shadow:0 2px 6px rgba(15,23,41,.04),0 24px 48px -24px rgba(15,23,41,.20);
+  overflow:hidden;
+}
+.toggle-tabs{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--line);
+}
+@media (max-width:540px){
+  .toggle-tabs{grid-template-columns:1fr;border-bottom:0}
+}
+.toggle-tab{
+  display:flex;flex-direction:column;gap:6px;
+  padding:22px 26px;
+  text-align:left;
+  border-right:1px solid var(--line);
+  transition:background-color .3s,color .3s;
+  cursor:pointer;
+  background:transparent;
+}
+.toggle-tab:last-child{border-right:0}
+@media (max-width:540px){
+  .toggle-tab{border-right:0;border-bottom:1px solid var(--line)}
+  .toggle-tab:last-child{border-bottom:0}
+}
+.toggle-tab:hover{background:var(--tint)}
+.toggle-tab[aria-selected="true"]{background:var(--ink);color:var(--text-inverse)}
+.toggle-tab[aria-selected="true"] .tab-owner{color:var(--accent-warm)}
+.toggle-tab[aria-selected="true"] .tab-title{color:var(--text-inverse)}
+.toggle-tab[aria-selected="true"] .tab-eyebrow{color:var(--accent-warm)}
+.tab-eyebrow{
+  font-family:var(--font-mono);font-size:.62rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-faint);transition:color .3s;
+}
+.tab-title{
+  font-family:var(--font-display);font-size:1.15rem;font-weight:700;
+  letter-spacing:-.01em;color:var(--ink);transition:color .3s;
+}
+.tab-owner{
+  font-family:var(--font-mono);font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-soft);transition:color .3s;
+}
+
+.toggle-body{padding:32px}
+@media (min-width:640px){.toggle-body{padding:44px 48px}}
+.toggle-panel{display:none;animation:panelIn .45s var(--ease-out)}
+.toggle-panel.active{display:block}
+@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.toggle-panel h3{
+  font-family:var(--font-display);font-size:clamp(1.5rem,2.6vw,1.9rem);
+  font-weight:700;letter-spacing:-.02em;line-height:1.15;
+}
+.toggle-panel p.lead{
+  margin-top:16px;font-size:1rem;line-height:1.75;color:var(--text-soft);
+  max-width:44rem;
+}
+.toggle-points{
+  margin-top:28px;
+  display:grid;gap:10px;
+}
+@media (min-width:640px){.toggle-points{grid-template-columns:1fr 1fr}}
+.toggle-point{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;border-radius:12px;
+  background:var(--tint);
+  font-size:.94rem;color:var(--ink);
+}
+.toggle-point .dot{
+  flex-shrink:0;width:6px;height:6px;border-radius:50%;
+  background:var(--accent);margin-top:8px;
+}
+
+/* ==========================================================================
+   18. SPEAKER GRID — restructured (larger portraits on top)
+   ========================================================================== */
+.speaker-grid{
+  display:grid;gap:24px;margin-top:48px;
+}
+@media (min-width:768px){.speaker-grid{grid-template-columns:1fr 1fr}}
+.speaker-card{
+  background:var(--surface);border:1px solid var(--line-hair);
+  border-radius:22px;overflow:hidden;
+  box-shadow:0 2px 6px rgba(15,23,41,.04),0 22px 44px -22px rgba(15,23,41,.20);
+  transition:transform .4s var(--ease-out),box-shadow .4s,border-color .4s;
+  display:flex;flex-direction:column;
+}
+.speaker-card:hover{
+  transform:translateY(-4px);border-color:var(--accent-line);
+  box-shadow:0 8px 24px -6px rgba(15,23,41,.20),0 28px 56px -22px rgba(15,23,41,.28);
+}
+.speaker-portrait{
+  aspect-ratio:4/3;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--line-hair);
+}
+.speaker-portrait img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+}
+.speaker-body{padding:24px 26px 26px}
+@media (min-width:640px){.speaker-body{padding:28px 32px 32px}}
+.speaker-name{
+  font-family:var(--font-display);font-size:1.35rem;font-weight:700;
+  letter-spacing:-.015em;
+}
+.speaker-role{
+  margin-top:6px;font-family:var(--font-mono);font-size:.66rem;
+  letter-spacing:.16em;text-transform:uppercase;
+}
+.speaker-role.warm{color:var(--accent-deep)}
+.speaker-role.teal{color:var(--accent-2)}
+.speaker-bio{
+  margin-top:16px;font-size:.95rem;line-height:1.75;color:var(--text-soft);
+}
+.speaker-note{
+  margin-top:16px;padding-top:16px;
+  border-top:1px dashed var(--line);
+  font-size:.82rem;color:var(--text-faint);
+}
+.speaker-footer{
+  margin-top:32px;font-size:.95rem;color:var(--text-soft);
+}
+.speaker-footer strong{color:var(--accent-deep);font-weight:700}
+
+/* ==========================================================================
+   19. WHO IT'S FOR
+   ========================================================================== */
+.check-grid{display:grid;gap:4px 64px;margin-top:48px}
+@media (min-width:768px){.check-grid{grid-template-columns:repeat(2,1fr)}}
+.check-item{display:flex;align-items:flex-start;gap:14px;padding:11px 0}
+.check-mark{flex-shrink:0;margin-top:3px;color:var(--accent-deep)}
+.check-item p{font-size:1rem;line-height:1.6;color:rgba(15,23,41,.85)}
+
+/* ==========================================================================
+   20. SOCIAL PROOF
+   ========================================================================== */
+.proof-empty{
+  margin-top:40px;max-width:44rem;
+  border:1px dashed var(--accent-line);
+  border-radius:20px;
+  padding:32px;
+  color:var(--text-soft);font-size:.95rem;
+  background:rgba(251,243,224,.5);
+}
+.proof-empty strong{
+  display:block;font-family:var(--font-display);
+  font-size:1.15rem;color:var(--ink);margin-bottom:12px;
+  font-weight:700;
+}
+
+/* ==========================================================================
+   21. DETAILS — day timeline (restructured)
+   ========================================================================== */
+.details-head{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;
+  gap:24px;
+}
+@media (min-width:1024px){.details-head{flex-direction:row;align-items:flex-end}}
+.details-head h2{
+  margin-top:20px;font-size:clamp(1.75rem,4vw,2.75rem);
+  line-height:1.08;letter-spacing:-.02em;
+}
+.details-cd{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:12px 20px;border-radius:9999px;
+  border:1px solid var(--accent-line);
+  background:var(--surface);
+  box-shadow:0 2px 4px rgba(15,23,41,.04),0 14px 28px -18px rgba(15,23,41,.30);
+}
+.details-cd-label{
+  font-family:var(--font-mono);font-size:.58rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);
+}
+.details-cd-value{
+  font-family:var(--font-display);font-size:.85rem;font-weight:700;
+  font-variant-numeric:tabular-nums;color:var(--ink);
+}
+
+.day-timeline{
+  margin-top:48px;
+  display:grid;gap:20px;
+}
+@media (min-width:900px){.day-timeline{grid-template-columns:1fr 1fr}}
+.day-card{
+  position:relative;
+  border-radius:22px;
+  background:var(--surface);
+  border:1px solid var(--line-hair);
+  padding:32px;
+  box-shadow:0 2px 6px rgba(15,23,41,.04),0 22px 44px -22px rgba(15,23,41,.20);
+  transition:transform .4s var(--ease-out),border-color .4s,box-shadow .4s;
+}
+@media (min-width:640px){.day-card{padding:36px}}
+.day-card:hover{
+  transform:translateY(-4px);border-color:var(--accent-line);
+  box-shadow:0 8px 24px -6px rgba(15,23,41,.20),0 28px 56px -22px rgba(15,23,41,.28);
+}
+.day-card-head{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding-bottom:20px;border-bottom:1px solid var(--line);
+}
+.day-label{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:9999px;
+  background:var(--accent-soft);
+  border:1px solid var(--accent-line);
+  font-family:var(--font-mono);font-size:.62rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep);
+}
+.day-num{
+  font-family:var(--font-display);font-size:2.4rem;font-weight:800;
+  letter-spacing:-.03em;color:var(--tint);line-height:1;
+}
+.day-title{
+  margin-top:20px;font-family:var(--font-display);font-size:1.4rem;
+  font-weight:700;letter-spacing:-.015em;line-height:1.2;
+}
+.day-desc{
+  margin-top:12px;font-size:.95rem;line-height:1.7;color:var(--text-soft);
+}
+.day-list{
+  margin-top:24px;padding-top:24px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:14px;
+}
+.day-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:.9rem;line-height:1.6;color:var(--ink);
+}
+.day-list li svg{flex-shrink:0;margin-top:3px;color:var(--accent-deep)}
+
+/* Detail facts row */
+.detail-facts{
+  margin-top:24px;
+  display:grid;gap:14px;
+  grid-template-columns:1fr;
+}
+@media (min-width:640px){.detail-facts{grid-template-columns:repeat(3,1fr)}}
+.fact{
+  border-radius:16px;
+  border:1px solid var(--line-hair);
+  background:var(--surface);
+  padding:20px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.fact-icon{
+  display:grid;place-items:center;
+  width:42px;height:42px;border-radius:12px;flex-shrink:0;
+}
+.fact-icon.ink{
+  background:linear-gradient(135deg,var(--ink-2),var(--ink));
+  color:var(--text-inverse);
+}
+.fact-icon.warm{
+  background:linear-gradient(135deg,var(--accent-warm),var(--accent));
+  color:var(--ink);
+}
+.fact-label{
+  font-family:var(--font-mono);font-size:.6rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);
+}
+.fact-value{
+  margin-top:6px;font-family:var(--font-display);font-size:1rem;
+  font-weight:700;line-height:1.25;color:var(--ink);
+}
+.fact-value.accent{color:var(--accent-deep)}
+
+/* Prep panel */
+.prep-panel{
+  margin-top:24px;
+  border-radius:22px;
+  border:1px solid var(--accent-line);
+  background:linear-gradient(180deg,var(--accent-soft) 0%,var(--surface) 100%);
+  padding:32px;
+}
+@media (min-width:640px){.prep-panel{padding:40px}}
+.prep-panel h3{
+  font-family:var(--font-display);font-size:1.35rem;font-weight:700;
+  letter-spacing:-.01em;
+}
+.prep-list{
+  margin-top:24px;
+  display:grid;gap:16px;
+}
+@media (min-width:640px){.prep-list{grid-template-columns:1fr 1fr}}
+.prep-item{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px;border-radius:14px;
+  background:var(--surface);
+  border:1px solid var(--line-hair);
+}
+.prep-item-num{
+  display:grid;place-items:center;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--ink);color:var(--accent-warm);
+  font-family:var(--font-mono);font-size:.65rem;font-weight:700;
+  flex-shrink:0;
+}
+.prep-item p{font-size:.94rem;line-height:1.6;color:var(--ink)}
+
+/* ==========================================================================
+   22. FINAL BANNER (restructured — editorial, not a floating dark panel)
+   ========================================================================== */
+.final-banner{
+  position:relative;overflow:hidden;
+  padding-block:80px;
+  background:var(--ink);color:var(--text-inverse);
+}
+@media (min-width:1024px){.final-banner{padding-block:112px}}
+.final-banner-orb-a{
+  position:absolute;left:-96px;top:-80px;
+  width:384px;height:384px;border-radius:50%;
+  background:rgba(200,148,61,.20);filter:blur(70px);pointer-events:none;
+}
+.final-banner-orb-b{
+  position:absolute;bottom:-96px;right:-80px;
+  width:320px;height:320px;border-radius:50%;
+  background:rgba(61,113,104,.22);filter:blur(70px);pointer-events:none;
+}
+.final-banner-inner{
+  position:relative;z-index:1;
+  max-width:60rem;margin-inline:auto;
+  display:grid;gap:40px;
+}
+@media (min-width:1024px){
+  .final-banner-inner{grid-template-columns:1.3fr 1fr;gap:72px;align-items:center}
+}
+.final-banner h2{
+  margin-top:24px;
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem,4.5vw,3rem);
+  font-weight:700;line-height:1.1;letter-spacing:-.03em;
+}
+.final-banner h2 .line{display:block}
+.final-banner h2 .line-accent{
+  background:linear-gradient(100deg,var(--accent-warm),var(--accent) 55%,var(--accent-deep));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.final-banner p.lede{
+  margin-top:24px;
+  font-size:1.05rem;line-height:1.75;
+  color:rgba(245,241,230,.7);
+  max-width:34rem;
+}
+.final-banner-cta{
+  margin-top:32px;
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+}
+.seat-counter{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 16px;border-radius:9999px;
+  border:1px solid var(--line-inv-strong);
+  background:rgba(245,241,230,.06);
+  font-family:var(--font-mono);font-size:.66rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,241,230,.75);
+}
+.seat-counter .pulse-dot{background:var(--accent-warm)}
+.final-banner-side{
+  display:flex;flex-direction:column;gap:16px;
+}
+.final-banner-fact{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:20px;border-radius:16px;
+  border:1px solid var(--line-inv);
+  background:rgba(245,241,230,.03);
+}
+.final-banner-fact svg{flex-shrink:0;color:var(--accent-warm);margin-top:2px}
+.final-banner-fact h4{
+  font-family:var(--font-display);font-size:.95rem;font-weight:700;
+  letter-spacing:-.01em;color:var(--text-inverse);
+}
+.final-banner-fact p{
+  margin-top:4px;font-size:.82rem;line-height:1.6;
+  color:rgba(245,241,230,.6);
+}
+
+/* ==========================================================================
+   23. FAQ — 2-column grid (restructured)
+   ========================================================================== */
+.faq-grid{
+  margin-top:48px;
+  display:grid;gap:14px;
+}
+@media (min-width:900px){.faq-grid{grid-template-columns:1fr 1fr;column-gap:20px}}
+.faq-item{
+  border-radius:16px;
+  border:1px solid var(--line-hair);
+  background:var(--surface);
+  box-shadow:0 2px 4px rgba(15,23,41,.03),0 16px 32px -20px rgba(15,23,41,.22);
+  overflow:hidden;
+  transition:border-color .3s,box-shadow .3s;
+}
+.faq-item:hover{
+  border-color:var(--accent-line);
+  box-shadow:0 8px 24px -8px rgba(15,23,41,.14);
+}
+.faq-item[open]{
+  border-color:var(--accent-line);
+  background:linear-gradient(180deg,var(--surface) 0%,rgba(251,243,224,.4) 100%);
+}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:20px;
+  list-style:none;cursor:pointer;
+  font-family:var(--font-display);font-size:1rem;font-weight:700;
+  line-height:1.35;letter-spacing:-.01em;color:var(--ink);
+  transition:color .3s;
+}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q:hover{color:var(--accent-deep)}
+.faq-toggle{
+  flex:none;display:grid;place-items:center;
+  width:32px;height:32px;border-radius:9999px;
+  border:1px solid var(--accent-line);
+  background:var(--accent-soft);color:var(--accent-deep);
+  transition:transform .3s var(--ease-out),background-color .3s,color .3s;
+}
+.faq-item[open] .faq-toggle{
+  transform:rotate(45deg);
+  background:var(--ink);color:var(--accent-warm);
+  border-color:var(--ink);
+}
+.faq-a{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .5s var(--ease-out);
+}
+.faq-item[open] .faq-a{grid-template-rows:1fr}
+.faq-a-inner{overflow:hidden}
+.faq-a-inner p{
+  padding:0 20px 22px;
+  font-size:.92rem;line-height:1.7;color:var(--text-soft);
+}
+
+/* ==========================================================================
+   24. FORM
+   ========================================================================== */
+.form-section-head{text-align:center}
+.form-section-head h2{
+  margin-top:20px;font-size:clamp(1.75rem,4vw,2.5rem);
+  line-height:1.08;letter-spacing:-.02em;
+}
+.form-section-head p{
+  margin:20px auto 0;max-width:40rem;
+  font-size:1.02rem;line-height:1.7;color:var(--text-soft);
+}
+.form-card{
+  margin-top:40px;
+  border-radius:20px;
+  border:1px solid var(--line-hair);
+  background:var(--surface);
+  padding:24px;
+  box-shadow:0 2px 4px rgba(15,23,41,.04),0 24px 48px -24px rgba(15,23,41,.22);
+}
+@media (min-width:640px){.form-card{padding:40px}}
+.form-progress{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;
+}
+.form-progress-label{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--text-soft);
+}
+.form-progress-label b{color:var(--accent-deep);font-weight:700}
+.form-progress-bar{
+  height:6px;width:112px;
+  border-radius:9999px;background:var(--tint);
+  overflow:hidden;position:relative;
+}
+@media (min-width:640px){.form-progress-bar{width:160px}}
+.bar-fill{
+  display:block;height:100%;width:100%;
+  border-radius:9999px;background:var(--accent);
+  transform-origin:left;transform:scaleX(.1667);
+  transition:transform .5s var(--ease-out);
+}
+.step-panel{display:none;margin-top:32px}
+.step-panel.active{display:block;animation:stepin .5s var(--ease-out)}
+@keyframes stepin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.step-title{
+  font-family:var(--font-display);font-size:1.25rem;font-weight:700;
+  letter-spacing:-.01em;
+}
+.step-hint{margin-top:8px;font-size:.9rem;color:var(--text-soft);line-height:1.6}
+.step-body{margin-top:24px;display:flex;flex-direction:column;gap:20px}
+.form-field label{
+  display:block;margin-bottom:8px;
+  font-size:.9rem;font-weight:500;color:var(--ink);
+}
+.form-field label .req{color:var(--accent-deep)}
+.form-field label .opt{color:var(--text-faint);font-weight:400}
+.input{
+  width:100%;border-radius:14px;
+  border:1px solid var(--line-strong);
+  background:var(--surface);
+  padding:14px 16px;font-size:.98rem;color:var(--ink);
+  transition:border-color .25s,box-shadow .25s;
+  font-family:var(--font-body);
+}
+.input::placeholder{color:var(--text-faint)}
+.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,148,61,.18)}
+textarea.input{resize:vertical;min-height:100px;line-height:1.6}
+.opt-grid{display:flex;flex-wrap:wrap;gap:12px}
+.opt-grid.stack{flex-direction:column}
+.opt{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--line-strong);
+  border-radius:9999px;padding:11px 18px;
+  font-size:.92rem;font-weight:600;color:var(--ink);
+  cursor:pointer;background:var(--surface);
+  transition:border-color .25s,background-color .25s,box-shadow .25s,transform .2s;
+}
+.opt-grid.stack .opt{width:100%;justify-content:flex-start}
+.opt:hover{border-color:rgba(200,148,61,.55)}
+.opt:active{transform:scale(.98)}
+.opt:has(input:checked){
+  border-color:var(--accent);
+  background:var(--accent-soft);
+  box-shadow:0 0 0 3px rgba(200,148,61,.15);
+}
+.opt input{accent-color:var(--accent-deep)}
+.form-error{margin-top:24px;color:var(--danger);font-weight:600;font-size:.9rem}
+.form-actions{margin-top:32px;display:flex;flex-direction:column-reverse;gap:12px}
+@media (min-width:640px){.form-actions{flex-direction:row;justify-content:space-between}}
+.btn-back{padding:14px 28px;font-size:.92rem}
+.honeypot{
+  position:absolute !important;left:-9999px !important;
+  width:1px;height:1px;opacity:0;pointer-events:none;
+}
+
+/* ==========================================================================
+   25. CONFIRMATION
+   ========================================================================== */
+.confirmation-section{padding-block:80px;display:none}
+@media (min-width:1024px){.confirmation-section{padding-block:112px}}
+.confirmation-section.show{display:block}
+.confirmation-wrap{max-width:40rem;margin-inline:auto}
+.confirmation-card{
+  border-radius:20px;
+  border:1px solid var(--line-hair);
+  background:var(--surface);
+  padding:32px;text-align:center;
+  box-shadow:0 2px 4px rgba(15,23,41,.04),0 24px 48px -24px rgba(15,23,41,.22);
+}
+@media (min-width:640px){.confirmation-card{padding:48px}}
+.confirmation-mark{
+  display:grid;place-items:center;
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent-warm),var(--accent));
+  color:var(--ink);margin-inline:auto;
+  box-shadow:0 14px 26px -12px rgba(200,148,61,.55);
+}
+.confirmation-card h2{
+  margin-top:28px;font-family:var(--font-display);
+  font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;letter-spacing:-.02em;
+}
+.confirmation-card p.lede{
+  margin:16px auto 0;max-width:30rem;
+  font-size:1rem;line-height:1.7;color:var(--text-soft);
+}
+.confirmation-card .btn{margin-top:32px}
+.confirmation-note{
+  margin-top:24px;font-size:.8rem;color:var(--text-faint);line-height:1.65;
+}
+
+/* ==========================================================================
+   26. FOOTER
+   ========================================================================== */
+.footer{
+  position:relative;overflow:hidden;
+  background:var(--ink);color:var(--text-inverse);
+  padding-top:64px;padding-bottom:24px;
+}
+@media (min-width:1024px){.footer{padding-bottom:40px}}
+.footer-orb{
+  position:absolute;left:-96px;bottom:-96px;
+  width:288px;height:288px;border-radius:50%;
+  background:rgba(200,148,61,.15);filter:blur(60px);pointer-events:none;
+}
+.footer-inner{
+  position:relative;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;
+  gap:40px;
+}
+@media (min-width:768px){.footer-inner{flex-direction:row;align-items:center}}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-mark{
+  display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:9px;background:var(--accent);
+}
+.footer-mark span{
+  font-family:var(--font-display);font-size:.62rem;font-weight:800;color:var(--ink);
+}
+.footer-brand-name{
+  font-family:var(--font-display);font-size:1.06rem;font-weight:700;
+  letter-spacing:-.02em;
+}
+.footer-tag{
+  margin-top:12px;font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,230,.4);
+}
+.footer-line{
+  margin-top:16px;height:1px;width:112px;
+  background:linear-gradient(90deg,var(--accent-warm),transparent);
+}
+.footer-nav{display:flex;flex-wrap:wrap;gap:12px 28px}
+.footer-nav a{
+  font-size:.85rem;font-weight:500;color:rgba(245,241,230,.7);
+  transition:color .25s;
+}
+.footer-nav a:hover{color:var(--text-inverse)}
+.footer-bottom{
+  margin-top:48px;padding-top:32px;
+  border-top:1px solid var(--line-inv);
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;
+  gap:12px;
+}
+@media (min-width:640px){.footer-bottom{flex-direction:row;align-items:center}}
+.footer-copy{font-size:.78rem;color:rgba(245,241,230,.45)}
+.footer-tagline{
+  font-family:var(--font-display);font-size:.85rem;
+  font-style:italic;font-weight:600;color:rgba(245,241,230,.6);
+}
+
+/* ==========================================================================
+   27. STICKY BAR (both days)
+   ========================================================================== */
+.sticky-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  transform:translateY(115%);
+  transition:transform .55s var(--ease-out);
+  background:rgba(15,23,41,.96);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 -14px 34px -20px rgba(6,10,21,.6);
+  border-top:1px solid var(--line-inv);
+}
+@supports (padding:env(safe-area-inset-bottom)){
+  .sticky-bar{padding-bottom:env(safe-area-inset-bottom)}
+}
+.sticky-bar.show{transform:translateY(0)}
+.sticky-inner{
+  max-width:var(--wrap);margin-inline:auto;
+  padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+}
+@media (min-width:640px){.sticky-inner{padding:12px 32px;gap:20px}}
+.sticky-days{
+  display:flex;align-items:center;gap:12px;
+  flex-shrink:0;
+}
+@media (min-width:640px){.sticky-days{gap:20px}}
+.sticky-day{
+  display:flex;flex-direction:column;gap:2px;
+  padding-right:12px;
+  border-right:1px solid var(--line-inv);
+}
+@media (min-width:640px){.sticky-day{padding-right:20px}}
+.sticky-day:last-child{border-right:0;padding-right:0}
+.sticky-day-label{
+  font-family:var(--font-mono);font-size:.55rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-warm);
+}
+.sticky-day-value{
+  font-family:var(--font-display);font-size:.85rem;font-weight:700;
+  color:var(--text-inverse);letter-spacing:-.01em;line-height:1.2;
+}
+@media (min-width:640px){.sticky-day-value{font-size:.95rem}}
+.sticky-countdown{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--font-mono);font-size:.7rem;
+  color:rgba(245,241,230,.75);letter-spacing:.06em;
+}
+@media (min-width:640px){.sticky-countdown{font-size:.78rem}}
+.sticky-countdown .val{
+  font-family:var(--font-display);font-weight:700;
+  color:var(--text-inverse);font-variant-numeric:tabular-nums;
+}
+.sticky-cta{
+  padding:10px 16px;font-size:.8rem;
+  white-space:nowrap;flex-shrink:0;
+}
+@media (min-width:640px){.sticky-cta{padding:14px 22px;font-size:.88rem}}
+@media (max-width:479px){
+  .sticky-days{display:none}
+}
+
+/* ==========================================================================
+   28. BACK TO TOP
+   ========================================================================== */
+.back-top{
+  position:fixed;right:clamp(20px,4vw,32px);bottom:80px;
+  z-index:70;
+  display:grid;place-items:center;
+  width:48px;height:48px;border-radius:9999px;
+  background:var(--ink);color:var(--text-inverse);
+  border:1px solid var(--accent-line);
+  box-shadow:0 2px 6px rgba(6,10,21,.35),0 18px 34px -14px rgba(15,23,41,.55);
+  opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity .4s ease,transform .45s var(--ease-out),
+    background-color .3s ease,border-color .3s ease,box-shadow .3s ease,visibility .4s;
+}
+.back-top.show{opacity:1;visibility:visible;transform:none}
+.back-top:hover{
+  transform:translateY(-3px);background:var(--accent);color:var(--ink);
+  border-color:var(--accent-warm);
+  box-shadow:0 4px 10px rgba(6,10,21,.35),0 24px 44px -14px rgba(200,148,61,.55);
+}
+.back-top:active{transform:translateY(0) scale(.95)}
+
+/* ==========================================================================
+   29. HERO CHOREOGRAPHY
+   ========================================================================== */
+html.js .hero-rise{
+  opacity:0;animation:hero-rise .9s var(--ease-out) forwards;
+  animation-delay:var(--d,0s);
+}
+@keyframes hero-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+html.js .hero-line{
+  display:block;opacity:0;
+  animation:hero-line .95s var(--ease-out) forwards;
+  animation-delay:var(--d,0s);
+}
+@keyframes hero-line{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+/* ==========================================================================
+   30. INTERACTIONS
+   ========================================================================== */
+.tiltable{transform-style:preserve-3d;transition:transform .5s var(--ease);will-change:transform}
+.mag{will-change:transform}
+
+/* ==========================================================================
+   31. REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  html.js [data-reveal]{opacity:1;transform:none;transition:none}
+  html.js .hero-rise,html.js .hero-line{animation:none;opacity:1;transform:none}
+  .money-sweep::after{animation:none;transform:scaleX(1)}
+  .pulse-dot::before,.logo-track{animation:none}
+  .step-panel.active,.toggle-panel.active{animation:none}
+  .day-card:hover,.final-banner-fact:hover,.session-card:hover,.speaker-card:hover{transform:none}
+  *{transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<a href="#top" class="sr-only">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-brand" aria-label="Gbohunmi Williams — home">
+      <span class="nav-brand-mark" aria-hidden="true">GW</span>
+      <span class="nav-brand-name">Gbohunmi <span class="alt">Williams</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about" class="nav-link">About ThinXecute</a>
+      <a href="#inside" class="nav-link">The Two Nights</a>
+      <a href="#speakers" class="nav-link">Speakers</a>
+      <a href="#details" class="nav-link">Details</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#register" class="btn btn-accent nav-cta btn-shine">Reserve Free Seat</a>
+      <button id="menu-btn" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="#about" class="menu-link">About ThinXecute</a>
+      <a href="#inside" class="menu-link">The Two Nights</a>
+      <a href="#speakers" class="menu-link">Speakers</a>
+      <a href="#details" class="menu-link">Details</a>
+      <a href="#register" class="btn btn-accent btn-block">Reserve My Free Seat</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-c" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="hero-grid">
+      <!-- Left: headline -->
+      <div>
+        <span class="hero-badge hero-rise" style="--d:.05s">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span>Free two-night live experience · Telegram Live</span>
+        </span>
+
+        <h1 class="hero-title">
+          <span class="hero-line" style="--d:.12s">Think it through.</span>
+          <span class="hero-line line-dim" style="--d:.17s">Then do something</span>
+          <span class="hero-line line-accent money-sweep" style="--d:.22s">with it.</span>
+        </h1>
+
+        <p class="hero-sub hero-rise" style="--d:.4s">
+          Two consecutive evenings on Telegram Live for people with ideas, ambitions and things they want to build but who need more clarity, direction or movement.
+        </p>
+
+        <div class="hero-cta hero-rise" style="--d:.5s">
+          <a href="#register" class="btn btn-accent btn-shine mag">
+            Reserve My Free Seat
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg>
+          </a>
+          <a href="#inside" class="btn btn-ghost-dark mag">See the two nights</a>
+        </div>
+
+        <p class="hero-meta hero-rise" style="--d:.6s">
+          <span>Free</span><span class="dot">·</span>
+          <span>Telegram Live</span><span class="dot">·</span>
+          <span>Two evenings</span><span class="dot">·</span>
+          <span>≈ 90 min each</span>
+        </p>
+      </div>
+
+      <!-- Right: session stack -->
+      <div class="session-stack hero-rise" style="--d:.35s">
+        <div class="session-card">
+          <span class="session-num"><span class="dot"></span> Night One</span>
+          <p class="session-title">Thinking, clarity and direction.</p>
+          <p class="session-desc">Slow the noise down. Name the real problem. Decide what actually matters before you move.</p>
+          <div class="session-meta">
+            <span><span class="tick">→</span> Tue 20 October · 8:00 PM WAT</span>
+            <span><span class="tick">→</span> Led by Gbohunmi Williams</span>
+          </div>
+        </div>
+
+        <div class="session-card">
+          <span class="session-num"><span class="dot"></span> Night Two</span>
+          <p class="session-title">Execution and movement.</p>
+          <p class="session-desc">What it actually takes to move once you've decided turning intention into forward motion.</p>
+          <div class="session-meta">
+            <span><span class="tick">→</span> Wed 21 October · 8:00 PM WAT</span>
+            <span><span class="tick">→</span> Led by Gretex King</span>
+          </div>
+        </div>
+
+        <div class="session-note">
+          Both nights stream live on Telegram. Registering reserves your seat and confirms your place on WhatsApp.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo strip (dates + venue) -->
+  <div class="logo-strip" aria-hidden="true">
+    <div class="logo-track">
+      <div class="logo-group">
+        <span class="logo-item">Think × Execute</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Two nights live</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Telegram Live</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Tue 20 – Wed 21 Oct 2026</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">8:00 PM WAT</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Free seat</span>
+        <span class="logo-item accent">◆</span>
+      </div>
+      <div class="logo-group">
+        <span class="logo-item">Think × Execute</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Two nights live</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Telegram Live</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Tue 20 – Wed 21 Oct 2026</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">8:00 PM WAT</span>
+        <span class="logo-item accent">◆</span>
+        <span class="logo-item">Free seat</span>
+        <span class="logo-item accent">◆</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 · EVENT INTRODUCTION ============ -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="split">
+      <div data-reveal>
+        <p class="section-marker"><b>01</b> Think × Execute</p>
+        <h2>Where thinking meets execution.</h2>
+      </div>
+      <div class="body" data-reveal>
+        <p>
+          You can spend months thinking. Reading, planning, refining, waiting for the right moment. The thinking feels like progress but nothing actually moves.
+        </p>
+        <p>
+          You can also move fast. Starting things, saying yes, staying busy without ever slowing down enough to work out whether you're moving in the right direction.
+        </p>
+        <p>
+          ThinXecute exists in the space between those two. Two evenings, in two parts. One slows you down. The other moves you forward.
+        </p>
+      </div>
+    </div>
+
+    <div class="flow" data-reveal>
+      <p class="flow-label">The idea, in one line</p>
+      <div class="flow-items">
+        <span class="flow-node">Think</span>
+        <span class="flow-arrow"></span>
+        <span class="flow-node">Clarify</span>
+        <span class="flow-arrow"></span>
+        <span class="flow-node">Decide</span>
+        <span class="flow-arrow"></span>
+        <span class="flow-node accent">Execute</span>
+        <span class="flow-arrow"></span>
+        <span class="flow-node">Learn</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · PROBLEM ============ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="section-marker"><b>02</b> The honest part</p>
+      <h2>Does this sound familiar?</h2>
+      <p>You have ideas and ambition. And somehow, the movement still isn't happening the way it should.</p>
+    </div>
+
+    <div class="problem-grid" data-reveal>
+      <div class="problem-item">
+        <span class="problem-num">01</span>
+        <div>
+          <h3>You have too many ideas and don't know which one to pursue.</h3>
+          <p>Every option feels plausible. So you keep them all open and move on none of them.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">02</span>
+        <div>
+          <h3>You know what you want but keep postponing the start.</h3>
+          <p>The start date slides forward every month. Always waiting for a better moment.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">03</span>
+        <div>
+          <h3>You spend a lot of time researching and preparing but rarely move.</h3>
+          <p>Reading and learning feel productive. But nothing in your life actually changes.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">04</span>
+        <div>
+          <h3>You are busy but not sure you're actually making progress.</h3>
+          <p>Every week is full. But if someone asked what changed, you'd struggle to name it.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">05</span>
+        <div>
+          <h3>You consume advice constantly but still feel stuck.</h3>
+          <p>Threads, videos, podcasts. Everything is useful and nothing is used.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">06</span>
+        <div>
+          <h3>You know you need to make a decision but keep going back and forth.</h3>
+          <p>You've thought about it from every angle. You still haven't chosen.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">07</span>
+        <div>
+          <h3>You have started something but lost direction.</h3>
+          <p>Momentum faded. The reason you started is blurrier than it used to be.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-num">08</span>
+        <div>
+          <h3>You want a clearer next step on something that matters.</h3>
+          <p>You don't need more motivation. You need to know what to do first.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-statement" data-reveal>
+      <p>
+        Sometimes the problem isn't that you need more motivation. <strong style="color:var(--accent-deep)">Sometimes you need to step back, think through the right things, make a clear decision, and then move.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · WHAT IS THINXECUTE ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="split">
+      <div data-reveal>
+        <p class="section-marker"><b>03</b> The idea</p>
+        <h2>So, what exactly is ThinXecute?</h2>
+      </div>
+      <div class="body" data-reveal>
+        <p>
+          ThinXecute is not simply another motivational session. There is no hype, no shouting, no promises about your life changing in ninety minutes.
+        </p>
+        <p>It is built around one question:</p>
+
+        <div class="question-callout">
+          <p>Have you actually thought through what you're doing and once you have, are you willing to do something about it?</p>
+        </div>
+
+        <p style="margin-top:28px">
+          <strong style="color:var(--ink)">Night one</strong> slows you down. We look at the real problem, name what actually needs figuring out, and separate the questions worth answering from the ones that only feel important.
+        </p>
+        <p>
+          <strong style="color:var(--ink)">Night two</strong> moves you forward. We look at what it takes to move once you've decided, and how to turn intention into actual momentum.
+        </p>
+        <p>
+          And what you learn from executing gives you better information to think with next time. The two were never meant to be separate.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · WHAT YOU'LL ACTUALLY DO ============ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="section-marker"><b>04</b> Not a passive session</p>
+      <h2>What you'll actually do.</h2>
+      <p>This is not two evenings of sitting and watching. You'll be working on something real — a project, a decision, a career move, a creative thing you keep circling.</p>
+    </div>
+
+    <div class="check-grid" data-reveal>
+      <div class="check-item">
+        <span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <p>Bring one real thing you're currently building, starting, or trying to figure out.</p>
+      </div>
+      <div class="check-item">
+        <span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <p>Answer guided questions that surface what actually matters — not what feels urgent.</p>
+      </div>
+      <div class="check-item">
+        <span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <p>Leave with a clearer sense of the decision you need to make.</p>
+      </div>
+      <div class="check-item">
+        <span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <p>Walk away with one concrete next step — not another list of ideas.</p>
+      </div>
+      <div class="check-item">
+        <span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <p>See your real thing through two perspectives — thinking, then execution.</p>
+      </div>
+      <div class="check-item">
+        <span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+        <p>Bring something to write with. Notes, not just watching.</p>
+      </div>
+    </div>
+
+    <p class="speaker-footer" data-reveal>
+      No unrealistic promises. The value here is clarity, perspective, intentional thinking, and movement.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 · INSIDE THINXECUTE (session toggle) ============ -->
+<section id="inside" class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="section-marker"><b>05</b> The two nights</p>
+      <h2>Two evenings. Two sides of the same thing.</h2>
+      <p>ThinXecute runs across two consecutive evenings. The first slows you down. The second moves you forward. Both live on Telegram.</p>
+    </div>
+
+    <div class="session-toggle" data-reveal>
+      <div class="toggle-tabs" role="tablist" aria-label="ThinXecute sessions">
+        <button type="button" class="toggle-tab" role="tab" aria-selected="true" aria-controls="panel-think" id="tab-think" data-panel="panel-think">
+          <span class="tab-eyebrow">Night 01 · Tue 20 Oct</span>
+          <span class="tab-title">Thinking &amp; Clarity</span>
+          <span class="tab-owner">Led by Gbohunmi Williams</span>
+        </button>
+        <button type="button" class="toggle-tab" role="tab" aria-selected="false" aria-controls="panel-execute" id="tab-execute" data-panel="panel-execute">
+          <span class="tab-eyebrow">Night 02 · Wed 21 Oct</span>
+          <span class="tab-title">Execution &amp; Movement</span>
+          <span class="tab-owner">Led by Gretex King</span>
+        </button>
+      </div>
+
+      <div class="toggle-body">
+        <div class="toggle-panel active" id="panel-think" role="tabpanel" aria-labelledby="tab-think">
+          <h3>Clarity before movement.</h3>
+          <p class="lead">
+            A guided pass through the thinking side. We slow down enough to see the real problem — not the loudest one — and separate the questions worth answering from the ones that only feel important.
+          </p>
+          <div class="toggle-points">
+            <div class="toggle-point"><span class="dot"></span><span>Understanding the real problem you're trying to solve</span></div>
+            <div class="toggle-point"><span class="dot"></span><span>Identifying what actually needs to be figured out</span></div>
+            <div class="toggle-point"><span class="dot"></span><span>Separating signal from noise in your own thinking</span></div>
+            <div class="toggle-point"><span class="dot"></span><span>Deciding what matters — and what doesn't</span></div>
+          </div>
+        </div>
+
+        <div class="toggle-panel" id="panel-execute" role="tabpanel" aria-labelledby="tab-execute">
+          <h3>From intention to movement.</h3>
+          <p class="lead">
+            The execution side. What it actually takes to move once you've decided — and how to turn intention into momentum that survives the day after.
+          </p>
+          <div class="toggle-points">
+            <div class="toggle-point"><span class="dot"></span><span>What blocks movement after a clear decision</span></div>
+            <div class="toggle-point"><span class="dot"></span><span>Turning a decision into a concrete first move</span></div>
+            <div class="toggle-point"><span class="dot"></span><span>Staying in motion when momentum fades</span></div>
+            <div class="toggle-point"><span class="dot"></span><span>Learning from execution so your thinking improves</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · SPEAKERS ============ -->
+<section id="speakers" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="section-marker"><b>06</b> Speakers</p>
+      <h2>Who you'll be hearing from.</h2>
+    </div>
+
+    <div class="speaker-grid">
+      <article class="speaker-card" data-reveal>
+        <div class="speaker-portrait">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Portrait of Gbohunmi Williams">
+        </div>
+        <div class="speaker-body">
+          <h3 class="speaker-name">Gbohunmi Williams</h3>
+          <p class="speaker-role teal">Web Developer · Creator · Thinker</p>
+          <p class="speaker-bio">Gbohunmi builds things on the web and spends a lot of his time thinking about thinking — how ideas form, why some of them never move, and what happens in the space before execution. ThinXecute comes out of that interest: a conversation about the part most people skip.</p>
+          <p class="speaker-note">Leads Night One — thinking, clarity and direction.</p>
+        </div>
+      </article>
+
+      <article class="speaker-card" data-reveal>
+        <div class="speaker-portrait">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80" alt="Portrait of Gretex King">
+        </div>
+        <div class="speaker-body">
+          <h3 class="speaker-name">Gretex King</h3>
+          <p class="speaker-role warm">Execution Speaker</p>
+          <p class="speaker-bio">Gretex brings the execution perspective — a practical, grounded view on moving from intention into action. His session focuses on what it actually takes to move once you've made a decision.</p>
+          <p class="speaker-note">Leads Night Two — execution and action. Full biography to be published.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="speaker-footer" data-reveal>
+      Gbohunmi → thinking, clarity and direction. Gretex → execution and action. <strong>Together → ThinXecute.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 07 · WHO THIS IS FOR ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="section-marker"><b>07</b> Who it's for</p>
+      <h2>This is for you if…</h2>
+    </div>
+
+    <div class="check-grid" data-reveal>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You have ideas but lack direction.</p></div>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You know what you want but haven't started.</p></div>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You're building something and need to step back and think.</p></div>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You feel stuck between planning and doing.</p></div>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You consume a lot of information without moving.</p></div>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You're busy but aren't seeing meaningful progress.</p></div>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You want to become more intentional about what you think and do.</p></div>
+      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You want a clearer next step on something that matters.</p></div>
+    </div>
+
+    <p class="speaker-footer" data-reveal>
+      Students, business owners, freelancers, creators, 9–5 workers, developers, designers — and anyone in between who has something they're trying to move.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 08 · SOCIAL PROOF ============ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="section-marker"><b>08</b> Voices</p>
+      <h2>What people are saying.</h2>
+    </div>
+
+    <div class="proof-empty" data-reveal>
+      <strong>ThinXecute is new.</strong>
+      <p>Rather than fill this space with testimonials that don't exist yet, we're leaving it honest. Feedback from the first two nights will be published here — unedited, and only with permission.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 · DETAILS ============ -->
+<section id="details" class="section">
+  <div class="wrap">
+    <div class="details-head" data-reveal>
+      <div>
+        <p class="section-marker"><b>09</b> Details</p>
+        <h2>Two nights. Same time. Same place.</h2>
+      </div>
+      <div class="details-cd">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <div>
+          <p class="details-cd-label">Starts in</p>
+          <p class="details-cd-value" id="det-cd">0d 0h 0m</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day timeline -->
+    <div class="day-timeline" data-reveal>
+      <div class="day-card">
+        <div class="day-card-head">
+          <span class="day-label"><span class="pulse-dot"></span> Night One</span>
+          <span class="day-num">01</span>
+        </div>
+        <h3 class="day-title">Thinking, clarity and direction.</h3>
+        <p class="day-desc">The first evening slows you down. We look at what you're actually trying to do, why, and what currently needs figuring out before you move.</p>
+        <ul class="day-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Tuesday, 20 October 2026</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>8:00 PM WAT · 90 minutes</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Telegram Live </span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Hosted by Gbohunmi Williams</span></li>
+        </ul>
+      </div>
+
+      <div class="day-card">
+        <div class="day-card-head">
+          <span class="day-label"><span class="pulse-dot"></span> Night Two</span>
+          <span class="day-num">02</span>
+        </div>
+        <h3 class="day-title">Execution and movement.</h3>
+        <p class="day-desc">The second evening moves you forward. What it actually takes to move once you've decided — and how to turn intention into momentum.</p>
+        <ul class="day-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Wednesday, 21 October 2026</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>8:00 PM WAT · 90 minutes</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Telegram Live </span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Featuring Gretex King</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Facts row -->
+    <div class="detail-facts" data-reveal>
+      <div class="fact">
+        <span class="fact-icon ink">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </span>
+        <div>
+          <p class="fact-label">Where</p>
+          <p class="fact-value">Telegram Live</p>
+        </div>
+      </div>
+      <div class="fact">
+        <span class="fact-icon ink">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+        </span>
+        <div>
+          <p class="fact-label">Dates</p>
+          <p class="fact-value">Tue 20 – Wed 21 Oct</p>
+        </div>
+      </div>
+      <div class="fact">
+        <span class="fact-icon warm">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12l-9-9-9 9M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10M9 21v-6h6v6"/></svg>
+        </span>
+        <div>
+          <p class="fact-label">Investment</p>
+          <p class="fact-value accent">Free · registration required</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prep panel -->
+    <div class="prep-panel" data-reveal>
+      <h3>Come ready to both evenings.</h3>
+      <div class="prep-list">
+        <div class="prep-item">
+          <span class="prep-item-num">1</span>
+          <p>Download <strong>Telegram</strong> on your phone before Tuesday so you are not just downloading on the D-day                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </p>
+        </div>
+        <div class="prep-item">
+          <span class="prep-item-num">2</span>
+          <p>Have your phone or laptop charged and ready, with about 90 uninterrupted minutes each evening.</p>
+        </div>
+        <div class="prep-item">
+          <span class="prep-item-num">3</span>
+          <p>Bring something to write with. Notes, not just watching.</p>
+        </div>
+        <div class="prep-item">
+          <span class="prep-item-num">4</span>
+          <p>Bring one real thing you are currently trying to build, start or figure out — that's the raw material.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 · FINAL BANNER ============ -->
+<section class="final-banner">
+  <div class="final-banner-orb-a" aria-hidden="true"></div>
+  <div class="final-banner-orb-b" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="final-banner-inner">
+      <div data-reveal>
+        <p class="section-marker section-marker-light"><b>10</b> The decision</p>
+        <h2>
+          <span class="line">Think it through.</span>
+          <span class="line line-accent">Then do something with it.</span>
+        </h2>
+        <p class="lede">
+          Two evenings on Telegram Live. Two perspectives on your real thing. And a clearer idea of what to do next starting the morning after.
+        </p>
+        <div class="final-banner-cta">
+          <a href="#register" class="btn btn-accent btn-shine mag">
+            Reserve My Free Seat
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg>
+          </a>
+          <span class="seat-counter">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Free · limited seats
+          </span>
+        </div>
+      </div>
+
+      <div class="final-banner-side" data-reveal>
+        <div class="final-banner-fact">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+          <div>
+            <h4>Two consecutive evenings</h4>
+            <p>Tue 20 &amp; Wed 21 October 2026 · 8:00 PM WAT each night.</p>
+          </div>
+        </div>
+        <div class="final-banner-fact">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <div>
+            <h4>Live on Telegram</h4>
+            <p>Follow @gbohunmiwilliams so the Live appears on your feed.</p>
+          </div>
+        </div>
+        <div class="final-banner-fact">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12l-9-9-9 9M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10M9 21v-6h6v6"/></svg>
+          <div>
+            <h4>Completely free</h4>
+            <p>Registering reserves your seat and confirms your place on WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 · FAQ (2-column) ============ -->
+<section id="faq" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin-inline:auto" data-reveal>
+      <p class="section-marker section-marker-center"><b>11</b> Questions</p>
+      <h2 style="margin-top:20px">Things people ask.</h2>
+    </div>
+
+    <div class="faq-grid" data-reveal>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>Is ThinXecute free?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>Yes. Both nights are completely free. There's no cost to register and no payment required to attend.</p></div></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>Where does it happen?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>On Telegram Live, both evenings, from the @gbohunmiwilliams account. Follow before Tuesday so the Live appears at the top of your feed.</p></div></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>Do I need to attend both nights?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>Night one slows you down. Night two moves you forward. They work best together, but each stands on its own. If you can only make one, come to the one that matches where you are right now.</p></div></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>Who is it for?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>Anyone with something they are trying to build, start, figure out or move forward. You don't need to be an entrepreneur or have a finished plan.</p></div></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>Do I need to own a business?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>No. Business owners are welcome, but so are students, employees, freelancers, creators, developers, designers, and anyone who feels stuck between thinking and doing.</p></div></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>Is this just a motivational session?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>No. The two evenings focus on thinking through real situations and connecting clarity with action. You'll be working on something real, not just listening to encouragement.</p></div></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>What should I bring?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>Bring yourself, something to write with, and one real thing you're currently trying to figure out or build. That's the raw material for both evenings.</p></div></div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>Will there be a replay?</span>
+          <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+        </summary>
+        <div class="faq-a"><div class="faq-a-inner"><p>A replay has not been confirmed. Telegram Live can be saved if the host chooses, but please plan to attend live. Registered attendees will be told directly through WhatsApp if anything is made available.</p></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 · REGISTRATION ============ -->
+<section id="register" class="section">
+  <div class="wrap" style="max-width:48rem">
+    <div class="form-section-head" data-reveal>
+      <p class="section-marker section-marker-center"><b>12</b> Reserve your seat</p>
+      <h2>You're one step away.</h2>
+      <p>It's free, it's live on Telegram both evenings, and seats won't be held for anyone who waits until the night. Registering reserves your spot and confirms your place on WhatsApp.</p>
+    </div>
+
+    <div class="form-card" data-reveal>
+      <div class="form-progress">
+        <p class="form-progress-label">Step <b id="step-label">1</b> / 6</p>
+        <div class="form-progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1">
+          <div id="bar-fill" class="bar-fill"></div>
+        </div>
+      </div>
+
+      <form id="reg-form" novalidate>
+        <!-- STEP 1 -->
+        <div class="step-panel active" data-step="1">
+          <h3 class="step-title">First, a few details</h3>
+          <p class="step-hint">So we can confirm your seat and send you the event details.</p>
+          <div class="step-body">
+            <div class="form-field">
+              <label for="f-name">Full name <span class="req">*</span></label>
+              <input id="f-name" name="name" type="text" class="input" placeholder="e.g. Adebayo Johnson" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="f-wa">WhatsApp number <span class="req">*</span></label>
+              <input id="f-wa" name="whatsapp" type="tel" class="input" placeholder="e.g. 0801 234 5678" autocomplete="tel" required>
+            </div>
+            <div class="form-field">
+              <label for="f-email">Email <span class="opt">(optional)</span></label>
+              <input id="f-email" name="email" type="email" class="input" placeholder="you@example.com" autocomplete="email">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-panel" data-step="2">
+          <h3 class="step-title">What best describes you?</h3>
+          <p class="step-hint">Pick the closest option. There's no wrong answer.</p>
+          <div class="step-body">
+            <div class="opt-grid" role="radiogroup" aria-label="What best describes you">
+              <label class="opt"><input type="radio" name="audienceType" value="Student">Student</label>
+              <label class="opt"><input type="radio" name="audienceType" value="Business Owner">Business Owner</label>
+              <label class="opt"><input type="radio" name="audienceType" value="Freelancer">Freelancer</label>
+              <label class="opt"><input type="radio" name="audienceType" value="Creator">Creator</label>
+              <label class="opt"><input type="radio" name="audienceType" value="9-5 Worker">9–5 Worker</label>
+              <label class="opt"><input type="radio" name="audienceType" value="Developer">Developer</label>
+              <label class="opt"><input type="radio" name="audienceType" value="Designer">Designer</label>
+              <label class="opt"><input type="radio" name="audienceType" value="Other">Other</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-panel" data-step="3">
+          <h3 class="step-title">What are you currently building or trying to figure out?</h3>
+          <p class="step-hint">A project, a business, a decision, a career move, a creative thing — anything real you're carrying right now.</p>
+          <div class="step-body">
+            <div class="form-field">
+              <label for="f-whatBuilding">Your answer <span class="req">*</span></label>
+              <textarea id="f-whatBuilding" name="whatBuilding" class="input" rows="4" placeholder="Be as specific as you can. This is the thing we'll work with." required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step-panel" data-step="4">
+          <h3 class="step-title">Where are you currently stuck?</h3>
+          <p class="step-hint">Choose the one that feels most true right now.</p>
+          <div class="step-body">
+            <div class="opt-grid stack" role="radiogroup" aria-label="Where are you currently stuck">
+              <label class="opt"><input type="radio" name="currentChallenge" value="I don't know the right direction">I don't know the right direction</label>
+              <label class="opt"><input type="radio" name="currentChallenge" value="I have too many ideas">I have too many ideas</label>
+              <label class="opt"><input type="radio" name="currentChallenge" value="I know what I want but haven't started">I know what I want but haven't started</label>
+              <label class="opt"><input type="radio" name="currentChallenge" value="I struggle with consistency">I struggle with consistency</label>
+              <label class="opt"><input type="radio" name="currentChallenge" value="I'm doing a lot but not seeing progress">I'm doing a lot but not seeing progress</label>
+              <label class="opt"><input type="radio" name="currentChallenge" value="I struggle to turn ideas into action">I struggle to turn ideas into action</label>
+              <label class="opt"><input type="radio" name="currentChallenge" value="Other">Other</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step-panel" data-step="5">
+          <h3 class="step-title">What do you hope ThinXecute helps you with?</h3>
+          <p class="step-hint">This shapes how you use the sessions.</p>
+          <div class="step-body">
+            <div class="opt-grid stack" role="radiogroup" aria-label="What do you hope ThinXecute helps you with">
+              <label class="opt"><input type="radio" name="desiredOutcome" value="Clarity">Clarity</label>
+              <label class="opt"><input type="radio" name="desiredOutcome" value="Direction">Direction</label>
+              <label class="opt"><input type="radio" name="desiredOutcome" value="Decision-making">Decision-making</label>
+              <label class="opt"><input type="radio" name="desiredOutcome" value="Turning an idea into action">Turning an idea into action</label>
+              <label class="opt"><input type="radio" name="desiredOutcome" value="Getting unstuck">Getting unstuck</label>
+              <label class="opt"><input type="radio" name="desiredOutcome" value="Actually starting">Actually starting</label>
+              <label class="opt"><input type="radio" name="desiredOutcome" value="Something else">Something else</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="step-panel" data-step="6">
+          <h3 class="step-title">What's one thing you want to leave ThinXecute knowing, deciding, or ready to do?</h3>
+          <p class="step-hint">One sentence is fine. This is your own benchmark for both evenings.</p>
+          <div class="step-body">
+            <div class="form-field">
+              <label for="f-finalResponse">Your answer <span class="req">*</span></label>
+              <textarea id="f-finalResponse" name="finalResponse" class="input" rows="4" placeholder="By the end of ThinXecute, I want to…" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p id="form-error" class="form-error hidden" role="alert"></p>
+
+        <div class="form-actions">
+          <button type="button" id="btn-back" class="btn btn-ghost-light btn-back hidden">Back</button>
+          <button type="submit" id="btn-next" class="btn btn-primary">
+            <span id="btn-next-text">Continue</span>
+            <svg id="btn-next-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 · CONFIRMATION ============ -->
+<section id="confirmed" class="confirmation-section">
+  <div class="wrap confirmation-wrap">
+    <div class="confirmation-card">
+      <span class="confirmation-mark">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg>
+      </span>
+      <h2>You're in.</h2>
+      <p class="lede">Your ThinXecute registration has been received. One final step remains.</p>
+      <p class="lede">Click the button below and send the pre-filled WhatsApp message so we can confirm your seat and send you the event link and reminders for both evenings.</p>
+      <a id="wa-link" href="#" target="_blank" rel="noopener" class="btn btn-accent">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 2.9 2.9 0 00-.9 2.1c0 1.2.9 2.4 1 2.6s1.8 2.7 4.3 3.8c2.5 1.1 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.3-.5-.5z"/></svg>
+        Confirm My Seat on WhatsApp
+      </a>
+      <p class="confirmation-note">WhatsApp is used only for ThinXecute confirmation and event communication. Your details stay private.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <a href="#top" class="footer-brand" aria-label="Gbohunmi Williams, back to top">
+          <span class="footer-mark"><span>GW</span></span>
+          <span class="footer-brand-name">Gbohunmi Williams</span>
+        </a>
+        <p class="footer-tag">ThinXecute · Think × Execute · Two nights live</p>
+        <div class="footer-line"></div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#about">About ThinXecute</a>
+        <a href="#inside">The Two Nights</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#details">Details</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Gbohunmi Williams · ThinXecute. All rights reserved.</p>
+      <p class="footer-tagline">Think deeply. Build intentionally.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY BAR (both days) ============ -->
+<div id="sticky-bar" class="sticky-bar">
+  <div class="sticky-inner">
+    <div class="sticky-days">
+      <div class="sticky-day">
+        <span class="sticky-day-label">Night 01 · Tue 20 Oct</span>
+        <span class="sticky-day-value">8:00 PM WAT</span>
+      </div>
+      <div class="sticky-day">
+        <span class="sticky-day-label">Night 02 · Wed 21 Oct</span>
+        <span class="sticky-day-value">8:00 PM WAT</span>
+      </div>
+    </div>
+    <div class="sticky-countdown">
+      <span>Starts in</span>
+      <span class="val" id="cd-total">—</span>
+    </div>
+    <a href="#register" class="btn btn-accent sticky-cta">Reserve My Free Seat</a>
+  </div>
+</div>
+
+<button id="to-top" class="back-top" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function () {
+  'use strict';
+  document.documentElement.classList.add('js');
+
+  /* NAV */
+  var nav = document.getElementById('nav');
+  var menuBtn = document.getElementById('menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+
+  function onScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  menuBtn.addEventListener('click', function () {
+    var opening = !mobileMenu.classList.contains('open');
+    if (opening) {
+      mobileMenu.classList.add('open', 'menu-in');
+    } else {
+      mobileMenu.classList.remove('open', 'menu-in');
+    }
+    menuBtn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileMenu.classList.remove('open', 'menu-in');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* REVEAL */
+  var reveals = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          ro.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el) { ro.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* STICKY */
+  var sticky = document.getElementById('sticky-bar');
+  var registerSec = document.getElementById('register');
+
+  function updateSticky() {
+    var regTop = registerSec.getBoundingClientRect().top + window.scrollY;
+    var past = window.scrollY > 480;
+    var reached = window.scrollY > regTop - 150;
+    sticky.classList.toggle('show', past && !reached);
+  }
+  window.addEventListener('scroll', updateSticky, { passive: true });
+  window.addEventListener('resize', updateSticky);
+  updateSticky();
+
+  /* BACK TO TOP */
+  var toTop = document.getElementById('to-top');
+  function updateToTop() { toTop.classList.toggle('show', window.scrollY > 700); }
+  window.addEventListener('scroll', updateToTop, { passive: true });
+  updateToTop();
+  toTop.addEventListener('click', function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    toTop.blur();
+  });
+
+  /* PROGRESS */
+  var progress = document.getElementById('progress');
+  function updateProgress() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, window.scrollY / h) : 0) + ')';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  /* TILT / MAG */
+  var reduceMotion = function () {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+  if (!reduceMotion()) {
+    document.querySelectorAll('[data-tilt]').forEach(function (el) {
+      var max = parseFloat(el.getAttribute('data-tilt')) || 6;
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = 'perspective(900px) rotateX(' + (-py * max).toFixed(2) + 'deg) rotateY(' + (px * max).toFixed(2) + 'deg)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+
+    document.querySelectorAll('.mag').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width / 2);
+        var dy = e.clientY - (r.top + r.height / 2);
+        el.style.transform = 'translate(' + (dx * 0.18).toFixed(1) + 'px,' + (dy * 0.25).toFixed(1) + 'px)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+  }
+
+  /* SESSION TOGGLE */
+  var tabs = document.querySelectorAll('.toggle-tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var panelId = tab.getAttribute('data-panel');
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+      tab.setAttribute('aria-selected', 'true');
+      document.querySelectorAll('.toggle-panel').forEach(function (p) { p.classList.remove('active'); });
+      var panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* COUNTDOWN — Tue 20 Oct 2026, 8:00 PM WAT (19:00 UTC) */
+  var target = Date.UTC(2026, 9, 20, 19, 0, 0);
+  var detCd = document.getElementById('det-cd');
+  var cdTotal = document.getElementById('cd-total');
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function tick() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      if (detCd) detCd.textContent = 'Live now';
+      if (cdTotal) cdTotal.textContent = 'Live';
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor(diff / 3600000) % 24;
+    var m = Math.floor(diff / 60000) % 60;
+
+    if (detCd) detCd.textContent = d + 'd ' + h + 'h ' + pad(m) + 'm';
+    if (cdTotal) cdTotal.textContent = d + 'd ' + h + 'h ' + pad(m) + 'm';
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* FORM */
+  var form = document.getElementById('reg-form');
+  var panels = Array.prototype.slice.call(form.querySelectorAll('.step-panel'));
+  var total = panels.length;
+  var current = 0;
+  var btnNext = document.getElementById('btn-next');
+  var btnNextText = document.getElementById('btn-next-text');
+  var btnNextArrow = document.getElementById('btn-next-arrow');
+  var btnBack = document.getElementById('btn-back');
+  var stepLabel = document.getElementById('step-label');
+  var barFill = document.getElementById('bar-fill');
+  var errEl = document.getElementById('form-error');
+  var isSubmitting = false;
+
+  function showStep(i) {
+    current = i;
+    panels.forEach(function (p, idx) { p.classList.toggle('active', idx === i); });
+    stepLabel.textContent = String(i + 1);
+    barFill.style.transform = 'scaleX(' + ((i + 1) / total) + ')';
+    btnBack.classList.toggle('hidden', i === 0);
+    var last = i === total - 1;
+    btnNextText.textContent = last ? 'Complete My Registration' : 'Continue';
+    btnNextArrow.style.display = last ? 'none' : 'inline-block';
+    errEl.classList.add('hidden');
+  }
+
+  function validate(panel) {
+    var fields = panel.querySelectorAll('[required]');
+    for (var i = 0; i < fields.length; i++) {
+      var f = fields[i];
+      if (!f.value.trim()) {
+        f.focus();
+        f.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        errEl.textContent = 'Please fill in ' +
+          (f.labels && f.labels.length ? f.labels[0].textContent.replace(' *', '').trim().toLowerCase() : 'the required field') +
+          ' before continuing.';
+        errEl.classList.remove('hidden');
+        return false;
+      }
+      if (f.type === 'email' && f.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)) {
+        f.focus();
+        errEl.textContent = "That email address doesn't look right. Please check it.";
+        errEl.classList.remove('hidden');
+        return false;
+      }
+    }
+    var radios = panel.querySelectorAll('input[type="radio"]');
+    if (radios.length) {
+      var any = false;
+      radios.forEach(function (r) { if (r.checked) any = true; });
+      if (!any) {
+        errEl.textContent = 'Please choose one option to continue.';
+        errEl.classList.remove('hidden');
+        return false;
+      }
+    }
+    return true;
+  }
+
+  btnBack.addEventListener('click', function () {
+    if (current > 0) showStep(current - 1);
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (isSubmitting) return;
+    if (!validate(panels[current])) return;
+
+    if (current < total - 1) {
+      showStep(current + 1);
+      window.scrollTo({
+        top: registerSec.offsetTop - 96,
+        behavior: 'smooth'
+      });
+      return;
+    }
+
+    var honeypot = document.getElementById('f-website');
+    if (honeypot && honeypot.value.trim() !== '') {
+      console.warn('[ThinXecute] Submission blocked.');
+      return;
+    }
+
+    isSubmitting = true;
+    btnNext.disabled = true;
+    btnNextText.textContent = 'Securing your seat…';
+
+    var GAS_URL = 'https://script.google.com/macros/s/AKfycbyvXLW6YAjvNRfbkwVIe_cUrXcRuSrGpwp9u8bq2AXHE4h4-v6wbksl_8xiZYp01IKqwQ/exec';
+
+    var name = (form.querySelector('#f-name').value || '__________').trim();
+    var phone = (form.querySelector('#f-wa').value || '').trim();
+    var email = (form.querySelector('#f-email').value || '').trim();
+
+    function radioVal(field) {
+      var el = form.querySelector('input[name="' + field + '"]:checked');
+      return el ? el.value : '';
+    }
+
+    var audienceType = radioVal('audienceType');
+    var currentChallenge = radioVal('currentChallenge');
+    var desiredOutcome = radioVal('desiredOutcome');
+    var whatBuilding = (form.querySelector('#f-whatBuilding').value || '').trim();
+    var finalResponse = (form.querySelector('#f-finalResponse').value || '').trim();
+
+    var payload = {
+      name: name,
+      whatsapp: phone,
+      email: email,
+      who: audienceType,
+      selling: 'N/A',
+      what_sell: whatBuilding,
+      challenge: currentChallenge,
+      investment: desiredOutcome,
+      goal: finalResponse
+    };
+
+    try {
+      fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      })
+        .then(function () { console.log('[ThinXecute] registration sent'); })
+        .catch(function (err) { console.error('[ThinXecute] network error:', err); });
+    } catch (err) {
+      console.error('[ThinXecute] fetch threw:', err);
+    }
+
+    var GBO_WA = '2348135518279';
+    var msg = 'Hi Gbohunmi, my name is ' + name + '. I just finished registration for ThinXecute (Tue 20 & Wed 21 October).';
+    var waUrl = 'https://wa.me/' + GBO_WA + '?text=' + encodeURIComponent(msg);
+
+    document.getElementById('wa-link').setAttribute('href', waUrl);
+
+    registerSec.style.display = 'none';
+    var conf = document.getElementById('confirmed');
+    conf.classList.add('show');
+    sticky.classList.remove('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    setTimeout(function () {
+      var heading = conf.querySelector('h2');
+      if (heading) {
+        heading.setAttribute('tabindex', '-1');
+        heading.focus({ preventScroll: true });
+      }
+    }, 400);
+  });
+})();
+</script>
+
+</body>
+</html>
