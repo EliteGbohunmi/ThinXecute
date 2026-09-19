@@ -2479,16 +2479,15 @@ html.js .hero-line{
     var finalResponse = (form.querySelector('#f-finalResponse').value || '').trim();
 
     var payload = {
-      name: name,
-      whatsapp: phone,
-      email: email,
-      who: audienceType,
-      selling: 'N/A',
-      what_sell: whatBuilding,
-      challenge: currentChallenge,
-      investment: desiredOutcome,
-      goal: finalResponse
-    };
+  name: name,
+  whatsapp: phone,
+  email: email,
+  audienceType: audienceType,
+  whatBuilding: whatBuilding,
+  currentChallenge: currentChallenge,
+  desiredOutcome: desiredOutcome,
+  finalResponse: finalResponse
+};
 
     try {
       fetch(GAS_URL, {
