@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ThinXecute | Two Nights. Think It Through. Then Do Something With It.</title>
-<meta name="description" content="ThinXecute is a free two-night live experience on Instagram for people with ideas, ambitions and things they want to build — connecting clearer thinking with meaningful action. Tue 20 & Wed 21 October · 8 PM WAT.">
+<meta name="description" content="ThinXecute is a free two-night live experience on Telegram for people with ideas, ambitions and things they want to build — connecting clearer thinking with meaningful action. Tue 20 & Wed 21 October · 8 PM WAT.">
 <meta name="theme-color" content="#0F1729">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F1729'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='%23C8943D' font-family='Georgia,serif' font-size='13' font-weight='600'%3EGW%3C/text%3E%3C/svg%3E">
@@ -61,7 +61,6 @@ section[id]{scroll-margin-top:6rem}
   text-align:center;padding:20px;line-height:1.5;
 }
 
-/* Grain + progress */
 .grain{
   position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.04;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -72,11 +71,9 @@ section[id]{scroll-margin-top:6rem}
   transform:scaleX(0);transform-origin:0 50%;will-change:transform;
 }
 
-/* Reveal */
 html.js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s var(--ease-out)}
 html.js [data-reveal].in{opacity:1;transform:none}
 
-/* Nav */
 .nav{
   position:fixed;inset-inline:0;top:0;z-index:50;
   transition:background-color .4s,box-shadow .4s,border-color .4s,color .4s;
@@ -128,7 +125,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .mobile-menu a.menu-link:hover{background:var(--tint);color:var(--accent-deep)}
 .mobile-menu .btn{margin-top:12px}
 
-/* Buttons */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
   border-radius:9999px;font-weight:700;letter-spacing:-.01em;line-height:1;
@@ -152,7 +148,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .btn-shine:hover::after{animation:shine .85s var(--ease-out)}
 @keyframes shine{to{left:135%}}
 
-/* Typography helpers */
 .kicker{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 .money-sweep{position:relative;white-space:nowrap;display:inline-block}
 .money-sweep::after{content:"";position:absolute;left:0;right:0;bottom:-.08em;height:.1em;background:linear-gradient(90deg,var(--accent),var(--accent-warm));transform:scaleX(0);transform-origin:left;animation:sweep 1.1s var(--ease-out) 1.05s forwards}
@@ -166,7 +161,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .section-marker-light b{color:var(--accent-warm)}
 .section-marker-light::after{background:var(--line-inv)}
 
-/* HERO */
 .hero{
   position:relative;overflow:hidden;
   background:
@@ -223,7 +217,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .session-meta .tick{color:var(--accent-warm)}
 .session-note{border-radius:16px;border:1px dashed var(--line-inv-strong);padding:16px 18px;font-size:.82rem;line-height:1.6;color:rgba(245,241,230,.65);background:rgba(245,241,230,.03)}
 
-/* Logo strip */
 .logo-strip{
   position:relative;margin-top:56px;
   border-top:1px solid var(--line-inv);border-bottom:1px solid var(--line-inv);
@@ -238,7 +231,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .logo-item.accent{color:var(--accent-warm)}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
-/* Sections */
 .section{padding-block:80px}
 @media (min-width:1024px){.section{padding-block:112px}}
 .section-alt{background:var(--surface-alt)}
@@ -251,7 +243,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .split .body p{font-size:1.05rem;line-height:1.75;color:var(--text-soft);margin-bottom:20px}
 .split .body p:last-child{margin-bottom:0;color:var(--ink);font-weight:500}
 
-/* Problem */
 .problem-grid{display:grid;gap:0;border-top:1px solid var(--line);margin-top:56px}
 @media (min-width:768px){.problem-grid{grid-template-columns:1fr 1fr;column-gap:56px}}
 .problem-item{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);transition:background-color .35s,padding-left .35s var(--ease-out)}
@@ -267,7 +258,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .question-callout p{font-family:var(--font-display);font-size:1.2rem;font-weight:700;line-height:1.3;letter-spacing:-.01em;color:var(--ink)}
 @media (min-width:640px){.question-callout p{font-size:1.5rem}}
 
-/* Session toggle */
 .session-toggle{margin-top:48px;border-radius:24px;background:var(--surface);border:1px solid var(--line-hair);box-shadow:0 2px 6px rgba(15,23,41,.04),0 24px 48px -24px rgba(15,23,41,.20);overflow:hidden}
 .toggle-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
 @media (max-width:540px){.toggle-tabs{grid-template-columns:1fr;border-bottom:0}}
@@ -292,7 +282,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .toggle-point{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;background:var(--tint);font-size:.94rem;color:var(--ink)}
 .toggle-point .dot{flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px}
 
-/* Speakers */
 .speaker-grid{display:grid;gap:24px;margin-top:48px}
 @media (min-width:768px){.speaker-grid{grid-template-columns:1fr 1fr}}
 .speaker-card{background:var(--surface);border:1px solid var(--line-hair);border-radius:22px;overflow:hidden;box-shadow:0 2px 6px rgba(15,23,41,.04),0 22px 44px -22px rgba(15,23,41,.20);transition:transform .4s var(--ease-out),box-shadow .4s,border-color .4s;display:flex;flex-direction:column}
@@ -310,18 +299,15 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .speaker-footer{margin-top:32px;font-size:.95rem;color:var(--text-soft)}
 .speaker-footer strong{color:var(--accent-deep);font-weight:700}
 
-/* Checklist */
 .check-grid{display:grid;gap:4px 64px;margin-top:48px}
 @media (min-width:768px){.check-grid{grid-template-columns:repeat(2,1fr)}}
 .check-item{display:flex;align-items:flex-start;gap:14px;padding:11px 0}
 .check-mark{flex-shrink:0;margin-top:3px;color:var(--accent-deep)}
 .check-item p{font-size:1rem;line-height:1.6;color:rgba(15,23,41,.85)}
 
-/* Proof */
 .proof-empty{margin-top:40px;max-width:44rem;border:1px dashed var(--accent-line);border-radius:20px;padding:32px;color:var(--text-soft);font-size:.95rem;background:rgba(251,243,224,.5)}
 .proof-empty strong{display:block;font-family:var(--font-display);font-size:1.15rem;color:var(--ink);margin-bottom:12px;font-weight:700}
 
-/* Details */
 .details-head{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:24px}
 @media (min-width:1024px){.details-head{flex-direction:row;align-items:flex-end}}
 .details-head h2{margin-top:20px;font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.08;letter-spacing:-.02em}
@@ -366,7 +352,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .prep-item-num{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--accent-warm);font-family:var(--font-mono);font-size:.65rem;font-weight:700;flex-shrink:0}
 .prep-item p{font-size:.94rem;line-height:1.6;color:var(--ink)}
 
-/* Final banner */
 .final-banner{position:relative;overflow:hidden;padding-block:80px;background:var(--ink);color:var(--text-inverse)}
 @media (min-width:1024px){.final-banner{padding-block:112px}}
 .final-banner-orb-a{position:absolute;left:-96px;top:-80px;width:384px;height:384px;border-radius:50%;background:rgba(200,148,61,.20);filter:blur(70px);pointer-events:none}
@@ -386,7 +371,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .final-banner-fact h4{font-family:var(--font-display);font-size:.95rem;font-weight:700;letter-spacing:-.01em;color:var(--text-inverse)}
 .final-banner-fact p{margin-top:4px;font-size:.82rem;line-height:1.6;color:rgba(245,241,230,.6)}
 
-/* FAQ */
 .faq-grid{margin-top:48px;display:grid;gap:14px}
 @media (min-width:900px){.faq-grid{grid-template-columns:1fr 1fr;column-gap:20px}}
 .faq-item{border-radius:16px;border:1px solid var(--line-hair);background:var(--surface);box-shadow:0 2px 4px rgba(15,23,41,.03),0 16px 32px -20px rgba(15,23,41,.22);overflow:hidden;transition:border-color .3s,box-shadow .3s}
@@ -402,7 +386,6 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .faq-a-inner{overflow:hidden}
 .faq-a-inner p{padding:0 20px 22px;font-size:.92rem;line-height:1.7;color:var(--text-soft)}
 
-/* Form */
 .form-section-head{text-align:center}
 .form-section-head h2{margin-top:20px;font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.08;letter-spacing:-.02em}
 .form-section-head p{margin:20px auto 0;max-width:40rem;font-size:1.02rem;line-height:1.7;color:var(--text-soft)}
@@ -441,7 +424,6 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
 .btn-back{padding:14px 28px;font-size:.92rem}
 .honeypot{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0;pointer-events:none}
 
-/* Confirmation */
 .confirmation-section{padding-block:80px;display:none}
 @media (min-width:1024px){.confirmation-section{padding-block:112px}}
 .confirmation-section.show{display:block}
@@ -454,7 +436,6 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
 .confirmation-card .btn{margin-top:32px}
 .confirmation-note{margin-top:24px;font-size:.8rem;color:var(--text-faint);line-height:1.65}
 
-/* Footer */
 .footer{position:relative;overflow:hidden;background:var(--ink);color:var(--text-inverse);padding-top:64px;padding-bottom:24px}
 @media (min-width:1024px){.footer{padding-bottom:40px}}
 .footer-orb{position:absolute;left:-96px;bottom:-96px;width:288px;height:288px;border-radius:50%;background:rgba(200,148,61,.15);filter:blur(60px);pointer-events:none}
@@ -474,7 +455,6 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
 .footer-copy{font-size:.78rem;color:rgba(245,241,230,.45)}
 .footer-tagline{font-family:var(--font-display);font-size:.85rem;font-style:italic;font-weight:600;color:rgba(245,241,230,.6)}
 
-/* Sticky bar */
 .sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(115%);transition:transform .55s var(--ease-out);background:rgba(15,23,41,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -14px 34px -20px rgba(6,10,21,.6);border-top:1px solid var(--line-inv)}
 @supports (padding:env(safe-area-inset-bottom)){.sticky-bar{padding-bottom:env(safe-area-inset-bottom)}}
 .sticky-bar.show{transform:translateY(0)}
@@ -495,19 +475,16 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
 @media (min-width:640px){.sticky-cta{padding:14px 22px;font-size:.88rem}}
 @media (max-width:479px){.sticky-days{display:none}}
 
-/* Back to top */
 .back-top{position:fixed;right:clamp(20px,4vw,32px);bottom:80px;z-index:70;display:grid;place-items:center;width:48px;height:48px;border-radius:9999px;background:var(--ink);color:var(--text-inverse);border:1px solid var(--accent-line);box-shadow:0 2px 6px rgba(6,10,21,.35),0 18px 34px -14px rgba(15,23,41,.55);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s ease,transform .45s var(--ease-out),background-color .3s ease,border-color .3s ease,box-shadow .3s ease,visibility .4s}
 .back-top.show{opacity:1;visibility:visible;transform:none}
 .back-top:hover{transform:translateY(-3px);background:var(--accent);color:var(--ink);border-color:var(--accent-warm)}
 .back-top:active{transform:translateY(0) scale(.95)}
 
-/* Hero choreography */
 html.js .hero-rise{opacity:0;animation:hero-rise .9s var(--ease-out) forwards;animation-delay:var(--d,0s)}
 @keyframes hero-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-out) forwards;animation-delay:var(--d,0s)}
 @keyframes hero-line{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 
-/* Interactions */
 .tiltable{transform-style:preserve-3d;transition:transform .5s var(--ease);will-change:transform}
 .mag{will-change:transform}
 
@@ -529,10 +506,8 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 <div class="grain" aria-hidden="true"></div>
 <div id="progress" aria-hidden="true"></div>
 
-<!-- Hidden iframe target for form submission -->
 <iframe name="thinxecute_submit" id="submit-target" title="Registration submission"></iframe>
 
-<!-- ============ NAV ============ -->
 <header id="nav" class="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="nav-brand" aria-label="Gbohunmi Williams — home">
@@ -565,7 +540,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 
 <main id="top">
 
-<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
   <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
@@ -576,7 +550,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
       <div>
         <span class="hero-badge hero-rise" style="--d:.05s">
           <span class="pulse-dot" aria-hidden="true"></span>
-          <span>Free two-night live experience · Instagram Live</span>
+          <span>Free two-night live experience · Telegram Live</span>
         </span>
 
         <h1 class="hero-title">
@@ -586,7 +560,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         </h1>
 
         <p class="hero-sub hero-rise" style="--d:.4s">
-          Two consecutive evenings on Instagram Live for people with ideas, ambitions and things they want to build — but who need more clarity, direction or movement.
+          Two consecutive evenings on Telegram Live for people with ideas, ambitions and things they want to build — but who need more clarity, direction or movement.
         </p>
 
         <div class="hero-cta hero-rise" style="--d:.5s">
@@ -599,7 +573,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 
         <p class="hero-meta hero-rise" style="--d:.6s">
           <span>Free</span><span class="dot">·</span>
-          <span>Instagram Live</span><span class="dot">·</span>
+          <span>Telegram Live</span><span class="dot">·</span>
           <span>Two evenings</span><span class="dot">·</span>
           <span>≈ 90 min each</span>
         </p>
@@ -627,7 +601,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         </div>
 
         <div class="session-note">
-          Both nights stream live on Instagram. Registering reserves your seat and confirms your place on WhatsApp.
+          Both nights stream live on Telegram. Registering reserves your seat and confirms your place on WhatsApp.
         </div>
       </div>
     </div>
@@ -640,7 +614,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         <span class="logo-item accent">◆</span>
         <span class="logo-item">Two nights live</span>
         <span class="logo-item accent">◆</span>
-        <span class="logo-item">Instagram Live</span>
+        <span class="logo-item">Telegram Live</span>
         <span class="logo-item accent">◆</span>
         <span class="logo-item">Tue 20 – Wed 21 Oct 2026</span>
         <span class="logo-item accent">◆</span>
@@ -654,7 +628,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         <span class="logo-item accent">◆</span>
         <span class="logo-item">Two nights live</span>
         <span class="logo-item accent">◆</span>
-        <span class="logo-item">Instagram Live</span>
+        <span class="logo-item">Telegram Live</span>
         <span class="logo-item accent">◆</span>
         <span class="logo-item">Tue 20 – Wed 21 Oct 2026</span>
         <span class="logo-item accent">◆</span>
@@ -667,7 +641,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 01 · EVENT INTRODUCTION ============ -->
 <section id="about" class="section">
   <div class="wrap">
     <div class="split">
@@ -690,7 +663,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 02 · PROBLEM ============ -->
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head" data-reveal>
@@ -766,7 +738,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 03 · WHAT IS THINXECUTE ============ -->
 <section class="section">
   <div class="wrap">
     <div class="split">
@@ -798,7 +769,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 04 · WHAT YOU'LL ACTUALLY DO ============ -->
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head" data-reveal>
@@ -822,13 +792,12 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 05 · INSIDE THINXECUTE (session toggle) ============ -->
 <section id="inside" class="section">
   <div class="wrap">
     <div class="section-head" data-reveal>
       <p class="section-marker"><b>05</b> The two nights</p>
       <h2>Two evenings. Two sides of the same thing.</h2>
-      <p>ThinXecute runs across two consecutive evenings. The first slows you down. The second moves you forward. Both live on Instagram.</p>
+      <p>ThinXecute runs across two consecutive evenings. The first slows you down. The second moves you forward. Both live on Telegram.</p>
     </div>
 
     <div class="session-toggle" data-reveal>
@@ -876,7 +845,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 06 · SPEAKERS ============ -->
 <section id="speakers" class="section section-alt">
   <div class="wrap">
     <div class="section-head" data-reveal>
@@ -903,7 +871,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         </div>
         <div class="speaker-body">
           <h3 class="speaker-name">Gretex King</h3>
-          <p class="speaker-role warm">Bramd Designer ·Strategists · Execution Speaker</p>
+          <p class="speaker-role warm">Brand Designer · Strategist · Execution Speaker</p>
           <p class="speaker-bio">Gretex brings the execution perspective — a practical, grounded view on moving from intention into action. His session focuses on what it actually takes to move once you've made a decision.</p>
           <p class="speaker-note">Leads Night Two — execution and action. Full biography to be published.</p>
         </div>
@@ -916,7 +884,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 07 · WHO THIS IS FOR ============ -->
 <section class="section">
   <div class="wrap">
     <div class="section-head" data-reveal>
@@ -941,7 +908,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 08 · SOCIAL PROOF ============ -->
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head" data-reveal>
@@ -956,7 +922,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 09 · DETAILS ============ -->
 <section id="details" class="section">
   <div class="wrap">
     <div class="details-head" data-reveal>
@@ -984,7 +949,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         <ul class="day-list">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Tuesday, 20 October 2026</span></li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>8:00 PM WAT · 90 minutes</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Instagram Live · @gbohunmiwilliams</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Telegram Live · link sent on WhatsApp</span></li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Hosted by Gbohunmi Williams</span></li>
         </ul>
       </div>
@@ -999,7 +964,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         <ul class="day-list">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Wednesday, 21 October 2026</span></li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>8:00 PM WAT · 90 minutes</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Instagram Live · @gbohunmiwilliams</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Telegram Live · link sent on WhatsApp</span></li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Featuring Gretex King</span></li>
         </ul>
       </div>
@@ -1008,11 +973,11 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     <div class="detail-facts" data-reveal>
       <div class="fact">
         <span class="fact-icon ink">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.5 3.5L2.5 10.5l6 2.5 2 6 11-15.5z"/></svg>
         </span>
         <div>
           <p class="fact-label">Where</p>
-          <p class="fact-value">Instagram Live</p>
+          <p class="fact-value">Telegram Live</p>
         </div>
       </div>
       <div class="fact">
@@ -1040,26 +1005,25 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
       <div class="prep-list">
         <div class="prep-item">
           <span class="prep-item-num">1</span>
-          <p>Follow <strong>@gbohunmiwilliams</strong> on Instagram before Tuesday so the Live appears at the top of your feed.</p>
+          <p>Have <strong>Telegram</strong> installed before Tuesday — the event links for both nights will be sent to you on WhatsApp after you register.</p>
         </div>
         <div class="prep-item">
           <span class="prep-item-num">2</span>
-          <p>Have your phone or laptop charged and ready, with about 90 uninterrupted minutes each evening.</p>
+          <p>Follow <strong>@illiams__laughter</strong> on Instagram to keep up with ThinXecute, behind-the-scenes notes, and what's coming next.</p>
         </div>
         <div class="prep-item">
           <span class="prep-item-num">3</span>
-          <p>Bring something to write with. Notes, not just watching.</p>
+          <p>Have your phone or laptop charged and ready, with about 90 uninterrupted minutes each evening. Bring something to write with.</p>
         </div>
         <div class="prep-item">
           <span class="prep-item-num">4</span>
-          <p>Bring one real thing you are currently trying to build, start or figure out — that's the raw material.</p>
+          <p>Bring one real thing you are currently trying to build, start or figure out — that's the raw material for both evenings.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 10 · FINAL BANNER ============ -->
 <section class="final-banner">
   <div class="final-banner-orb-a" aria-hidden="true"></div>
   <div class="final-banner-orb-b" aria-hidden="true"></div>
@@ -1072,7 +1036,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           <span class="line line-accent">Then do something with it.</span>
         </h2>
         <p class="lede">
-          Two evenings on Instagram Live. Two perspectives on your real thing. And a clearer idea of what to do next — starting the morning after.
+          Two evenings on Telegram Live. Two perspectives on your real thing. And a clearer idea of what to do next — starting the morning after.
         </p>
         <div class="final-banner-cta">
           <a href="#register" class="btn btn-accent btn-shine mag">
@@ -1095,10 +1059,10 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           </div>
         </div>
         <div class="final-banner-fact">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 3.5L2.5 10.5l6 2.5 2 6 11-15.5z"/></svg>
           <div>
-            <h4>Live on Instagram</h4>
-            <p>Follow @gbohunmiwilliams so the Live appears on your feed.</p>
+            <h4>Live on Telegram</h4>
+            <p>Install Telegram before Tuesday. We'll send the event links to you on WhatsApp.</p>
           </div>
         </div>
         <div class="final-banner-fact">
@@ -1113,7 +1077,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 11 · FAQ (2-column) ============ -->
 <section id="faq" class="section section-alt">
   <div class="wrap">
     <div class="section-head" style="text-align:center;margin-inline:auto" data-reveal>
@@ -1135,7 +1098,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           <span>Where does it happen?</span>
           <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
         </summary>
-        <div class="faq-a"><div class="faq-a-inner"><p>On Instagram Live, both evenings, from the @gbohunmiwilliams account. Follow before Tuesday so the Live appears at the top of your feed.</p></div></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>On Telegram Live, both evenings. Once you register, we send the Telegram event link to you on WhatsApp. Install Telegram before Tuesday so you're ready to join.</p></div></div>
       </details>
 
       <details class="faq-item">
@@ -1183,19 +1146,18 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           <span>Will there be a replay?</span>
           <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
         </summary>
-        <div class="faq-a"><div class="faq-a-inner"><p>A replay has not been confirmed. Instagram Live can be saved if the host chooses, but please plan to attend live. Registered attendees will be told directly through WhatsApp if anything is made available.</p></div></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>A replay has not been confirmed. Please plan to attend live. Registered attendees will be told directly through WhatsApp if anything is made available.</p></div></div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============ 12 · REGISTRATION ============ -->
 <section id="register" class="section">
   <div class="wrap" style="max-width:48rem">
     <div class="form-section-head" data-reveal>
       <p class="section-marker section-marker-center"><b>12</b> Reserve your seat</p>
       <h2>You're one step away.</h2>
-      <p>It's free, it's live on Instagram both evenings, and seats won't be held for anyone who waits until the night. Registering reserves your spot and confirms your place on WhatsApp.</p>
+      <p>It's free, it's live on Telegram both evenings, and seats won't be held for anyone who waits until the night. Registering reserves your spot and confirms your place on WhatsApp.</p>
     </div>
 
     <div class="form-card" data-reveal>
@@ -1207,7 +1169,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
       </div>
 
       <form id="reg-form" novalidate>
-        <!-- STEP 1 -->
         <div class="step-panel active" data-step="1">
           <h3 class="step-title">First, a few details</h3>
           <p class="step-hint">So we can confirm your seat and send you the event details.</p>
@@ -1227,7 +1188,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           </div>
         </div>
 
-        <!-- STEP 2 -->
         <div class="step-panel" data-step="2">
           <h3 class="step-title">What best describes you?</h3>
           <p class="step-hint">Pick the closest option. There's no wrong answer.</p>
@@ -1245,7 +1205,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           </div>
         </div>
 
-        <!-- STEP 3 -->
         <div class="step-panel" data-step="3">
           <h3 class="step-title">What are you currently building or trying to figure out?</h3>
           <p class="step-hint">A project, a business, a decision, a career move, a creative thing — anything real you're carrying right now.</p>
@@ -1257,7 +1216,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           </div>
         </div>
 
-        <!-- STEP 4 -->
         <div class="step-panel" data-step="4">
           <h3 class="step-title">Where are you currently stuck?</h3>
           <p class="step-hint">Choose the one that feels most true right now.</p>
@@ -1274,7 +1232,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           </div>
         </div>
 
-        <!-- STEP 5 -->
         <div class="step-panel" data-step="5">
           <h3 class="step-title">What do you hope ThinXecute helps you with?</h3>
           <p class="step-hint">This shapes how you use the sessions.</p>
@@ -1291,7 +1248,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           </div>
         </div>
 
-        <!-- STEP 6 -->
         <div class="step-panel" data-step="6">
           <h3 class="step-title">What's one thing you want to leave ThinXecute knowing, deciding, or ready to do?</h3>
           <p class="step-hint">One sentence is fine. This is your own benchmark for both evenings.</p>
@@ -1322,7 +1278,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<!-- ============ 13 · CONFIRMATION ============ -->
 <section id="confirmed" class="confirmation-section">
   <div class="wrap confirmation-wrap">
     <div class="confirmation-card">
@@ -1331,7 +1286,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
       </span>
       <h2>You're in.</h2>
       <p class="lede">Your ThinXecute registration has been received. One final step remains.</p>
-      <p class="lede">Click the button below and send the pre-filled WhatsApp message so we can confirm your seat and send you the event link and reminders for both evenings.</p>
+      <p class="lede">Click the button below and send the pre-filled WhatsApp message so we can confirm your seat and send you the Telegram event link and reminders for both evenings.</p>
       <a id="wa-link" href="#" target="_blank" rel="noopener" class="btn btn-accent">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 2.9 2.9 0 00-.9 2.1c0 1.2.9 2.4 1 2.6s1.8 2.7 4.3 3.8c2.5 1.1 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.3-.5-.5z"/></svg>
         Confirm My Seat on WhatsApp
@@ -1343,7 +1298,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 
 </main>
 
-<!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="footer-orb" aria-hidden="true"></div>
   <div class="wrap">
@@ -1371,7 +1325,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </footer>
 
-<!-- ============ STICKY BAR ============ -->
 <div id="sticky-bar" class="sticky-bar">
   <div class="sticky-inner">
     <div class="sticky-days">
@@ -1401,7 +1354,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   'use strict';
   document.documentElement.classList.add('js');
 
-  /* NAV */
   var nav = document.getElementById('nav');
   var menuBtn = document.getElementById('menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
@@ -1423,7 +1375,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     });
   });
 
-  /* REVEAL */
   var reveals = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window) {
     var ro = new IntersectionObserver(function (entries) {
@@ -1436,7 +1387,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* STICKY */
   var sticky = document.getElementById('sticky-bar');
   var registerSec = document.getElementById('register');
 
@@ -1450,7 +1400,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   window.addEventListener('resize', updateSticky);
   updateSticky();
 
-  /* BACK TO TOP */
   var toTop = document.getElementById('to-top');
   function updateToTop() { toTop.classList.toggle('show', window.scrollY > 700); }
   window.addEventListener('scroll', updateToTop, { passive: true });
@@ -1461,7 +1410,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     toTop.blur();
   });
 
-  /* PROGRESS */
   var progress = document.getElementById('progress');
   function updateProgress() {
     var h = document.documentElement.scrollHeight - window.innerHeight;
@@ -1471,7 +1419,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   window.addEventListener('resize', updateProgress);
   updateProgress();
 
-  /* TILT / MAG */
   var reduceMotion = function () {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   };
@@ -1497,7 +1444,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     });
   }
 
-  /* SESSION TOGGLE */
   var tabs = document.querySelectorAll('.toggle-tab');
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
@@ -1510,7 +1456,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     });
   });
 
-  /* COUNTDOWN — Tue 20 Oct 2026, 8:00 PM WAT (19:00 UTC) */
   var target = Date.UTC(2026, 9, 20, 19, 0, 0);
   var detCd = document.getElementById('det-cd');
   var cdTotal = document.getElementById('cd-total');
@@ -1534,7 +1479,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   tick();
   setInterval(tick, 1000);
 
-  /* FORM */
   var form = document.getElementById('reg-form');
   var panels = Array.prototype.slice.call(form.querySelectorAll('.step-panel'));
   var total = panels.length;
@@ -1611,7 +1555,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
       return;
     }
 
-    /* Final submission */
     var honeypot = document.getElementById('f-website');
     if (honeypot && honeypot.value.trim() !== '') {
       console.warn('[ThinXecute] Submission blocked.');
@@ -1639,7 +1582,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     var whatBuilding = (form.querySelector('#f-whatBuilding').value || '').trim();
     var finalResponse = (form.querySelector('#f-finalResponse').value || '').trim();
 
-    /* Build hidden form and submit into iframe */
     var hidden = document.createElement('form');
     hidden.method = 'POST';
     hidden.action = GAS_URL;
@@ -1668,35 +1610,29 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 
     document.body.appendChild(hidden);
 
-    /* WhatsApp link */
     var GBO_WA = '2348135518279';
     var msg = 'Hi Gbohunmi, my name is ' + name + '. I just finished registration for ThinXecute (Tue 20 & Wed 21 October).';
     var waUrl = 'https://wa.me/' + GBO_WA + '?text=' + encodeURIComponent(msg);
     document.getElementById('wa-link').setAttribute('href', waUrl);
 
-    /* Wire up iframe load listener BEFORE submitting */
     var iframe = document.getElementById('submit-target');
     if (iframe) {
       iframe.onload = function () {
         iframe.onload = null;
 
-        /* Clean up hidden form */
         hidden.remove();
 
-        /* Show confirmation */
         registerSec.style.display = 'none';
         var conf = document.getElementById('confirmed');
         conf.classList.add('show');
         sticky.classList.remove('show');
 
-        /* Scroll to the confirmation card — NOT to the top */
         var confCard = conf.querySelector('.confirmation-card');
         if (confCard) {
           var y = confCard.getBoundingClientRect().top + window.scrollY - 96;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
 
-        /* Focus the heading for screen readers */
         setTimeout(function () {
           var heading = conf.querySelector('h2');
           if (heading) {
@@ -1707,7 +1643,6 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
       };
     }
 
-    /* Submit into the iframe */
     hidden.submit();
   });
 })();
