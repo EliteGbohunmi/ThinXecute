@@ -654,6 +654,27 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
 .tiltable{transform-style:preserve-3d;transition:transform .5s var(--ease);will-change:transform}
 .mag{will-change:transform}
 
+/* Person connect button */
+.person-connect{
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.person-connect-btn{
+  width: 100%;
+  justify-content: center;
+  font-size: .9rem;
+  padding: .85rem 1.4rem;
+}
+.person-connect-btn:hover{
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+.person-connect-btn:hover svg{
+  transform: translateX(3px);
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   html.js [data-reveal]{opacity:1;transform:none;transition:none}
@@ -1016,6 +1037,13 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
           <p class="speaker-role teal">Full Stack Web Developer · Thinker</p>
           <p class="speaker-bio">Gbohunmi is a full stack web developer and thinker interested in how thoughts shape ideas, decisions, direction, and action. He spends a lot of time exploring what happens between having an idea and actually moving on it, helping people examine the thinking that may be keeping them stuck. ThinXecute grows from that interest: a conversation about thinking before execution and understanding what needs to change before taking action.</p>
           <p class="speaker-note">Leads Night One. Thinking, clarity and direction.</p>
+
+          <div class="person-connect">
+            <a href="wa.link/bvq8dk" class="btn btn-ghost-light person-connect-btn" aria-label="Connect with Gbohunmi Williams">
+              Connect
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -1028,6 +1056,13 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
           <p class="speaker-role warm">Brand Designer · Strategist · Execution Speaker</p>
           <p class="speaker-bio">Gretex brings the execution perspective, a practical, grounded view on moving from intention into action. His session focuses on what it actually takes to move once you've made a decision.</p>
           <p class="speaker-note">Leads Night Two. Execution and action. Full biography to be published.</p>
+
+          <div class="person-connect">
+            <a href="wa.link/in2lod" class="btn btn-ghost-light person-connect-btn" aria-label="Connect with Gretex King">
+              Connect
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg>
+            </a>
+          </div>
         </div>
       </article>
     </div>
