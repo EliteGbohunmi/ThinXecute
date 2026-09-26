@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ThinXecute | Two Nights. Think It Through. Then Do Something With It.</title>
-<meta name="description" content="ThinXecute is a free two-night live experience on Telegram for people with ideas, ambitions and things they want to build — connecting clearer thinking with meaningful action. Tue 20 & Wed 21 October · 8 PM WAT.">
+<meta name="description" content="ThinXecute is a free two-night live experience on Telegram for people with ideas, ambitions and things they want to build, connecting clearer thinking with meaningful action. Fri 23 & Sat 24 October, 8 PM WAT.">
 <meta name="theme-color" content="#0F1729">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F1729'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='%23C8943D' font-family='Georgia,serif' font-size='13' font-weight='600'%3EGW%3C/text%3E%3C/svg%3E">
@@ -19,7 +19,7 @@
   --text-inverse:#F5F1E6;--text-inv-soft:#B4BACA;--text-inv-faint:#757D91;
   --accent:#C8943D;--accent-warm:#E8B65B;--accent-deep:#8F6822;
   --accent-soft:#FBF3E0;--accent-line:rgba(200,148,61,.35);
-  --accent-2:#3D7168;--accent-2-light:#5A9A8E;--accent-2-soft:#E8F0EC;
+  --accent-2:#3D7168;--accent-2-soft:#E8F0EC;
   --line:rgba(15,23,41,.10);--line-strong:rgba(15,23,41,.16);--line-hair:rgba(15,23,41,.06);
   --line-inv:rgba(245,241,230,.10);--line-inv-strong:rgba(245,241,230,.18);
   --danger:#B0454B;
@@ -27,7 +27,6 @@
   --font-body:'Archivo',system-ui,-apple-system,sans-serif;
   --font-mono:'IBM Plex Mono',ui-monospace,monospace;
   --wrap:1180px;--gutter:clamp(20px,4vw,40px);
-  --radius:14px;--radius-lg:22px;
   --ease:cubic-bezier(.22,.61,.36,1);--ease-out:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -53,13 +52,6 @@ section[id]{scroll-margin-top:6rem}
 .mono{font-family:var(--font-mono)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 #submit-target{position:absolute;width:0;height:0;border:0;visibility:hidden}
-.img-ph{
-  background:repeating-linear-gradient(45deg,rgba(15,23,41,.03) 0 10px,transparent 10px 20px),var(--tint);
-  border:1px dashed var(--line-strong);color:var(--text-faint);
-  display:grid;place-items:center;font-family:var(--font-mono);
-  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
-  text-align:center;padding:20px;line-height:1.5;
-}
 
 .grain{
   position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.04;
@@ -74,39 +66,49 @@ section[id]{scroll-margin-top:6rem}
 html.js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s var(--ease-out)}
 html.js [data-reveal].in{opacity:1;transform:none}
 
+/* NAV */
 .nav{
   position:fixed;inset-inline:0;top:0;z-index:50;
   transition:background-color .4s,box-shadow .4s,border-color .4s,color .4s;
   color:var(--text-inverse);border-bottom:1px solid transparent;
 }
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;gap:16px;
+  width:100%;max-width:var(--wrap);
+  margin-inline:auto;padding-inline:var(--gutter);
+}
 @media (min-width:1024px){.nav-inner{height:72px}}
-.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;font-size:1.05rem;line-height:1}
+.nav-brand{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;
+  font-size:1.05rem;line-height:1;flex-shrink:0;
+}
 .nav-brand-mark{
   display:flex;align-items:center;justify-content:center;
   width:30px;height:30px;border-radius:9px;background:var(--accent);
   font-family:var(--font-display);font-size:.62rem;font-weight:800;
   color:var(--ink);flex-shrink:0;box-shadow:0 4px 12px rgba(200,148,61,.35);
 }
-.nav-brand-name{color:var(--text-inverse);transition:color .4s}
+.nav-brand-name{color:var(--text-inverse);transition:color .4s;white-space:nowrap}
 .nav.scrolled .nav-brand-name{color:var(--ink)}
 .nav-brand-name .alt{color:var(--accent-warm)}
-.nav-links{display:none;align-items:center;gap:32px;font-size:.85rem;font-weight:500}
+.nav-links{display:none;align-items:center;gap:32px;font-size:.85rem;font-weight:500;flex-shrink:1;min-width:0}
 @media (min-width:1024px){.nav-links{display:flex}}
-.nav-link{position:relative;transition:color .25s;color:rgba(245,241,230,.75)}
+.nav-link{position:relative;transition:color .25s;color:rgba(245,241,230,.75);white-space:nowrap}
 .nav-link:hover,.nav-link:focus-visible{color:var(--text-inverse)}
 .nav.scrolled .nav-link{color:var(--text-soft)}
 .nav.scrolled .nav-link:hover,.nav.scrolled .nav-link:focus-visible{color:var(--ink)}
 .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out)}
 .nav-link:hover::after,.nav-link:focus-visible::after{transform:scaleX(1)}
-.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .nav-cta{display:none}
-@media (min-width:640px){.nav-cta{display:inline-flex;padding:.65rem 1.5rem;font-size:.85rem}}
+@media (min-width:768px){.nav-cta{display:inline-flex;padding:.65rem 1.5rem;font-size:.85rem}}
 .nav-toggle{
   display:flex;align-items:center;justify-content:center;
-  width:40px;height:40px;border-radius:9999px;
+  width:42px;height:42px;border-radius:9999px;
   border:1px solid var(--line-inv-strong);color:var(--text-inverse);
-  transition:border-color .3s,color .4s,background-color .3s;
+  transition:border-color .3s,color .4s,background-color .3s;flex-shrink:0;
 }
 @media (min-width:1024px){.nav-toggle{display:none}}
 .nav-toggle:hover{background:rgba(245,241,230,.08)}
@@ -117,13 +119,72 @@ html.js [data-reveal].in{opacity:1;transform:none}
   box-shadow:0 1px 0 var(--line),0 12px 30px -22px rgba(15,23,41,.35);
   color:var(--ink);
 }
-.mobile-menu{display:none;border-top:1px solid var(--line-hair);background:rgba(250,248,243,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px 20px 24px}
-@media (max-width:1023px){.mobile-menu.open{display:block}}
-@media (min-width:1024px){.mobile-menu{display:none !important}}
-.mobile-menu-inner{display:flex;flex-direction:column;gap:4px}
-.mobile-menu a.menu-link{display:block;padding:12px;border-radius:12px;font-size:.95rem;font-weight:600;color:var(--ink);transition:background-color .2s,color .2s}
-.mobile-menu a.menu-link:hover{background:var(--tint);color:var(--accent-deep)}
-.mobile-menu .btn{margin-top:12px}
+
+/* MOBILE MENU */
+.mobile-menu{
+  position:fixed;inset:0;z-index:100;
+  background:var(--ink);color:var(--text-inverse);
+  display:flex;flex-direction:column;
+  padding:80px var(--gutter) 40px;
+  transform:translateY(-100%);
+  transition:transform .5s var(--ease-out);
+  pointer-events:none;
+  overflow-y:auto;
+}
+.mobile-menu.open{transform:translateY(0);pointer-events:auto}
+.mobile-menu-close{
+  position:absolute;top:20px;right:var(--gutter);
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  border-radius:9999px;
+  border:1px solid var(--line-inv-strong);
+  color:var(--text-inverse);
+  transition:background-color .3s;
+}
+.mobile-menu-close:hover{background:rgba(245,241,230,.08)}
+.mobile-menu-inner{
+  display:flex;flex-direction:column;gap:0;
+  max-width:var(--wrap);width:100%;margin-inline:auto;
+  flex:1;
+}
+.mobile-menu-eyebrow{
+  font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.20em;text-transform:uppercase;
+  color:var(--text-inv-faint);
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line-inv);
+  margin-bottom:16px;
+}
+.mobile-menu-links{
+  display:flex;flex-direction:column;
+  gap:0;
+}
+.mobile-menu a.menu-link{
+  display:block;
+  padding:22px 0;
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,7vw,2.6rem);
+  font-weight:700;
+  letter-spacing:-.03em;
+  line-height:1.1;
+  color:var(--text-inverse);
+  border-bottom:1px solid var(--line-inv);
+  transition:color .3s,padding-left .3s var(--ease-out);
+}
+.mobile-menu a.menu-link:hover,.mobile-menu a.menu-link:focus-visible{color:var(--accent-warm);padding-left:12px}
+.mobile-menu-footer{
+  margin-top:auto;
+  padding-top:40px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.mobile-menu-footer .btn{width:100%;justify-content:center}
+.mobile-menu-footer-meta{
+  font-family:var(--font-mono);font-size:.66rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-inv-faint);
+  text-align:center;
+  margin-top:8px;
+}
 
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
@@ -152,8 +213,13 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .money-sweep{position:relative;white-space:nowrap;display:inline-block}
 .money-sweep::after{content:"";position:absolute;left:0;right:0;bottom:-.08em;height:.1em;background:linear-gradient(90deg,var(--accent),var(--accent-warm));transform:scaleX(0);transform-origin:left;animation:sweep 1.1s var(--ease-out) 1.05s forwards}
 @keyframes sweep{to{transform:scaleX(1)}}
-.section-marker{font-family:var(--font-mono);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft);display:flex;align-items:center;gap:16px}
-.section-marker b{color:var(--accent-deep);font-weight:700}
+.section-marker{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:.20em;text-transform:uppercase;
+  color:var(--text-soft);
+  display:flex;align-items:center;gap:14px;
+}
+.section-marker b{color:var(--accent-deep);font-weight:800;font-size:1.05rem;letter-spacing:.06em}
 .section-marker::after{content:"";height:1px;flex:1 1 auto;background:var(--line);margin-left:4px}
 .section-marker-center{justify-content:center}
 .section-marker-center::after{display:none}
@@ -161,131 +227,234 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .section-marker-light b{color:var(--accent-warm)}
 .section-marker-light::after{background:var(--line-inv)}
 
-.hero{
+.pulse-dot{display:inline-flex;width:6px;height:6px;border-radius:50%;background:var(--accent-warm);flex-shrink:0;position:relative}
+.pulse-dot::before{content:"";position:absolute;inset:-3px;border-radius:50%;background:inherit;opacity:.55;animation:pulse 2.2s var(--ease-out) infinite}
+@keyframes pulse{0%{transform:scale(.7);opacity:.7}70%,100%{transform:scale(1.9);opacity:0}}
+
+/* HERO */
+.hero-hybrid{
   position:relative;overflow:hidden;
   background:
     radial-gradient(120% 90% at 82% -10%,rgba(200,148,61,.20) 0%,transparent 60%),
     radial-gradient(90% 70% at 8% 110%,rgba(61,113,104,.16) 0%,transparent 55%),
     var(--ink);
-  color:var(--text-inverse);padding-top:104px;padding-bottom:56px;
+  color:var(--text-inverse);
+  padding-top:104px;
+  min-height:100svh;
+  display:flex;flex-direction:column;
 }
-@media (min-width:640px){.hero{padding-top:120px}}
-@media (min-width:1024px){.hero{padding-bottom:88px}}
-.hero-orb{position:absolute;pointer-events:none;border-radius:50%;filter:blur(60px)}
+@media (min-width:640px){.hero-hybrid{padding-top:120px}}
+@media (max-width:640px){.hero-hybrid{min-height:auto}}
+
+.hero-hybrid-orb{position:absolute;pointer-events:none;border-radius:50%;filter:blur(60px)}
 .hero-orb-a{left:-96px;top:64px;width:320px;height:320px;background:rgba(200,148,61,.22)}
 .hero-orb-b{right:-96px;top:-64px;width:384px;height:384px;background:rgba(61,113,104,.20)}
 .hero-orb-c{left:50%;bottom:-64px;transform:translateX(-50%);width:288px;height:288px;background:rgba(232,182,91,.10)}
-.hero-grid{position:relative;z-index:1;display:grid;gap:48px}
-@media (min-width:1024px){.hero-grid{grid-template-columns:1.2fr .8fr;gap:64px;align-items:stretch}}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 12px;border-radius:9999px;
-  border:1px solid var(--line-inv-strong);background:rgba(245,241,230,.06);
-  font-family:var(--font-mono);font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(245,241,230,.85);
-}
-.pulse-dot{display:inline-flex;width:6px;height:6px;border-radius:50%;background:var(--accent-warm);flex-shrink:0;position:relative}
-.pulse-dot::before{content:"";position:absolute;inset:-3px;border-radius:50%;background:inherit;opacity:.55;animation:pulse 2.2s var(--ease-out) infinite}
-@keyframes pulse{0%{transform:scale(.7);opacity:.7}70%,100%{transform:scale(1.9);opacity:0}}
-.hero-title{margin-top:28px;font-size:clamp(2.6rem,7vw,4.5rem);line-height:1.02;letter-spacing:-.04em}
-.hero-title .line{display:block}
-.hero-title .line-dim{color:rgba(245,241,230,.85)}
-.hero-title .line-accent{background:linear-gradient(100deg,var(--accent-warm),var(--accent) 60%,var(--accent-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-sub{margin-top:24px;max-width:34rem;font-size:1.05rem;line-height:1.75;color:rgba(245,241,230,.72)}
-@media (min-width:640px){.hero-sub{font-size:1.125rem}}
-.hero-cta{margin-top:36px;display:flex;flex-direction:column;gap:12px}
-@media (min-width:640px){.hero-cta{flex-direction:row;align-items:center}}
-.hero-meta{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,241,230,.5)}
-.hero-meta .dot{color:var(--accent-warm)}
-.session-stack{position:relative;display:flex;flex-direction:column;gap:14px}
-.session-card{
-  position:relative;border-radius:20px;background:var(--ink-2);border:1px solid var(--line-inv);
-  padding:24px;display:flex;flex-direction:column;gap:16px;
-  transition:transform .4s var(--ease-out),border-color .4s;
-}
-.session-card:hover{transform:translateY(-4px);border-color:var(--accent-line)}
-.session-num{
-  display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;
-  background:rgba(200,148,61,.15);border:1px solid rgba(200,148,61,.28);
-  font-family:var(--font-mono);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--accent-warm);align-self:flex-start;
-}
-.session-num .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-warm)}
-.session-title{font-family:var(--font-display);font-size:1.35rem;font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--text-inverse)}
-.session-desc{font-size:.92rem;line-height:1.7;color:rgba(245,241,230,.7)}
-.session-meta{display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line-inv);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,230,.5)}
-.session-meta span{display:flex;align-items:center;gap:8px}
-.session-meta .tick{color:var(--accent-warm)}
-.session-note{border-radius:16px;border:1px dashed var(--line-inv-strong);padding:16px 18px;font-size:.82rem;line-height:1.6;color:rgba(245,241,230,.65);background:rgba(245,241,230,.03)}
 
-.logo-strip{
-  position:relative;margin-top:56px;
-  border-top:1px solid var(--line-inv);border-bottom:1px solid var(--line-inv);
-  background:var(--ink-3);padding:18px 0;overflow:hidden;
+.hero-hybrid-inner{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
+  flex:1;width:100%;
 }
-@media (min-width:1024px){.logo-strip{margin-top:72px}}
-.logo-track{display:flex;width:max-content;animation:marquee 40s linear infinite}
-.logo-track:hover{animation-play-state:paused}
-.logo-group{display:flex;align-items:center;gap:36px;padding-right:36px;white-space:nowrap}
-.logo-item{font-family:var(--font-mono);font-size:.72rem;font-weight:600;letter-spacing:.20em;text-transform:uppercase;color:rgba(245,241,230,.55);display:flex;align-items:center;gap:14px}
-.logo-item .sep{color:var(--accent)}
-.logo-item.accent{color:var(--accent-warm)}
-@keyframes marquee{to{transform:translateX(-50%)}}
 
+.hero-hybrid-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:24px;padding-top:24px;
+  opacity:0;
+  animation:hero-rise .9s var(--ease-out) .05s forwards;
+}
+.hero-hybrid-mark{
+  font-family:var(--font-mono);font-size:.7rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--text-inv-faint);
+  display:flex;align-items:center;gap:12px;
+}
+.hero-hybrid-mark::before{content:"";width:24px;height:1px;background:var(--accent)}
+.hero-hybrid-ctas{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.hero-hybrid-ctas .btn{padding:.7rem 1.35rem;font-size:.82rem}
+@media (max-width:640px){
+  .hero-hybrid-top{flex-direction:column;align-items:flex-start;gap:20px}
+  .hero-hybrid-ctas{justify-content:flex-start}
+}
+
+.hero-hybrid-bars{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  margin-block:clamp(40px,7vw,88px);
+  position:relative;z-index:1;
+}
+.hero-hybrid-bar{
+  padding-block:clamp(18px,2.8vw,34px);
+  border-bottom:1px solid var(--line-inv);
+  overflow:hidden;
+}
+.hero-hybrid-bar:first-child{padding-top:0}
+.hero-hybrid-bar:last-child{border-bottom:0}
+.hero-hybrid-bar-text{
+  font-family:var(--font-display);
+  font-size:clamp(3rem,12vw,10rem);
+  font-weight:800;line-height:.9;letter-spacing:-.055em;
+  color:var(--text-inverse);display:block;
+  opacity:0;transform:translateY(40px);
+  animation:hero-bar-in 1.1s var(--ease-out) forwards;
+}
+.hero-hybrid-bar:nth-child(1) .hero-hybrid-bar-text{animation-delay:.20s}
+.hero-hybrid-bar:nth-child(2) .hero-hybrid-bar-text{animation-delay:.35s}
+.hero-hybrid-bar:nth-child(3) .hero-hybrid-bar-text{animation-delay:.50s}
+.hero-hybrid-bar-text.dim{color:rgba(245,241,230,.55)}
+.hero-hybrid-bar-text.accent{
+  background:linear-gradient(100deg,var(--accent-warm),var(--accent) 55%,var(--accent-deep));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+@keyframes hero-bar-in{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes hero-rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-hybrid-footer{
+  border-top:1px solid var(--line-inv);
+  padding-block:28px;
+  display:grid;grid-template-columns:1fr;gap:24px;
+  position:relative;z-index:1;
+  opacity:0;animation:hero-rise .9s var(--ease-out) .7s forwards;
+}
+@media (min-width:800px){.hero-hybrid-footer{grid-template-columns:repeat(3,1fr);gap:40px;align-items:start}}
+.hero-hybrid-col-label{
+  font-family:var(--font-mono);font-size:.62rem;font-weight:600;
+  letter-spacing:.20em;text-transform:uppercase;
+  color:var(--accent-warm);margin-bottom:10px;
+}
+.hero-hybrid-col-value{
+  font-family:var(--font-display);font-size:1.05rem;font-weight:500;
+  letter-spacing:-.01em;color:var(--text-inverse);line-height:1.35;
+}
+.hero-hybrid-col-sub{font-size:.82rem;color:var(--text-inv-faint);margin-top:6px;line-height:1.55}
+
+.hero-hybrid-strip{
+  border-top:1px solid var(--line-inv);
+  padding-block:20px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:16px;position:relative;z-index:1;
+  opacity:0;animation:hero-rise .9s var(--ease-out) .85s forwards;
+}
+.hero-hybrid-strip-left{
+  font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-inv-faint);
+}
+.hero-hybrid-strip-right{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-warm);
+}
+
+/* SECTION BASE */
 .section{padding-block:80px}
 @media (min-width:1024px){.section{padding-block:112px}}
 .section-alt{background:var(--surface-alt)}
-.section-head{max-width:720px;margin-bottom:48px}
-.section-head h2{margin-top:20px;font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.08;letter-spacing:-.02em}
-.section-head p{margin-top:20px;font-size:1.02rem;line-height:1.75;color:var(--text-soft);max-width:40rem}
-.split{display:grid;gap:48px}
-@media (min-width:1024px){.split{grid-template-columns:.85fr 1.15fr;gap:80px}}
-.split h2{margin-top:20px;font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.08;letter-spacing:-.02em}
-.split .body p{font-size:1.05rem;line-height:1.75;color:var(--text-soft);margin-bottom:20px}
-.split .body p:last-child{margin-bottom:0;color:var(--ink);font-weight:500}
 
-.problem-grid{display:grid;gap:0;border-top:1px solid var(--line);margin-top:56px}
-@media (min-width:768px){.problem-grid{grid-template-columns:1fr 1fr;column-gap:56px}}
-.problem-item{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);transition:background-color .35s,padding-left .35s var(--ease-out)}
-.problem-item:hover{background:rgba(200,148,61,.04);padding-left:14px}
-.problem-num{font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.16em;color:var(--accent-deep);padding-top:4px}
-.problem-item h3{font-family:var(--font-display);font-size:1.08rem;font-weight:700;line-height:1.35;letter-spacing:-.01em;color:var(--ink)}
-@media (min-width:640px){.problem-item h3{font-size:1.15rem}}
-.problem-item p{margin-top:8px;font-size:.92rem;line-height:1.65;color:var(--text-soft)}
-.pull-statement{margin-top:56px;display:flex;align-items:flex-start;gap:16px;border-left:2px solid var(--accent);padding-left:20px}
-.pull-statement p{max-width:38rem;font-size:1.05rem;line-height:1.75;color:var(--ink)}
-.question-callout{margin-top:28px;border-radius:16px;border-left:4px solid var(--accent);background:var(--surface);padding:24px;box-shadow:0 2px 6px rgba(15,23,41,.04),0 20px 40px -22px rgba(15,23,41,.20)}
-@media (min-width:640px){.question-callout{padding:28px}}
-.question-callout p{font-family:var(--font-display);font-size:1.2rem;font-weight:700;line-height:1.3;letter-spacing:-.01em;color:var(--ink)}
-@media (min-width:640px){.question-callout p{font-size:1.5rem}}
+.chapter-break{padding-block:clamp(72px,11vw,128px);text-align:center}
+.chapter-break-inner{max-width:780px;margin-inline:auto}
+.chapter-break-num{
+  font-family:var(--font-display);
+  font-size:clamp(4rem,10vw,7rem);
+  font-weight:800;line-height:0.9;letter-spacing:-.05em;
+  color:var(--accent);margin-bottom:24px;display:block;
+}
+.chapter-break-num .slash{color:var(--accent-warm);opacity:0.5;font-weight:600}
+.chapter-break h2{
+  font-size:clamp(2rem,5vw,3.15rem);line-height:1.1;letter-spacing:-.03em;
+  font-weight:700;margin-bottom:36px;color:var(--ink);
+}
+.chapter-break p{font-size:clamp(1.05rem,1.7vw,1.22rem);line-height:1.75;color:var(--text-soft);max-width:58ch;margin-inline:auto;margin-bottom:20px}
+.chapter-break p:last-child{margin-bottom:0;color:var(--ink);font-weight:500}
 
-.session-toggle{margin-top:48px;border-radius:24px;background:var(--surface);border:1px solid var(--line-hair);box-shadow:0 2px 6px rgba(15,23,41,.04),0 24px 48px -24px rgba(15,23,41,.20);overflow:hidden}
-.toggle-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
-@media (max-width:540px){.toggle-tabs{grid-template-columns:1fr;border-bottom:0}}
-.toggle-tab{display:flex;flex-direction:column;gap:6px;padding:22px 26px;text-align:left;border-right:1px solid var(--line);transition:background-color .3s,color .3s;cursor:pointer;background:transparent}
-.toggle-tab:last-child{border-right:0}
-@media (max-width:540px){.toggle-tab{border-right:0;border-bottom:1px solid var(--line)}.toggle-tab:last-child{border-bottom:0}}
-.toggle-tab:hover{background:var(--tint)}
-.toggle-tab[aria-selected="true"]{background:var(--ink);color:var(--text-inverse)}
-.toggle-tab[aria-selected="true"] .tab-owner,.toggle-tab[aria-selected="true"] .tab-title,.toggle-tab[aria-selected="true"] .tab-eyebrow{color:var(--accent-warm)}
-.tab-eyebrow{font-family:var(--font-mono);font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint);transition:color .3s}
-.tab-title{font-family:var(--font-display);font-size:1.15rem;font-weight:700;letter-spacing:-.01em;color:var(--ink);transition:color .3s}
-.tab-owner{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft);transition:color .3s}
-.toggle-body{padding:32px}
-@media (min-width:640px){.toggle-body{padding:44px 48px}}
-.toggle-panel{display:none;animation:panelIn .45s var(--ease-out)}
-.toggle-panel.active{display:block}
-@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.toggle-panel h3{font-family:var(--font-display);font-size:clamp(1.5rem,2.6vw,1.9rem);font-weight:700;letter-spacing:-.02em;line-height:1.15}
-.toggle-panel p.lead{margin-top:16px;font-size:1rem;line-height:1.75;color:var(--text-soft);max-width:44rem}
-.toggle-points{margin-top:28px;display:grid;gap:10px}
-@media (min-width:640px){.toggle-points{grid-template-columns:1fr 1fr}}
-.toggle-point{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;background:var(--tint);font-size:.94rem;color:var(--ink)}
-.toggle-point .dot{flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px}
+.problem-tiles-section{padding-block:clamp(64px,9vw,108px);background:var(--surface-alt)}
+.problem-tiles-head{max-width:720px;margin-bottom:clamp(40px,6vw,64px)}
+.problem-tiles-head h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.4vw,2.75rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.problem-tiles-head p{margin-top:18px;font-size:1.02rem;line-height:1.7;color:var(--text-soft);max-width:44rem}
+.problem-tiles{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:640px){.problem-tiles{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.problem-tiles{grid-template-columns:repeat(3,1fr)}}
+.problem-tile{position:relative;background:var(--surface);border:1px solid var(--line-hair);border-radius:20px;padding:32px 28px 28px;min-height:220px;display:flex;flex-direction:column;transition:transform .35s var(--ease-out),border-color .3s,box-shadow .35s}
+.problem-tile:hover{transform:translateY(-3px);border-color:var(--accent-line);box-shadow:0 12px 30px -18px rgba(15,23,41,.28)}
+.problem-tile-num{position:absolute;top:22px;right:24px;font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.14em;color:var(--accent-deep);opacity:.55}
+.problem-tile-mark{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:10px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-deep);margin-bottom:20px}
+.problem-tile h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;line-height:1.35;letter-spacing:-.01em;color:var(--ink);margin-bottom:10px}
+.problem-tile p{font-size:.9rem;line-height:1.65;color:var(--text-soft);margin-top:auto}
+.problem-close{margin-top:clamp(40px,6vw,64px);padding:32px;border-radius:20px;border-left:3px solid var(--accent);background:var(--surface);border-top:1px solid var(--line-hair);border-right:1px solid var(--line-hair);border-bottom:1px solid var(--line-hair)}
+@media (min-width:640px){.problem-close{padding:40px 48px}}
+.problem-close p{font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.65;color:var(--ink);max-width:52rem;font-family:var(--font-display);font-weight:500}
+.problem-close p strong{color:var(--accent-deep);font-weight:700}
 
-.speaker-grid{display:grid;gap:24px;margin-top:48px}
+.idea-section{padding-block:clamp(72px,11vw,128px)}
+.idea-header{max-width:720px;margin:0 auto clamp(40px,6vw,56px);text-align:center}
+.idea-header h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.idea-question-card{max-width:100%;margin:0 auto clamp(40px,6vw,56px);padding:clamp(40px,6vw,72px);background:var(--surface);border:2px solid var(--ink);border-radius:28px;position:relative;text-align:center}
+.idea-question-card::before,.idea-question-card::after{content:"";position:absolute;width:48px;height:48px;border:2px solid var(--accent);pointer-events:none}
+.idea-question-card::before{top:12px;left:12px;border-right:0;border-bottom:0;border-top-left-radius:20px}
+.idea-question-card::after{bottom:12px;right:12px;border-left:0;border-top:0;border-bottom-right-radius:20px}
+.idea-question-label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.20em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:24px}
+.idea-question-card p{font-family:var(--font-display);font-size:clamp(1.4rem,3.4vw,2.25rem);line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--ink);max-width:24ch;margin-inline:auto}
+.idea-body{max-width:640px;margin-inline:auto}
+.idea-body p{font-size:1.05rem;line-height:1.8;color:var(--text-soft);margin-bottom:22px}
+.idea-body p:last-child{margin-bottom:0;color:var(--ink);font-weight:500}
+.idea-body strong{color:var(--ink);font-weight:600}
+
+.do-section{padding-block:clamp(64px,9vw,108px);background:var(--surface-alt)}
+.do-header{max-width:720px;margin-bottom:clamp(40px,6vw,64px)}
+.do-header h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.4vw,2.75rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.do-header p{margin-top:18px;font-size:1.02rem;line-height:1.7;color:var(--text-soft);max-width:44rem}
+.do-steps{display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:900px){.do-steps{grid-template-columns:repeat(3,1fr)}}
+.do-step{background:var(--surface);border-radius:24px;padding:40px 32px;display:flex;flex-direction:column;gap:20px;border:1px solid var(--line-hair);position:relative;overflow:hidden}
+.do-step:nth-child(1){border-top:4px solid var(--accent)}
+.do-step:nth-child(2){border-top:4px solid var(--accent-2)}
+.do-step:nth-child(3){border-top:4px solid var(--ink)}
+.do-step-num{font-family:var(--font-display);font-size:3.2rem;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--tint)}
+.do-step:nth-child(1) .do-step-num{color:rgba(200,148,61,.28)}
+.do-step:nth-child(2) .do-step-num{color:rgba(61,113,104,.28)}
+.do-step:nth-child(3) .do-step-num{color:rgba(15,23,41,.12)}
+.do-step-label{font-family:var(--font-mono);font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
+.do-step h3{font-family:var(--font-display);font-size:1.4rem;font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
+.do-step p{font-size:.95rem;line-height:1.7;color:var(--text-soft);margin-top:auto}
+.do-outro{margin-top:clamp(40px,6vw,56px);max-width:60rem;padding:24px 0;border-top:1px solid var(--line);font-size:.95rem;color:var(--text-soft);font-style:italic;font-family:var(--font-display)}
+
+.inside-section{padding-block:clamp(72px,11vw,128px)}
+.inside-header{max-width:720px;margin-bottom:clamp(40px,6vw,56px)}
+.inside-header h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.4vw,2.75rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.inside-header p{margin-top:18px;font-size:1.02rem;line-height:1.7;color:var(--text-soft);max-width:44rem}
+.menu-list{border-top:1px solid var(--line)}
+.menu-item{border-bottom:1px solid var(--line)}
+.menu-header{display:grid;grid-template-columns:60px 1fr 40px;gap:24px;align-items:center;padding:32px 8px;width:100%;text-align:left;cursor:pointer;background:transparent;transition:padding-left .35s var(--ease-out),background-color .3s}
+.menu-header:hover{padding-left:20px;background:rgba(200,148,61,.03)}
+.menu-num{font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.16em;color:var(--accent-deep)}
+.menu-main{display:flex;flex-direction:column;gap:6px;min-width:0}
+.menu-title{font-family:var(--font-display);font-size:clamp(1.4rem,2.8vw,1.85rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;color:var(--ink);transition:color .3s}
+.menu-header:hover .menu-title{color:var(--accent-deep)}
+.menu-owner{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
+.menu-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-strong);color:var(--ink);transition:transform .35s var(--ease-out),background-color .3s,border-color .3s,color .3s;flex-shrink:0}
+.menu-item.open .menu-icon{transform:rotate(45deg);background:var(--ink);color:var(--accent-warm);border-color:var(--ink)}
+.menu-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease-out)}
+.menu-item.open .menu-body{grid-template-rows:1fr}
+.menu-body-inner{overflow:hidden}
+.menu-body-content{padding:0 8px 40px 84px;display:flex;flex-direction:column;gap:24px}
+@media (max-width:640px){
+  .menu-header{grid-template-columns:40px 1fr 36px;gap:14px;padding:24px 4px}
+  .menu-body-content{padding:0 4px 32px 4px}
+}
+.menu-body-content > p{font-size:1rem;line-height:1.75;color:var(--text-soft);max-width:52rem}
+.menu-points{display:grid;gap:10px}
+@media (min-width:700px){.menu-points{grid-template-columns:1fr 1fr;column-gap:32px}}
+.menu-points li{display:flex;align-items:flex-start;gap:14px;font-size:.94rem;line-height:1.6;color:var(--ink);padding:12px 0;border-top:1px dashed var(--line)}
+.menu-points li:first-child,.menu-points li:nth-child(2){border-top:0;padding-top:0}
+.menu-points li svg{flex-shrink:0;margin-top:3px;color:var(--accent)}
+
+.speakers-section{padding-block:clamp(64px,9vw,108px);background:var(--surface-alt)}
+.speakers-head{max-width:720px;margin-bottom:clamp(40px,6vw,56px)}
+.speakers-head h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.4vw,2.75rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.speaker-grid{display:grid;gap:24px}
 @media (min-width:768px){.speaker-grid{grid-template-columns:1fr 1fr}}
 .speaker-card{background:var(--surface);border:1px solid var(--line-hair);border-radius:22px;overflow:hidden;box-shadow:0 2px 6px rgba(15,23,41,.04),0 22px 44px -22px rgba(15,23,41,.20);transition:transform .4s var(--ease-out),box-shadow .4s,border-color .4s;display:flex;flex-direction:column}
-.speaker-card:hover{transform:translateY(-4px);border-color:var(--accent-line);box-shadow:0 8px 24px -6px rgba(15,23,41,.20),0 28px 56px -22px rgba(15,23,41,.28)}
+.speaker-card:hover{transform:translateY(-4px);border-color:var(--accent-line)}
 .speaker-portrait{aspect-ratio:4/3;position:relative;overflow:hidden;border-bottom:1px solid var(--line-hair);background:var(--tint)}
 .speaker-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .speaker-body{padding:24px 26px 26px}
@@ -296,87 +465,97 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .speaker-role.teal{color:var(--accent-2)}
 .speaker-bio{margin-top:16px;font-size:.95rem;line-height:1.75;color:var(--text-soft)}
 .speaker-note{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:.82rem;color:var(--text-faint)}
-.speaker-footer{margin-top:32px;font-size:.95rem;color:var(--text-soft)}
-.speaker-footer strong{color:var(--accent-deep);font-weight:700}
 
-.check-grid{display:grid;gap:4px 64px;margin-top:48px}
-@media (min-width:768px){.check-grid{grid-template-columns:repeat(2,1fr)}}
-.check-item{display:flex;align-items:flex-start;gap:14px;padding:11px 0}
-.check-mark{flex-shrink:0;margin-top:3px;color:var(--accent-deep)}
-.check-item p{font-size:1rem;line-height:1.6;color:rgba(15,23,41,.85)}
+.who-section{padding-block:clamp(72px,11vw,128px)}
+.who-header{max-width:720px;margin-bottom:clamp(40px,6vw,56px)}
+.who-header h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.4vw,2.75rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.who-header p{margin-top:18px;font-size:1.02rem;line-height:1.7;color:var(--text-soft);max-width:44rem}
+.who-panel{padding:clamp(40px,6vw,64px);border-radius:28px;background:var(--surface);border:1px solid var(--line-hair);position:relative;overflow:hidden}
+.who-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;border-top-left-radius:28px;border-top-right-radius:28px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 50%,var(--ink) 100%)}
+.who-flow{font-size:0.98rem;line-height:1.9;color:var(--ink)}
+.who-flow .who-chip{display:inline-block;padding:8px 16px;margin:4px 6px 4px 0;border-radius:9999px;background:var(--surface-alt);border:1px solid var(--line);color:var(--ink);font-size:0.9rem;font-family:var(--font-body);font-weight:500;letter-spacing:-.005em;white-space:normal;max-width:100%;transition:border-color .25s,background-color .25s,color .25s}
+.who-flow .who-chip:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-deep)}
+.who-note{margin-top:32px;padding-top:24px;border-top:1px dashed var(--line);font-size:0.95rem;line-height:1.7;color:var(--text-soft);max-width:52rem}
+.who-note strong{color:var(--accent-deep);font-weight:700}
 
-.proof-empty{margin-top:40px;max-width:44rem;border:1px dashed var(--accent-line);border-radius:20px;padding:32px;color:var(--text-soft);font-size:.95rem;background:rgba(251,243,224,.5)}
+.voices-section{padding-block:clamp(64px,9vw,108px);background:var(--surface-alt)}
+.voices-head{max-width:720px;margin-bottom:clamp(40px,6vw,56px)}
+.voices-head h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.4vw,2.75rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.proof-empty{max-width:44rem;border:1px dashed var(--accent-line);border-radius:20px;padding:32px;color:var(--text-soft);font-size:.95rem;background:rgba(251,243,224,.5)}
 .proof-empty strong{display:block;font-family:var(--font-display);font-size:1.15rem;color:var(--ink);margin-bottom:12px;font-weight:700}
 
-.details-head{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:24px}
-@media (min-width:1024px){.details-head{flex-direction:row;align-items:flex-end}}
-.details-head h2{margin-top:20px;font-size:clamp(1.75rem,4vw,2.75rem);line-height:1.08;letter-spacing:-.02em}
-.details-cd{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border-radius:9999px;border:1px solid var(--accent-line);background:var(--surface);box-shadow:0 2px 4px rgba(15,23,41,.04),0 14px 28px -18px rgba(15,23,41,.30)}
-.details-cd-label{font-family:var(--font-mono);font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
-.details-cd-value{font-family:var(--font-display);font-size:.85rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.details-new{padding-block:clamp(72px,11vw,128px);background:var(--ink);color:var(--text-inverse);position:relative;overflow:hidden}
+.details-new::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 15% 10%,rgba(200,148,61,.18),transparent 70%),radial-gradient(50% 45% at 85% 90%,rgba(61,113,104,.22),transparent 70%);pointer-events:none}
+.details-new-inner{position:relative;z-index:1}
+.details-header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:clamp(48px,7vw,80px)}
+.details-header-left{max-width:640px}
+.details-header h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1.05;letter-spacing:-.03em;font-weight:700;color:var(--text-inverse);margin-top:20px}
+.details-clock{display:flex;flex-direction:column;gap:4px;align-items:flex-end;padding:20px 26px;border-radius:20px;background:rgba(245,241,230,.05);border:1px solid var(--line-inv);min-width:220px}
+.details-clock-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-warm)}
+.details-clock-value{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--text-inverse);line-height:1.1}
+.details-clock-note{font-size:.7rem;color:var(--text-inv-faint);font-family:var(--font-mono);letter-spacing:.06em;margin-top:4px}
+@media (max-width:700px){.details-clock{align-items:flex-start;width:100%}}
+.nightstrip{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line-inv);border-radius:24px;overflow:hidden;background:rgba(245,241,230,.02)}
+@media (min-width:900px){.nightstrip{grid-template-columns:1fr auto 1fr}}
+.nightstrip-node{padding:clamp(32px,5vw,48px);display:flex;flex-direction:column;gap:20px;position:relative}
+.nightstrip-node + .nightstrip-node{border-top:1px solid var(--line-inv)}
+@media (min-width:900px){.nightstrip-node + .nightstrip-node{border-top:0;border-left:1px solid var(--line-inv)}}
+.nightstrip-connector{display:none;width:100px;align-items:center;justify-content:center;position:relative;background:rgba(245,241,230,.02)}
+@media (min-width:900px){.nightstrip-connector{display:flex}}
+.nightstrip-connector::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:var(--line-inv)}
+.nightstrip-connector span{position:relative;z-index:1;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);border:1px solid var(--accent-line);color:var(--accent-warm);font-family:var(--font-mono);font-size:.7rem;font-weight:700;letter-spacing:.06em}
+.nightstrip-node-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-warm)}
+.nightstrip-node-label .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-warm);animation:pulse 2.2s var(--ease-out) infinite;position:relative}
+.nightstrip-node h3{font-family:var(--font-display);font-size:clamp(1.4rem,2.6vw,1.85rem);font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--text-inverse)}
+.nightstrip-node p{font-size:.98rem;line-height:1.7;color:rgba(245,241,230,.7);max-width:36ch}
+.nightstrip-node-meta{margin-top:auto;padding-top:24px;border-top:1px solid var(--line-inv);display:flex;flex-direction:column;gap:12px}
+.nightstrip-node-meta-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.82rem}
+.nightstrip-node-meta-row dt{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-inv-faint)}
+.nightstrip-node-meta-row dd{font-weight:600;color:var(--text-inverse);text-align:right;font-size:.88rem}
+.details-facts-new{display:grid;gap:1px;margin-top:20px;border:1px solid var(--line-inv);border-radius:20px;overflow:hidden;background:var(--line-inv);grid-template-columns:1fr}
+@media (min-width:700px){.details-facts-new{grid-template-columns:repeat(3,1fr)}}
+.details-fact-new{background:var(--ink-2);padding:28px 26px;display:flex;flex-direction:column;gap:12px}
+.details-fact-new-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-inv-faint)}
+.details-fact-new-value{font-family:var(--font-display);font-size:1.15rem;font-weight:700;letter-spacing:-.015em;line-height:1.3;color:var(--text-inverse)}
+.details-fact-new-value.accent{color:var(--accent-warm)}
+.prep-ribbon{margin-top:20px;border:1px solid var(--line-inv);border-radius:20px;background:rgba(245,241,230,.02);padding:32px}
+@media (min-width:900px){.prep-ribbon{padding:40px 48px}}
+.prep-ribbon-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line-inv)}
+.prep-ribbon-head h3{font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700;letter-spacing:-.02em;color:var(--text-inverse)}
+.prep-ribbon-head span{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-warm);white-space:nowrap}
+.prep-ribbon-grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:700px){.prep-ribbon-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.prep-ribbon-grid{grid-template-columns:repeat(3,1fr)}}
+.prep-ribbon-item{display:flex;flex-direction:column;gap:12px;padding-top:20px;border-top:1px solid var(--line-inv)}
+.prep-ribbon-item-num{font-family:var(--font-mono);font-size:.66rem;font-weight:700;letter-spacing:.16em;color:var(--accent-warm)}
+.prep-ribbon-item p{font-size:.9rem;line-height:1.65;color:rgba(245,241,230,.78)}
+.prep-ribbon-item strong{color:var(--text-inverse);font-weight:600}
 
-.day-timeline{margin-top:48px;display:grid;gap:20px}
-@media (min-width:900px){.day-timeline{grid-template-columns:1fr 1fr}}
-.day-card{
-  position:relative;border-radius:22px;background:var(--surface);border:1px solid var(--line-hair);
-  padding:32px;box-shadow:0 2px 6px rgba(15,23,41,.04),0 22px 44px -22px rgba(15,23,41,.20);
-  transition:transform .4s var(--ease-out),border-color .4s,box-shadow .4s;
-}
-@media (min-width:640px){.day-card{padding:36px}}
-.day-card:hover{transform:translateY(-4px);border-color:var(--accent-line);box-shadow:0 8px 24px -6px rgba(15,23,41,.20),0 28px 56px -22px rgba(15,23,41,.28)}
-.day-card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:20px;border-bottom:1px solid var(--line)}
-.day-label{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:9999px;background:var(--accent-soft);border:1px solid var(--accent-line);font-family:var(--font-mono);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep)}
-.day-num{font-family:var(--font-display);font-size:2.4rem;font-weight:800;letter-spacing:-.03em;color:var(--tint);line-height:1}
-.day-title{margin-top:20px;font-family:var(--font-display);font-size:1.4rem;font-weight:700;letter-spacing:-.015em;line-height:1.2}
-.day-desc{margin-top:12px;font-size:.95rem;line-height:1.7;color:var(--text-soft)}
-.day-list{margin-top:24px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
-.day-list li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;line-height:1.6;color:var(--ink)}
-.day-list li svg{flex-shrink:0;margin-top:3px;color:var(--accent-deep)}
-
-.detail-facts{margin-top:24px;display:grid;gap:14px;grid-template-columns:1fr}
-@media (min-width:640px){.detail-facts{grid-template-columns:repeat(3,1fr)}}
-.fact{border-radius:16px;border:1px solid var(--line-hair);background:var(--surface);padding:20px;display:flex;align-items:flex-start;gap:14px}
-.fact-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;flex-shrink:0}
-.fact-icon.ink{background:linear-gradient(135deg,var(--ink-2),var(--ink));color:var(--text-inverse)}
-.fact-icon.warm{background:linear-gradient(135deg,var(--accent-warm),var(--accent));color:var(--ink)}
-.fact-label{font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint)}
-.fact-value{margin-top:6px;font-family:var(--font-display);font-size:1rem;font-weight:700;line-height:1.25;color:var(--ink)}
-.fact-value.accent{color:var(--accent-deep)}
-
-.prep-panel{margin-top:24px;border-radius:22px;border:1px solid var(--accent-line);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--surface) 100%);padding:32px}
-@media (min-width:640px){.prep-panel{padding:40px}}
-.prep-panel h3{font-family:var(--font-display);font-size:1.35rem;font-weight:700;letter-spacing:-.01em}
-.prep-list{margin-top:24px;display:grid;gap:16px}
-@media (min-width:640px){.prep-list{grid-template-columns:1fr 1fr}}
-.prep-item{display:flex;align-items:flex-start;gap:14px;padding:16px;border-radius:14px;background:var(--surface);border:1px solid var(--line-hair)}
-.prep-item-num{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--accent-warm);font-family:var(--font-mono);font-size:.65rem;font-weight:700;flex-shrink:0}
-.prep-item p{font-size:.94rem;line-height:1.6;color:var(--ink)}
-
-.final-banner{position:relative;overflow:hidden;padding-block:80px;background:var(--ink);color:var(--text-inverse)}
+.final-banner{position:relative;overflow:hidden;padding-block:80px;background:var(--surface-alt)}
 @media (min-width:1024px){.final-banner{padding-block:112px}}
-.final-banner-orb-a{position:absolute;left:-96px;top:-80px;width:384px;height:384px;border-radius:50%;background:rgba(200,148,61,.20);filter:blur(70px);pointer-events:none}
-.final-banner-orb-b{position:absolute;bottom:-96px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(61,113,104,.22);filter:blur(70px);pointer-events:none}
-.final-banner-inner{position:relative;z-index:1;max-width:60rem;margin-inline:auto;display:grid;gap:40px}
+.final-banner-inner{position:relative;z-index:1;display:grid;gap:40px}
 @media (min-width:1024px){.final-banner-inner{grid-template-columns:1.3fr 1fr;gap:72px;align-items:center}}
-.final-banner h2{margin-top:24px;font-family:var(--font-display);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em}
+.final-banner h2{margin-top:24px;font-family:var(--font-display);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
 .final-banner h2 .line{display:block}
-.final-banner h2 .line-accent{background:linear-gradient(100deg,var(--accent-warm),var(--accent) 55%,var(--accent-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
-.final-banner p.lede{margin-top:24px;font-size:1.05rem;line-height:1.75;color:rgba(245,241,230,.7);max-width:34rem}
+.final-banner h2 .line-accent{color:var(--accent-deep)}
+.final-banner p.lede{margin-top:24px;font-size:1.05rem;line-height:1.75;color:var(--text-soft);max-width:34rem}
 .final-banner-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.seat-counter{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:9999px;border:1px solid var(--line-inv-strong);background:rgba(245,241,230,.06);font-family:var(--font-mono);font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,230,.75)}
-.seat-counter .pulse-dot{background:var(--accent-warm)}
+.seat-counter{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:9999px;border:1px solid var(--line);background:var(--surface);font-family:var(--font-mono);font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft)}
+.seat-counter .pulse-dot{background:var(--accent)}
 .final-banner-side{display:flex;flex-direction:column;gap:16px}
-.final-banner-fact{display:flex;align-items:flex-start;gap:16px;padding:20px;border-radius:16px;border:1px solid var(--line-inv);background:rgba(245,241,230,.03)}
-.final-banner-fact svg{flex-shrink:0;color:var(--accent-warm);margin-top:2px}
-.final-banner-fact h4{font-family:var(--font-display);font-size:.95rem;font-weight:700;letter-spacing:-.01em;color:var(--text-inverse)}
-.final-banner-fact p{margin-top:4px;font-size:.82rem;line-height:1.6;color:rgba(245,241,230,.6)}
+.final-banner-fact{display:flex;align-items:flex-start;gap:16px;padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--surface)}
+.final-banner-fact svg{flex-shrink:0;color:var(--accent-deep);margin-top:2px}
+.final-banner-fact h4{font-family:var(--font-display);font-size:.95rem;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.final-banner-fact p{margin-top:4px;font-size:.82rem;line-height:1.6;color:var(--text-soft)}
 
-.faq-grid{margin-top:48px;display:grid;gap:14px}
-@media (min-width:900px){.faq-grid{grid-template-columns:1fr 1fr;column-gap:20px}}
+.faq-section{padding-block:clamp(72px,11vw,128px)}
+.faq-header{max-width:720px;margin-bottom:clamp(40px,6vw,56px)}
+.faq-header h2{font-family:var(--font-display);font-size:clamp(1.9rem,4.4vw,2.75rem);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin-top:20px}
+.faq-list{display:flex;flex-direction:column;gap:12px;max-width:100%}
 .faq-item{border-radius:16px;border:1px solid var(--line-hair);background:var(--surface);box-shadow:0 2px 4px rgba(15,23,41,.03),0 16px 32px -20px rgba(15,23,41,.22);overflow:hidden;transition:border-color .3s,box-shadow .3s}
 .faq-item:hover{border-color:var(--accent-line);box-shadow:0 8px 24px -8px rgba(15,23,41,.14)}
 .faq-item[open]{border-color:var(--accent-line);background:linear-gradient(180deg,var(--surface) 0%,rgba(251,243,224,.4) 100%)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px;list-style:none;cursor:pointer;font-family:var(--font-display);font-size:1rem;font-weight:700;line-height:1.35;letter-spacing:-.01em;color:var(--ink);transition:color .3s}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 26px;list-style:none;cursor:pointer;font-family:var(--font-display);font-size:1.02rem;font-weight:700;line-height:1.35;letter-spacing:-.01em;color:var(--ink);transition:color .3s}
 .faq-q::-webkit-details-marker{display:none}
 .faq-q:hover{color:var(--accent-deep)}
 .faq-toggle{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:9999px;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-deep);transition:transform .3s var(--ease-out),background-color .3s,color .3s}
@@ -384,10 +563,12 @@ html.js [data-reveal].in{opacity:1;transform:none}
 .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease-out)}
 .faq-item[open] .faq-a{grid-template-rows:1fr}
 .faq-a-inner{overflow:hidden}
-.faq-a-inner p{padding:0 20px 22px;font-size:.92rem;line-height:1.7;color:var(--text-soft)}
+.faq-a-inner p{padding:0 26px 24px;font-size:.94rem;line-height:1.75;color:var(--text-soft);max-width:70ch}
 
-.form-section-head{text-align:center}
-.form-section-head h2{margin-top:20px;font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.08;letter-spacing:-.02em}
+.register-section{padding-block:80px;background:var(--surface-alt)}
+@media (min-width:1024px){.register-section{padding-block:112px}}
+.form-section-head{text-align:center;margin-bottom:0}
+.form-section-head h2{margin-top:20px;font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.08;letter-spacing:-.02em;font-family:var(--font-display);font-weight:700}
 .form-section-head p{margin:20px auto 0;max-width:40rem;font-size:1.02rem;line-height:1.7;color:var(--text-soft)}
 .form-card{margin-top:40px;border-radius:20px;border:1px solid var(--line-hair);background:var(--surface);padding:24px;box-shadow:0 2px 4px rgba(15,23,41,.04),0 24px 48px -24px rgba(15,23,41,.22)}
 @media (min-width:640px){.form-card{padding:40px}}
@@ -423,7 +604,6 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
 @media (min-width:640px){.form-actions{flex-direction:row;justify-content:space-between}}
 .btn-back{padding:14px 28px;font-size:.92rem}
 .honeypot{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0;pointer-events:none}
-
 .confirmation-section{padding-block:80px;display:none}
 @media (min-width:1024px){.confirmation-section{padding-block:112px}}
 .confirmation-section.show{display:block}
@@ -458,32 +638,18 @@ textarea.input{resize:vertical;min-height:100px;line-height:1.6}
 .sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;transform:translateY(115%);transition:transform .55s var(--ease-out);background:rgba(15,23,41,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -14px 34px -20px rgba(6,10,21,.6);border-top:1px solid var(--line-inv)}
 @supports (padding:env(safe-area-inset-bottom)){.sticky-bar{padding-bottom:env(safe-area-inset-bottom)}}
 .sticky-bar.show{transform:translateY(0)}
-.sticky-inner{max-width:var(--wrap);margin-inline:auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-@media (min-width:640px){.sticky-inner{padding:12px 32px;gap:20px}}
-.sticky-days{display:flex;align-items:center;gap:12px;flex-shrink:0}
-@media (min-width:640px){.sticky-days{gap:20px}}
-.sticky-day{display:flex;flex-direction:column;gap:2px;padding-right:12px;border-right:1px solid var(--line-inv)}
-@media (min-width:640px){.sticky-day{padding-right:20px}}
-.sticky-day:last-child{border-right:0;padding-right:0}
-.sticky-day-label{font-family:var(--font-mono);font-size:.55rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-warm)}
-.sticky-day-value{font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--text-inverse);letter-spacing:-.01em;line-height:1.2}
-@media (min-width:640px){.sticky-day-value{font-size:.95rem}}
-.sticky-countdown{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.7rem;color:rgba(245,241,230,.75);letter-spacing:.06em}
-@media (min-width:640px){.sticky-countdown{font-size:.78rem}}
-.sticky-countdown .val{font-family:var(--font-display);font-weight:700;color:var(--text-inverse);font-variant-numeric:tabular-nums}
-.sticky-cta{padding:10px 16px;font-size:.8rem;white-space:nowrap;flex-shrink:0}
-@media (min-width:640px){.sticky-cta{padding:14px 22px;font-size:.88rem}}
-@media (max-width:479px){.sticky-days{display:none}}
+.sticky-inner{max-width:var(--wrap);margin-inline:auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+@media (min-width:640px){.sticky-inner{padding:14px 32px;gap:24px}}
+.sticky-countdown-block{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+.sticky-countdown-label{font-family:var(--font-mono);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-warm);white-space:nowrap}
+.sticky-countdown-value{font-family:var(--font-display);font-size:clamp(.95rem,2.2vw,1.25rem);font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--text-inverse);white-space:nowrap}
+.sticky-cta{padding:12px 20px;font-size:.85rem;white-space:nowrap;flex-shrink:0}
+@media (min-width:640px){.sticky-cta{padding:14px 24px;font-size:.9rem}}
 
-.back-top{position:fixed;right:clamp(20px,4vw,32px);bottom:80px;z-index:70;display:grid;place-items:center;width:48px;height:48px;border-radius:9999px;background:var(--ink);color:var(--text-inverse);border:1px solid var(--accent-line);box-shadow:0 2px 6px rgba(6,10,21,.35),0 18px 34px -14px rgba(15,23,41,.55);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s ease,transform .45s var(--ease-out),background-color .3s ease,border-color .3s ease,box-shadow .3s ease,visibility .4s}
+.back-top{position:fixed;right:clamp(20px,4vw,32px);bottom:100px;z-index:70;display:grid;place-items:center;width:48px;height:48px;border-radius:9999px;background:var(--ink);color:var(--text-inverse);border:1px solid var(--accent-line);box-shadow:0 2px 6px rgba(6,10,21,.35),0 18px 34px -14px rgba(15,23,41,.55);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s ease,transform .45s var(--ease-out),background-color .3s ease,border-color .3s ease,box-shadow .3s ease,visibility .4s}
 .back-top.show{opacity:1;visibility:visible;transform:none}
 .back-top:hover{transform:translateY(-3px);background:var(--accent);color:var(--ink);border-color:var(--accent-warm)}
 .back-top:active{transform:translateY(0) scale(.95)}
-
-html.js .hero-rise{opacity:0;animation:hero-rise .9s var(--ease-out) forwards;animation-delay:var(--d,0s)}
-@keyframes hero-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-out) forwards;animation-delay:var(--d,0s)}
-@keyframes hero-line{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 
 .tiltable{transform-style:preserve-3d;transition:transform .5s var(--ease);will-change:transform}
 .mag{will-change:transform}
@@ -491,11 +657,11 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   html.js [data-reveal]{opacity:1;transform:none;transition:none}
-  html.js .hero-rise,html.js .hero-line{animation:none;opacity:1;transform:none}
+  .hero-hybrid-top,.hero-hybrid-bar-text,.hero-hybrid-footer,.hero-hybrid-strip{animation:none;opacity:1;transform:none}
   .money-sweep::after{animation:none;transform:scaleX(1)}
-  .pulse-dot::before,.logo-track{animation:none}
-  .step-panel.active,.toggle-panel.active{animation:none}
-  .day-card:hover,.final-banner-fact:hover,.session-card:hover,.speaker-card:hover{transform:none}
+  .pulse-dot::before{animation:none}
+  .step-panel.active{animation:none}
+  .speaker-card:hover,.problem-tile:hover,.menu-header:hover{transform:none}
   *{transition-duration:.01ms !important}
 }
 </style>
@@ -509,14 +675,14 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 <iframe name="thinxecute_submit" id="submit-target" title="Registration submission"></iframe>
 
 <header id="nav" class="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" class="nav-brand" aria-label="Gbohunmi Williams — home">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand" aria-label="Gbohunmi Williams home">
       <span class="nav-brand-mark" aria-hidden="true">GW</span>
       <span class="nav-brand-name">Gbohunmi <span class="alt">Williams</span></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#about" class="nav-link">About ThinXecute</a>
-      <a href="#inside" class="nav-link">The Two Nights</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#inside" class="nav-link">The Nights</a>
       <a href="#speakers" class="nav-link">Speakers</a>
       <a href="#details" class="nav-link">Details</a>
     </nav>
@@ -527,317 +693,304 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
       </button>
     </div>
   </div>
-  <div id="mobile-menu" class="mobile-menu">
-    <div class="mobile-menu-inner">
-      <a href="#about" class="menu-link">About ThinXecute</a>
-      <a href="#inside" class="menu-link">The Two Nights</a>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation">
+  <button id="menu-close" class="mobile-menu-close" aria-label="Close menu">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6"/></svg>
+  </button>
+  <div class="mobile-menu-inner">
+    <p class="mobile-menu-eyebrow">ThinXecute · Vol. 01</p>
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+      <a href="#about" class="menu-link">About</a>
+      <a href="#inside" class="menu-link">The Nights</a>
       <a href="#speakers" class="menu-link">Speakers</a>
       <a href="#details" class="menu-link">Details</a>
+      <a href="#faq" class="menu-link">FAQ</a>
+    </nav>
+    <div class="mobile-menu-footer">
       <a href="#register" class="btn btn-accent btn-block">Reserve My Free Seat</a>
+      <p class="mobile-menu-footer-meta">Free · Fri 23 &amp; Sat 24 Oct</p>
     </div>
   </div>
-</header>
+</div>
 
 <main id="top">
 
-<section class="hero">
-  <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
-  <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
-  <div class="hero-orb hero-orb-c" aria-hidden="true"></div>
+<!-- HERO -->
+<section class="hero-hybrid">
+  <div class="hero-hybrid-orb hero-orb-a"></div>
+  <div class="hero-hybrid-orb hero-orb-b"></div>
+  <div class="hero-hybrid-orb hero-orb-c"></div>
 
-  <div class="wrap">
-    <div class="hero-grid">
+  <div class="wrap hero-hybrid-inner">
+    <div class="hero-hybrid-top">
+      <span class="hero-hybrid-mark">ThinXecute · Vol. 01</span>
+      <div class="hero-hybrid-ctas">
+        <a href="#inside" class="btn btn-ghost-dark">See the nights</a>
+        <a href="#register" class="btn btn-accent">Reserve Seat</a>
+      </div>
+    </div>
+
+    <div class="hero-hybrid-bars">
+      <div class="hero-hybrid-bar">
+        <span class="hero-hybrid-bar-text">Think it through.</span>
+      </div>
+      <div class="hero-hybrid-bar">
+        <span class="hero-hybrid-bar-text dim">Then do something</span>
+      </div>
+      <div class="hero-hybrid-bar">
+        <span class="hero-hybrid-bar-text accent">with it.</span>
+      </div>
+    </div>
+
+    <div class="hero-hybrid-footer">
       <div>
-        <span class="hero-badge hero-rise" style="--d:.05s">
-          <span class="pulse-dot" aria-hidden="true"></span>
-          <span>Free two-night live experience · Telegram Live</span>
-        </span>
-
-        <h1 class="hero-title">
-          <span class="hero-line" style="--d:.12s">Think it through.</span>
-          <span class="hero-line line-dim" style="--d:.17s">Then do something</span>
-          <span class="hero-line line-accent money-sweep" style="--d:.22s">with it.</span>
-        </h1>
-
-        <p class="hero-sub hero-rise" style="--d:.4s">
-          Two consecutive evenings on Telegram Live for people with ideas, ambitions and things they want to build — but who need more clarity, direction or movement.
-        </p>
-
-        <div class="hero-cta hero-rise" style="--d:.5s">
-          <a href="#register" class="btn btn-accent btn-shine mag">
-            Reserve My Free Seat
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg>
-          </a>
-          <a href="#inside" class="btn btn-ghost-dark mag">See the two nights</a>
-        </div>
-
-        <p class="hero-meta hero-rise" style="--d:.6s">
-          <span>Free</span><span class="dot">·</span>
-          <span>Telegram Live</span><span class="dot">·</span>
-          <span>Two evenings</span><span class="dot">·</span>
-          <span>≈ 90 min each</span>
-        </p>
+        <div class="hero-hybrid-col-label">When</div>
+        <div class="hero-hybrid-col-value">Fri 23 - Sat 24 October 2026</div>
+        <div class="hero-hybrid-col-sub">8:00 PM WAT each night</div>
       </div>
-
-      <div class="session-stack hero-rise" style="--d:.35s">
-        <div class="session-card">
-          <span class="session-num"><span class="dot"></span> Night One</span>
-          <p class="session-title">Thinking, clarity and direction.</p>
-          <p class="session-desc">Slow the noise down. Name the real problem. Decide what actually matters — before you move.</p>
-          <div class="session-meta">
-            <span><span class="tick">→</span> Tue 20 October · 8:00 PM WAT</span>
-            <span><span class="tick">→</span> Led by Gbohunmi Williams</span>
-          </div>
-        </div>
-
-        <div class="session-card">
-          <span class="session-num"><span class="dot"></span> Night Two</span>
-          <p class="session-title">Execution and movement.</p>
-          <p class="session-desc">What it actually takes to move once you've decided — turning intention into forward motion.</p>
-          <div class="session-meta">
-            <span><span class="tick">→</span> Wed 21 October · 8:00 PM WAT</span>
-            <span><span class="tick">→</span> Led by Gretex King</span>
-          </div>
-        </div>
-
-        <div class="session-note">
-          Both nights stream live on Telegram. Registering reserves your seat and confirms your place on WhatsApp.
-        </div>
+      <div>
+        <div class="hero-hybrid-col-label">Where</div>
+        <div class="hero-hybrid-col-value">Telegram Live</div>
+        <div class="hero-hybrid-col-sub">Link sent on WhatsApp</div>
+      </div>
+      <div>
+        <div class="hero-hybrid-col-label">Hosts</div>
+        <div class="hero-hybrid-col-value">Gbohunmi Williams &amp; Gretex King</div>
+        <div class="hero-hybrid-col-sub">Thinking · Execution</div>
       </div>
     </div>
-  </div>
 
-  <div class="logo-strip" aria-hidden="true">
-    <div class="logo-track">
-      <div class="logo-group">
-        <span class="logo-item">Think × Execute</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Two nights live</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Telegram Live</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Tue 20 – Wed 21 Oct 2026</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">8:00 PM WAT</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Free seat</span>
-        <span class="logo-item accent">◆</span>
-      </div>
-      <div class="logo-group">
-        <span class="logo-item">Think × Execute</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Two nights live</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Telegram Live</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Tue 20 – Wed 21 Oct 2026</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">8:00 PM WAT</span>
-        <span class="logo-item accent">◆</span>
-        <span class="logo-item">Free seat</span>
-        <span class="logo-item accent">◆</span>
-      </div>
+    <div class="hero-hybrid-strip">
+      <span class="hero-hybrid-strip-left">Free two-night live experience</span>
+      <span class="hero-hybrid-strip-right">
+        <span class="pulse-dot"></span>
+        Registration open
+      </span>
     </div>
   </div>
 </section>
 
-<section id="about" class="section">
+<!-- 01 -->
+<section id="about" class="chapter-break">
   <div class="wrap">
-    <div class="split">
-      <div data-reveal>
-        <p class="section-marker"><b>01</b> Think × Execute</p>
-        <h2>Where thinking meets execution.</h2>
-      </div>
-      <div class="body" data-reveal>
-        <p>
-          You can spend months thinking. Reading, planning, refining, waiting for the right moment. The thinking feels like progress — but nothing actually moves.
-        </p>
-        <p>
-          You can also move fast. Starting things, saying yes, staying busy — without ever slowing down enough to work out whether you're moving in the right direction.
-        </p>
-        <p>
-          ThinXecute exists in the space between those two. Two evenings, in two parts. One slows you down. The other moves you forward.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="section-marker"><b>02</b> The honest part</p>
-      <h2>Does this sound familiar?</h2>
-      <p>You have ideas and ambition. And somehow, the movement still isn't happening the way it should.</p>
-    </div>
-
-    <div class="problem-grid" data-reveal>
-      <div class="problem-item">
-        <span class="problem-num">01</span>
-        <div>
-          <h3>You have too many ideas and don't know which one to pursue.</h3>
-          <p>Every option feels plausible. So you keep them all open and move on none of them.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <span class="problem-num">02</span>
-        <div>
-          <h3>You know what you want but keep postponing the start.</h3>
-          <p>The start date slides forward every month. Always waiting for a better moment.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <span class="problem-num">03</span>
-        <div>
-          <h3>You spend a lot of time researching and preparing but rarely move.</h3>
-          <p>Reading and learning feel productive. But nothing in your life actually changes.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <span class="problem-num">04</span>
-        <div>
-          <h3>You are busy but not sure you're actually making progress.</h3>
-          <p>Every week is full. But if someone asked what changed, you'd struggle to name it.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <span class="problem-num">05</span>
-        <div>
-          <h3>You consume advice constantly but still feel stuck.</h3>
-          <p>Threads, videos, podcasts. Everything is useful and nothing is used.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <span class="problem-num">06</span>
-        <div>
-          <h3>You know you need to make a decision but keep going back and forth.</h3>
-          <p>You've thought about it from every angle. You still haven't chosen.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <span class="problem-num">07</span>
-        <div>
-          <h3>You have started something but lost direction.</h3>
-          <p>Momentum faded. The reason you started is blurrier than it used to be.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <span class="problem-num">08</span>
-        <div>
-          <h3>You want a clearer next step on something that matters.</h3>
-          <p>You don't need more motivation. You need to know what to do first.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="pull-statement" data-reveal>
-      <p>
-        Sometimes the problem isn't that you need more motivation. <strong style="color:var(--accent-deep)">Sometimes you need to step back, think through the right things, make a clear decision, and then move.</strong>
+    <div class="chapter-break-inner">
+      <span class="chapter-break-num" data-reveal>01<span class="slash"> /</span></span>
+      <h2 data-reveal>Where thinking meets execution.</h2>
+      <p data-reveal>
+        You can spend months thinking. Reading, planning, refining, waiting for the right moment. The thinking feels like progress, but nothing actually moves.
+      </p>
+      <p data-reveal>
+        You can also move fast. Starting things, saying yes, staying busy, without ever slowing down enough to work out whether you're moving in the right direction.
+      </p>
+      <p data-reveal>
+        ThinXecute exists in the space between those two. Two evenings, in two parts. One slows you down. The other moves you forward.
       </p>
     </div>
   </div>
 </section>
 
-<section class="section">
+<!-- 02 -->
+<section class="problem-tiles-section">
   <div class="wrap">
-    <div class="split">
-      <div data-reveal>
-        <p class="section-marker"><b>03</b> The idea</p>
-        <h2>So, what exactly is ThinXecute?</h2>
-      </div>
-      <div class="body" data-reveal>
-        <p>
-          ThinXecute is not simply another motivational session. There is no hype, no shouting, no promises about your life changing in ninety minutes.
-        </p>
-        <p>It is built around one question:</p>
+    <div class="problem-tiles-head" data-reveal>
+      <p class="section-marker"><b>02</b> The honest part</p>
+      <h2>Does this sound familiar?</h2>
+      <p>You have ideas and ambition. And somehow, the movement still isn't happening the way it should.</p>
+    </div>
 
-        <div class="question-callout">
-          <p>Have you actually thought through what you're doing — and once you have, are you willing to do something about it?</p>
-        </div>
-
-        <p style="margin-top:28px">
-          <strong style="color:var(--ink)">Night one</strong> slows you down. We look at the real problem, name what actually needs figuring out, and separate the questions worth answering from the ones that only feel important.
-        </p>
-        <p>
-          <strong style="color:var(--ink)">Night two</strong> moves you forward. We look at what it takes to move once you've decided, and how to turn intention into actual momentum.
-        </p>
-        <p>
-          And what you learn from executing gives you better information to think with next time. The two were never meant to be separate.
-        </p>
+    <div class="problem-tiles">
+      <div class="problem-tile" data-reveal>
+        <span class="problem-tile-num">01</span>
+        <span class="problem-tile-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M16.9 16.9l2.1 2.1M4.9 19.1l2.1-2.1M16.9 7.1l2.1-2.1"/></svg>
+        </span>
+        <h3>You have too many ideas and don't know which one to pursue.</h3>
+        <p>Every option feels plausible. So you keep them all open and move on none of them.</p>
       </div>
+
+      <div class="problem-tile" data-reveal>
+        <span class="problem-tile-num">02</span>
+        <span class="problem-tile-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3.5 2"/></svg>
+        </span>
+        <h3>You know what you want but keep postponing the start.</h3>
+        <p>The start date slides forward every month. Always waiting for a better moment.</p>
+      </div>
+
+      <div class="problem-tile" data-reveal>
+        <span class="problem-tile-num">03</span>
+        <span class="problem-tile-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 19.5V5a2 2 0 012-2h11l3 3v13.5a.5.5 0 01-.7.5H4.7a.5.5 0 01-.7-.5z"/><path stroke-linecap="round" d="M8 8h6M8 12h8M8 16h5"/></svg>
+        </span>
+        <h3>You spend a lot of time researching but rarely move.</h3>
+        <p>Reading and learning feel productive. But nothing in your life actually changes.</p>
+      </div>
+
+      <div class="problem-tile" data-reveal>
+        <span class="problem-tile-num">04</span>
+        <span class="problem-tile-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+        </span>
+        <h3>You are busy but not sure you're actually making progress.</h3>
+        <p>Every week is full. But if someone asked what changed, you'd struggle to name it.</p>
+      </div>
+
+      <div class="problem-tile" data-reveal>
+        <span class="problem-tile-num">05</span>
+        <span class="problem-tile-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12c0 4.4-4 8-9 8-1.3 0-2.6-.2-3.7-.6L4 21l1-3.6C3.7 16 3 14.1 3 12c0-4.4 4-8 9-8s9 3.6 9 8z"/></svg>
+        </span>
+        <h3>You consume advice constantly but still feel stuck.</h3>
+        <p>Threads, videos, podcasts. Everything is useful and nothing is used.</p>
+      </div>
+
+      <div class="problem-tile" data-reveal>
+        <span class="problem-tile-num">06</span>
+        <span class="problem-tile-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 3H5a2 2 0 00-2 2v3M16 3h3a2 2 0 012 2v3M8 21H5a2 2 0 01-2-2v-3M16 21h3a2 2 0 002-2v-3"/></svg>
+        </span>
+        <h3>You know you need to make a decision but keep going back and forth.</h3>
+        <p>You've thought about it from every angle. You still haven't chosen.</p>
+      </div>
+    </div>
+
+    <div class="problem-close" data-reveal>
+      <p>Sometimes the problem isn't that you need more motivation. <strong>Sometimes you need to step back, think through the right things, make a clear decision, and then move.</strong></p>
     </div>
   </div>
 </section>
 
-<section class="section section-alt">
+<!-- 03 -->
+<section class="idea-section">
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="idea-header" data-reveal>
+      <p class="section-marker section-marker-center"><b>03</b> The idea</p>
+      <h2>So, what exactly is ThinXecute?</h2>
+    </div>
+
+    <div class="idea-question-card" data-reveal>
+      <p class="idea-question-label">The single question</p>
+      <p>Have you actually thought through what you're doing, and once you have, are you willing to do something about it?</p>
+    </div>
+
+    <div class="idea-body" data-reveal>
+      <p>
+        ThinXecute is not simply another motivational session. There is no hype, no shouting, no promises about your life changing in ninety minutes.
+      </p>
+      <p>
+        <strong>Night one</strong> slows you down. We look at the real problem, name what actually needs figuring out, and separate the questions worth answering from the ones that only feel important.
+      </p>
+      <p>
+        <strong>Night two</strong> moves you forward. We look at what it takes to move once you've decided, and how to turn intention into actual momentum.
+      </p>
+      <p>
+        And what you learn from executing gives you better information to think with next time. The two were never meant to be separate.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="do-section">
+  <div class="wrap">
+    <div class="do-header" data-reveal>
       <p class="section-marker"><b>04</b> Not a passive session</p>
       <h2>What you'll actually do.</h2>
-      <p>This is not two evenings of sitting and watching. You'll be working on something real — a project, a decision, a career move, a creative thing you keep circling.</p>
+      <p>This is not two evenings of sitting and watching. You'll be working on something real, a project, a decision, a career move, a creative thing you keep circling.</p>
     </div>
 
-    <div class="check-grid" data-reveal>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>Bring one real thing you're currently building, starting, or trying to figure out.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>Answer guided questions that surface what actually matters — not what feels urgent.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>Leave with a clearer sense of the decision you need to make.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>Walk away with one concrete next step — not another list of ideas.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>See your real thing through two perspectives — thinking, then execution.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>Bring something to write with. Notes, not just watching.</p></div>
+    <div class="do-steps">
+      <div class="do-step" data-reveal>
+        <span class="do-step-num">01</span>
+        <span class="do-step-label">Before</span>
+        <h3>Bring one real thing.</h3>
+        <p>A project, a business, a decision, a career move, a creative thing. Anything real you're currently carrying.</p>
+      </div>
+
+      <div class="do-step" data-reveal>
+        <span class="do-step-num">02</span>
+        <span class="do-step-label">During</span>
+        <h3>Work through it live.</h3>
+        <p>Answer guided questions that surface what actually matters, not what feels urgent, and see it through two perspectives.</p>
+      </div>
+
+      <div class="do-step" data-reveal>
+        <span class="do-step-num">03</span>
+        <span class="do-step-label">After</span>
+        <h3>Walk away with one next step.</h3>
+        <p>Not another list of ideas. One concrete next step, and a clearer sense of the decision you need to make.</p>
+      </div>
     </div>
 
-    <p class="speaker-footer" data-reveal>
+    <p class="do-outro" data-reveal>
       No unrealistic promises. The value here is clarity, perspective, intentional thinking, and movement.
     </p>
   </div>
 </section>
 
-<section id="inside" class="section">
+<!-- 05 -->
+<section id="inside" class="inside-section">
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="inside-header" data-reveal>
       <p class="section-marker"><b>05</b> The two nights</p>
       <h2>Two evenings. Two sides of the same thing.</h2>
       <p>ThinXecute runs across two consecutive evenings. The first slows you down. The second moves you forward. Both live on Telegram.</p>
     </div>
 
-    <div class="session-toggle" data-reveal>
-      <div class="toggle-tabs" role="tablist" aria-label="ThinXecute sessions">
-        <button type="button" class="toggle-tab" role="tab" aria-selected="true" aria-controls="panel-think" id="tab-think" data-panel="panel-think">
-          <span class="tab-eyebrow">Night 01 · Tue 20 Oct</span>
-          <span class="tab-title">Thinking &amp; Clarity</span>
-          <span class="tab-owner">Led by Gbohunmi Williams</span>
+    <div class="menu-list" data-reveal>
+      <div class="menu-item open" data-menu>
+        <button type="button" class="menu-header" aria-expanded="true" data-menu-toggle>
+          <span class="menu-num">01</span>
+          <span class="menu-main">
+            <span class="menu-title">Thinking &amp; Clarity</span>
+            <span class="menu-owner">Night One · Fri 23 Oct · Led by Gbohunmi Williams</span>
+          </span>
+          <span class="menu-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          </span>
         </button>
-        <button type="button" class="toggle-tab" role="tab" aria-selected="false" aria-controls="panel-execute" id="tab-execute" data-panel="panel-execute">
-          <span class="tab-eyebrow">Night 02 · Wed 21 Oct</span>
-          <span class="tab-title">Execution &amp; Movement</span>
-          <span class="tab-owner">Led by Gretex King</span>
-        </button>
-      </div>
-
-      <div class="toggle-body">
-        <div class="toggle-panel active" id="panel-think" role="tabpanel" aria-labelledby="tab-think">
-          <h3>Clarity before movement.</h3>
-          <p class="lead">
-            A guided pass through the thinking side. We slow down enough to see the real problem — not the loudest one — and separate the questions worth answering from the ones that only feel important.
-          </p>
-          <div class="toggle-points">
-            <div class="toggle-point"><span class="dot"></span><span>Understanding the real problem you're trying to solve</span></div>
-            <div class="toggle-point"><span class="dot"></span><span>Identifying what actually needs to be figured out</span></div>
-            <div class="toggle-point"><span class="dot"></span><span>Separating signal from noise in your own thinking</span></div>
-            <div class="toggle-point"><span class="dot"></span><span>Deciding what matters — and what doesn't</span></div>
+        <div class="menu-body">
+          <div class="menu-body-inner">
+            <div class="menu-body-content">
+              <p>Clarity before movement. We slow down enough to see the real problem, not the loudest one, and work through the thinking that has kept you stuck.</p>
+              <ul class="menu-points">
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Why you are not moving on that thing you said you would do</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Why you're stuck</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Where you stopped moving</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Finding direction</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Why positive thinking won't help you</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Where your thinking should lead you to</span></li>
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="toggle-panel" id="panel-execute" role="tabpanel" aria-labelledby="tab-execute">
-          <h3>From intention to movement.</h3>
-          <p class="lead">
-            The execution side. What it actually takes to move once you've decided — and how to turn intention into momentum that survives the day after.
-          </p>
-          <div class="toggle-points">
-            <div class="toggle-point"><span class="dot"></span><span>What blocks movement after a clear decision</span></div>
-            <div class="toggle-point"><span class="dot"></span><span>Turning a decision into a concrete first move</span></div>
-            <div class="toggle-point"><span class="dot"></span><span>Staying in motion when momentum fades</span></div>
-            <div class="toggle-point"><span class="dot"></span><span>Learning from execution so your thinking improves</span></div>
+      <div class="menu-item" data-menu>
+        <button type="button" class="menu-header" aria-expanded="false" data-menu-toggle>
+          <span class="menu-num">02</span>
+          <span class="menu-main">
+            <span class="menu-title">Execution &amp; Movement</span>
+            <span class="menu-owner">Night Two · Sat 24 Oct · Led by Gretex King</span>
+          </span>
+          <span class="menu-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="menu-body">
+          <div class="menu-body-inner">
+            <div class="menu-body-content">
+              <p>From intention to movement. What it actually takes to move once you've decided, and how to turn intention into momentum that survives the day after.</p>
+              <ul class="menu-points">
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>What blocks movement after a clear decision</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Turning a decision into a concrete first move</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Staying in motion when momentum fades</span></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Learning from execution so your thinking improves</span></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -845,9 +998,10 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<section id="speakers" class="section section-alt">
+<!-- 06 -->
+<section id="speakers" class="speakers-section">
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="speakers-head" data-reveal>
       <p class="section-marker"><b>06</b> Speakers</p>
       <h2>Who you'll be hearing from.</h2>
     </div>
@@ -859,9 +1013,9 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         </div>
         <div class="speaker-body">
           <h3 class="speaker-name">Gbohunmi Williams</h3>
-          <p class="speaker-role teal">Web Developer · Creator · Thinker</p>
-          <p class="speaker-bio">Gbohunmi builds things on the web and spends a lot of his time thinking about thinking — how ideas form, why some of them never move, and what happens in the space before execution. ThinXecute comes out of that interest: a conversation about the part most people skip.</p>
-          <p class="speaker-note">Leads Night One — thinking, clarity and direction.</p>
+          <p class="speaker-role teal">Full Stack Web Developer · Thinker</p>
+          <p class="speaker-bio">Gbohunmi is a full stack web developer and thinker interested in how thoughts shape ideas, decisions, direction, and action. He spends a lot of time exploring what happens between having an idea and actually moving on it, helping people examine the thinking that may be keeping them stuck. ThinXecute grows from that interest: a conversation about thinking before execution and understanding what needs to change before taking action.</p>
+          <p class="speaker-note">Leads Night One. Thinking, clarity and direction.</p>
         </div>
       </article>
 
@@ -872,171 +1026,149 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
         <div class="speaker-body">
           <h3 class="speaker-name">Gretex King</h3>
           <p class="speaker-role warm">Brand Designer · Strategist · Execution Speaker</p>
-          <p class="speaker-bio">Gretex brings the execution perspective — a practical, grounded view on moving from intention into action. His session focuses on what it actually takes to move once you've made a decision.</p>
-          <p class="speaker-note">Leads Night Two — execution and action. Full biography to be published.</p>
+          <p class="speaker-bio">Gretex brings the execution perspective, a practical, grounded view on moving from intention into action. His session focuses on what it actually takes to move once you've made a decision.</p>
+          <p class="speaker-note">Leads Night Two. Execution and action. Full biography to be published.</p>
         </div>
       </article>
     </div>
-
-    <p class="speaker-footer" data-reveal>
-      Gbohunmi → thinking, clarity and direction. Gretex → execution and action. <strong>Together → ThinXecute.</strong>
-    </p>
   </div>
 </section>
 
-<section class="section">
+<!-- 07 -->
+<section class="who-section">
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="who-header" data-reveal>
       <p class="section-marker"><b>07</b> Who it's for</p>
       <h2>This is for you if…</h2>
+      <p>You don't need to be an entrepreneur or have a finished plan. If any of the following feels true, you belong in this room.</p>
     </div>
 
-    <div class="check-grid" data-reveal>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You have ideas but lack direction.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You know what you want but haven't started.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You're building something and need to step back and think.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You feel stuck between planning and doing.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You consume a lot of information without moving.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You're busy but aren't seeing meaningful progress.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You want to become more intentional about what you think and do.</p></div>
-      <div class="check-item"><span class="check-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg></span><p>You want a clearer next step on something that matters.</p></div>
+    <div class="who-panel" data-reveal>
+      <div class="who-flow">
+        <span class="who-chip">You have ideas but lack direction</span>
+        <span class="who-chip">You know what you want but haven't started</span>
+        <span class="who-chip">You're building something and need to step back and think</span>
+        <span class="who-chip">You feel stuck between planning and doing</span>
+        <span class="who-chip">You consume a lot of information without moving</span>
+        <span class="who-chip">You're busy but aren't seeing meaningful progress</span>
+        <span class="who-chip">You want to become more intentional about what you think and do</span>
+        <span class="who-chip">You want a clearer next step on something that matters</span>
+      </div>
+      <p class="who-note">
+        Students, business owners, freelancers, creators, 9 to 5 workers, developers, designers, and <strong>anyone in between who has something they're trying to move.</strong>
+      </p>
     </div>
-
-    <p class="speaker-footer" data-reveal>
-      Students, business owners, freelancers, creators, 9–5 workers, developers, designers — and anyone in between who has something they're trying to move.
-    </p>
   </div>
 </section>
 
-<section class="section section-alt">
+<!-- 08 -->
+<section class="voices-section">
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="voices-head" data-reveal>
       <p class="section-marker"><b>08</b> Voices</p>
       <h2>What people are saying.</h2>
     </div>
 
     <div class="proof-empty" data-reveal>
       <strong>ThinXecute is new.</strong>
-      <p>Rather than fill this space with testimonials that don't exist yet, we're leaving it honest. Feedback from the first two nights will be published here — unedited, and only with permission.</p>
+      <p>Rather than fill this space with testimonials that don't exist yet, we're leaving it honest. Feedback from the first two nights will be published here, unedited, and only with permission.</p>
     </div>
   </div>
 </section>
 
-<section id="details" class="section">
-  <div class="wrap">
-    <div class="details-head" data-reveal>
-      <div>
-        <p class="section-marker"><b>09</b> Details</p>
+<!-- 09 -->
+<section id="details" class="details-new">
+  <div class="wrap details-new-inner">
+    <div class="details-header" data-reveal>
+      <div class="details-header-left">
+        <p class="section-marker section-marker-light"><b>09</b> Details</p>
         <h2>Two nights. Same time. Same place.</h2>
       </div>
-      <div class="details-cd">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <div>
-          <p class="details-cd-label">Starts in</p>
-          <p class="details-cd-value" id="det-cd">0d 0h 0m</p>
-        </div>
+      <div class="details-clock">
+        <span class="details-clock-label">Starts in</span>
+        <span class="details-clock-value" id="det-cd">0d 0h 0m</span>
+        <span class="details-clock-note">Fri 23 Oct · 8:00 PM WAT</span>
       </div>
     </div>
 
-    <div class="day-timeline" data-reveal>
-      <div class="day-card">
-        <div class="day-card-head">
-          <span class="day-label"><span class="pulse-dot"></span> Night One</span>
-          <span class="day-num">01</span>
-        </div>
-        <h3 class="day-title">Thinking, clarity and direction.</h3>
-        <p class="day-desc">The first evening slows you down. We look at what you're actually trying to do, why, and what currently needs figuring out — before you move.</p>
-        <ul class="day-list">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Tuesday, 20 October 2026</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>8:00 PM WAT · 90 minutes</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Telegram Live · link sent on WhatsApp</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Hosted by Gbohunmi Williams</span></li>
-        </ul>
+    <div class="nightstrip" data-reveal>
+      <div class="nightstrip-node">
+        <span class="nightstrip-node-label"><span class="dot"></span> Night One</span>
+        <h3>Thinking, clarity and direction.</h3>
+        <p>The first evening slows you down. We look at what you're actually trying to do, why, and what needs figuring out, before you move.</p>
+        <dl class="nightstrip-node-meta">
+          <div class="nightstrip-node-meta-row"><dt>Date</dt><dd>Fri 23 Oct 2026</dd></div>
+          <div class="nightstrip-node-meta-row"><dt>Time</dt><dd>8:00 PM WAT</dd></div>
+          <div class="nightstrip-node-meta-row"><dt>Host</dt><dd>Gbohunmi Williams</dd></div>
+          <div class="nightstrip-node-meta-row"><dt>Length</dt><dd>≈ 90 minutes</dd></div>
+        </dl>
       </div>
 
-      <div class="day-card">
-        <div class="day-card-head">
-          <span class="day-label"><span class="pulse-dot"></span> Night Two</span>
-          <span class="day-num">02</span>
-        </div>
-        <h3 class="day-title">Execution and movement.</h3>
-        <p class="day-desc">The second evening moves you forward. What it actually takes to move once you've decided — and how to turn intention into momentum.</p>
-        <ul class="day-list">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Wednesday, 21 October 2026</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>8:00 PM WAT · 90 minutes</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Telegram Live · link sent on WhatsApp</span></li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg><span>Featuring Gretex King</span></li>
-        </ul>
+      <div class="nightstrip-connector" aria-hidden="true"><span>+1</span></div>
+
+      <div class="nightstrip-node">
+        <span class="nightstrip-node-label"><span class="dot"></span> Night Two</span>
+        <h3>Execution and movement.</h3>
+        <p>The second evening moves you forward. What it actually takes to move once you've decided, and how to turn intention into momentum.</p>
+        <dl class="nightstrip-node-meta">
+          <div class="nightstrip-node-meta-row"><dt>Date</dt><dd>Sat 24 Oct 2026</dd></div>
+          <div class="nightstrip-node-meta-row"><dt>Time</dt><dd>8:00 PM WAT</dd></div>
+          <div class="nightstrip-node-meta-row"><dt>Host</dt><dd>Gretex King</dd></div>
+          <div class="nightstrip-node-meta-row"><dt>Length</dt><dd>≈ 90 minutes</dd></div>
+        </dl>
       </div>
     </div>
 
-    <div class="detail-facts" data-reveal>
-      <div class="fact">
-        <span class="fact-icon ink">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.5 3.5L2.5 10.5l6 2.5 2 6 11-15.5z"/></svg>
-        </span>
-        <div>
-          <p class="fact-label">Where</p>
-          <p class="fact-value">Telegram Live</p>
-        </div>
+    <div class="details-facts-new" data-reveal>
+      <div class="details-fact-new">
+        <p class="details-fact-new-label">Where</p>
+        <p class="details-fact-new-value">Telegram Live</p>
       </div>
-      <div class="fact">
-        <span class="fact-icon ink">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
-        </span>
-        <div>
-          <p class="fact-label">Dates</p>
-          <p class="fact-value">Tue 20 – Wed 21 Oct</p>
-        </div>
+      <div class="details-fact-new">
+        <p class="details-fact-new-label">Dates</p>
+        <p class="details-fact-new-value">Fri 23 to Sat 24 Oct</p>
       </div>
-      <div class="fact">
-        <span class="fact-icon warm">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12l-9-9-9 9M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10M9 21v-6h6v6"/></svg>
-        </span>
-        <div>
-          <p class="fact-label">Investment</p>
-          <p class="fact-value accent">Free · registration required</p>
-        </div>
+      <div class="details-fact-new">
+        <p class="details-fact-new-label">Investment</p>
+        <p class="details-fact-new-value accent">Free · registration required</p>
       </div>
     </div>
 
-    <div class="prep-panel" data-reveal>
-      <h3>Come ready to both evenings.</h3>
-      <div class="prep-list">
-        <div class="prep-item">
-          <span class="prep-item-num">1</span>
-          <p>Have <strong>Telegram</strong> installed before Tuesday — the event links for both nights will be sent to you on WhatsApp after you register.</p>
+    <div class="prep-ribbon" data-reveal>
+      <div class="prep-ribbon-head">
+        <h3>Come ready to both evenings.</h3>
+        <span>Three small things</span>
+      </div>
+      <div class="prep-ribbon-grid">
+        <div class="prep-ribbon-item">
+          <span class="prep-ribbon-item-num">01</span>
+          <p>Have <strong>Telegram</strong> installed before Friday. The event links for both nights will be sent to you on WhatsApp after you register.</p>
         </div>
-        <div class="prep-item">
-          <span class="prep-item-num">2</span>
-          <p>Follow <strong>@illiams__laughter</strong> on Instagram to keep up with ThinXecute, behind-the-scenes notes, and what's coming next.</p>
-        </div>
-        <div class="prep-item">
-          <span class="prep-item-num">3</span>
+        <div class="prep-ribbon-item">
+          <span class="prep-ribbon-item-num">02</span>
           <p>Have your phone or laptop charged and ready, with about 90 uninterrupted minutes each evening. Bring something to write with.</p>
         </div>
-        <div class="prep-item">
-          <span class="prep-item-num">4</span>
-          <p>Bring one real thing you are currently trying to build, start or figure out — that's the raw material for both evenings.</p>
+        <div class="prep-ribbon-item">
+          <span class="prep-ribbon-item-num">03</span>
+          <p>Bring one real thing you are currently trying to build, start or figure out. That's the raw material for both evenings.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- 10 -->
 <section class="final-banner">
-  <div class="final-banner-orb-a" aria-hidden="true"></div>
-  <div class="final-banner-orb-b" aria-hidden="true"></div>
   <div class="wrap">
     <div class="final-banner-inner">
       <div data-reveal>
-        <p class="section-marker section-marker-light"><b>10</b> The decision</p>
+        <p class="section-marker"><b>10</b> The decision</p>
         <h2>
           <span class="line">Think it through.</span>
           <span class="line line-accent">Then do something with it.</span>
         </h2>
         <p class="lede">
-          Two evenings on Telegram Live. Two perspectives on your real thing. And a clearer idea of what to do next — starting the morning after.
+          Two evenings on Telegram Live. Two perspectives on your real thing. And a clearer idea of what to do next, starting the morning after.
         </p>
         <div class="final-banner-cta">
           <a href="#register" class="btn btn-accent btn-shine mag">
@@ -1055,14 +1187,14 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
           <div>
             <h4>Two consecutive evenings</h4>
-            <p>Tue 20 &amp; Wed 21 October 2026 · 8:00 PM WAT each night.</p>
+            <p>Fri 23 &amp; Sat 24 October 2026. 8:00 PM WAT each night.</p>
           </div>
         </div>
         <div class="final-banner-fact">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 3.5L2.5 10.5l6 2.5 2 6 11-15.5z"/></svg>
           <div>
             <h4>Live on Telegram</h4>
-            <p>Install Telegram before Tuesday. We'll send the event links to you on WhatsApp.</p>
+            <p>Install Telegram before Friday. We'll send the event links to you on WhatsApp.</p>
           </div>
         </div>
         <div class="final-banner-fact">
@@ -1077,14 +1209,15 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<section id="faq" class="section section-alt">
+<!-- 11 -->
+<section id="faq" class="faq-section">
   <div class="wrap">
-    <div class="section-head" style="text-align:center;margin-inline:auto" data-reveal>
-      <p class="section-marker section-marker-center"><b>11</b> Questions</p>
-      <h2 style="margin-top:20px">Things people ask.</h2>
+    <div class="faq-header" data-reveal>
+      <p class="section-marker"><b>11</b> Questions</p>
+      <h2>Things people ask.</h2>
     </div>
 
-    <div class="faq-grid" data-reveal>
+    <div class="faq-list" data-reveal>
       <details class="faq-item">
         <summary class="faq-q">
           <span>Is ThinXecute free?</span>
@@ -1098,7 +1231,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
           <span>Where does it happen?</span>
           <span class="faq-toggle" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
         </summary>
-        <div class="faq-a"><div class="faq-a-inner"><p>On Telegram Live, both evenings. Once you register, we send the Telegram event link to you on WhatsApp. Install Telegram before Tuesday so you're ready to join.</p></div></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>On Telegram Live, both evenings. Once you register, we send the Telegram event link to you on WhatsApp. Install Telegram before Friday so you're ready to join.</p></div></div>
       </details>
 
       <details class="faq-item">
@@ -1152,8 +1285,9 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   </div>
 </section>
 
-<section id="register" class="section">
-  <div class="wrap" style="max-width:48rem">
+<!-- 12 -->
+<section id="register" class="register-section">
+  <div class="wrap">
     <div class="form-section-head" data-reveal>
       <p class="section-marker section-marker-center"><b>12</b> Reserve your seat</p>
       <h2>You're one step away.</h2>
@@ -1197,7 +1331,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
               <label class="opt"><input type="radio" name="audienceType" value="Business Owner">Business Owner</label>
               <label class="opt"><input type="radio" name="audienceType" value="Freelancer">Freelancer</label>
               <label class="opt"><input type="radio" name="audienceType" value="Creator">Creator</label>
-              <label class="opt"><input type="radio" name="audienceType" value="9-5 Worker">9–5 Worker</label>
+              <label class="opt"><input type="radio" name="audienceType" value="9-5 Worker">9-5 Worker</label>
               <label class="opt"><input type="radio" name="audienceType" value="Developer">Developer</label>
               <label class="opt"><input type="radio" name="audienceType" value="Designer">Designer</label>
               <label class="opt"><input type="radio" name="audienceType" value="Other">Other</label>
@@ -1207,7 +1341,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 
         <div class="step-panel" data-step="3">
           <h3 class="step-title">What are you currently building or trying to figure out?</h3>
-          <p class="step-hint">A project, a business, a decision, a career move, a creative thing — anything real you're carrying right now.</p>
+          <p class="step-hint">A project, a business, a decision, a career move, a creative thing. Anything real you're carrying right now.</p>
           <div class="step-body">
             <div class="form-field">
               <label for="f-whatBuilding">Your answer <span class="req">*</span></label>
@@ -1279,19 +1413,21 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 </section>
 
 <section id="confirmed" class="confirmation-section">
-  <div class="wrap confirmation-wrap">
-    <div class="confirmation-card">
-      <span class="confirmation-mark">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg>
-      </span>
-      <h2>You're in.</h2>
-      <p class="lede">Your ThinXecute registration has been received. One final step remains.</p>
-      <p class="lede">Click the button below and send the pre-filled WhatsApp message so we can confirm your seat and send you the Telegram event link and reminders for both evenings.</p>
-      <a id="wa-link" href="#" target="_blank" rel="noopener" class="btn btn-accent">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 2.9 2.9 0 00-.9 2.1c0 1.2.9 2.4 1 2.6s1.8 2.7 4.3 3.8c2.5 1.1 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.3-.5-.5z"/></svg>
-        Confirm My Seat on WhatsApp
-      </a>
-      <p class="confirmation-note">WhatsApp is used only for ThinXecute confirmation and event communication. Your details stay private.</p>
+  <div class="wrap">
+    <div class="confirmation-wrap">
+      <div class="confirmation-card">
+        <span class="confirmation-mark">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7"/></svg>
+        </span>
+        <h2>You're in.</h2>
+        <p class="lede">Your ThinXecute registration has been received. One final step remains.</p>
+        <p class="lede">Click the button below and send the pre-filled WhatsApp message so we can confirm your seat and send you the Telegram event link and reminders for both evenings.</p>
+        <a id="wa-link" href="#" target="_blank" rel="noopener" class="btn btn-accent">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.6 6.6 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 2.9 2.9 0 00-.9 2.1c0 1.2.9 2.4 1 2.6s1.8 2.7 4.3 3.8c2.5 1.1 2.5.7 3 .7s1.5-.6 1.7-1.2.2-1.1.2-1.2-.2-.3-.5-.5z"/></svg>
+          Confirm My Seat on WhatsApp
+        </a>
+        <p class="confirmation-note">WhatsApp is used only for ThinXecute confirmation and event communication. Your details stay private.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1327,19 +1463,9 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 
 <div id="sticky-bar" class="sticky-bar">
   <div class="sticky-inner">
-    <div class="sticky-days">
-      <div class="sticky-day">
-        <span class="sticky-day-label">Night 01 · Tue 20 Oct</span>
-        <span class="sticky-day-value">8:00 PM WAT</span>
-      </div>
-      <div class="sticky-day">
-        <span class="sticky-day-label">Night 02 · Wed 21 Oct</span>
-        <span class="sticky-day-value">8:00 PM WAT</span>
-      </div>
-    </div>
-    <div class="sticky-countdown">
-      <span>Starts in</span>
-      <span class="val" id="cd-total">—</span>
+    <div class="sticky-countdown-block">
+      <span class="sticky-countdown-label">Starts in</span>
+      <span class="sticky-countdown-value" id="cd-total">—</span>
     </div>
     <a href="#register" class="btn btn-accent sticky-cta">Reserve My Free Seat</a>
   </div>
@@ -1356,23 +1482,32 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
 
   var nav = document.getElementById('nav');
   var menuBtn = document.getElementById('menu-btn');
+  var menuClose = document.getElementById('menu-close');
   var mobileMenu = document.getElementById('mobile-menu');
 
   function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  menuBtn.addEventListener('click', function () {
-    var opening = !mobileMenu.classList.contains('open');
-    mobileMenu.classList.toggle('open', opening);
-    menuBtn.setAttribute('aria-expanded', opening ? 'true' : 'false');
-  });
-
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  menuBtn.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
   mobileMenu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      mobileMenu.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
   });
 
   var reveals = document.querySelectorAll('[data-reveal]');
@@ -1419,44 +1554,17 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
   window.addEventListener('resize', updateProgress);
   updateProgress();
 
-  var reduceMotion = function () {
-    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  };
-  if (!reduceMotion()) {
-    document.querySelectorAll('[data-tilt]').forEach(function (el) {
-      var max = parseFloat(el.getAttribute('data-tilt')) || 6;
-      el.addEventListener('pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = 'perspective(900px) rotateX(' + (-py * max).toFixed(2) + 'deg) rotateY(' + (px * max).toFixed(2) + 'deg)';
-      });
-      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
-    });
-    document.querySelectorAll('.mag').forEach(function (el) {
-      el.addEventListener('pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        var dx = e.clientX - (r.left + r.width / 2);
-        var dy = e.clientY - (r.top + r.height / 2);
-        el.style.transform = 'translate(' + (dx * 0.18).toFixed(1) + 'px,' + (dy * 0.25).toFixed(1) + 'px)';
-      });
-      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
-    });
-  }
-
-  var tabs = document.querySelectorAll('.toggle-tab');
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var panelId = tab.getAttribute('data-panel');
-      tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
-      tab.setAttribute('aria-selected', 'true');
-      document.querySelectorAll('.toggle-panel').forEach(function (p) { p.classList.remove('active'); });
-      var panel = document.getElementById(panelId);
-      if (panel) panel.classList.add('active');
+  document.querySelectorAll('[data-menu]').forEach(function (item) {
+    var toggle = item.querySelector('[data-menu-toggle]');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+      var opening = !item.classList.contains('open');
+      item.classList.toggle('open', opening);
+      toggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
     });
   });
 
-  var target = Date.UTC(2026, 9, 20, 19, 0, 0);
+  var target = Date.UTC(2026, 9, 23, 19, 0, 0);
   var detCd = document.getElementById('det-cd');
   var cdTotal = document.getElementById('cd-total');
 
@@ -1611,7 +1719,7 @@ html.js .hero-line{display:block;opacity:0;animation:hero-line .95s var(--ease-o
     document.body.appendChild(hidden);
 
     var GBO_WA = '2348135518279';
-    var msg = 'Hi Gbohunmi, my name is ' + name + '. I just finished registration for ThinXecute (Tue 20 & Wed 21 October).';
+    var msg = 'Hi Gbohunmi, my name is ' + name + '. I just finished registration for ThinXecute (Fri 23 & Sat 24 October).';
     var waUrl = 'https://wa.me/' + GBO_WA + '?text=' + encodeURIComponent(msg);
     document.getElementById('wa-link').setAttribute('href', waUrl);
 
